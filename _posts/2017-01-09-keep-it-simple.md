@@ -10,8 +10,6 @@ permalink: >
 published: true
 dsq_thread_id:
   - "5450617021"
-dsq_needs_sync:
-  - "1"
 ---
 <strong>Antoine de Saint-Exupéry</strong> wrote in his book <strong>The Little Prince</strong> the following phrase:
 <blockquote><em>"Perfection is Achieved Not When There Is Nothing More to Add, But When There Is Nothing Left to Take Away"</em></blockquote>
