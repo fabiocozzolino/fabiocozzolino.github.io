@@ -23,6 +23,6 @@ dsq_thread_id:
 <h3 class="headline hover-highlight entry-title js_entry-title">Lets evolve your architecture</h3>
 When your requirements are really not clear at first, write the most simpler code. If you need to read data from database, try to create a simple interface with direct read. This is not so bad at all. When you need to access to the database from another point or view, change your architecture by refactoring your code to create your data access layer.
 
-The idea is simple: <strong>introduce changes in your architecture as late as possibile and only if it is strictly necessary</strong>. You can't predicte the future, so don't do anything that unnecessary.
+The idea is simple: <strong>introduce changes in your architecture as late as possibile and only if it is strictly necessary</strong>. You can't predict the future, so don't do unnecessary things.
 
 Obviously, if your requirements are clear, keep in mind your architecture while developing!
