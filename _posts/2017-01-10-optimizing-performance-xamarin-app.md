@@ -27,5 +27,6 @@ Additionally, you can check out some tips and tricks links:
 <ul>
  	<li><a href="https://developer.xamarin.com/guides/cross-platform/deployment,_testing,_and_metrics/memory_perf_best_practices/">Cross-Platform Performance</a></li>
  	<li><a href="https://developer.xamarin.com/guides/xamarin-forms/deployment,_testing,_and_metrics/performance/">Xamarin.Forms Performance</a></li>
+ 	<li><a href="https://blog.xamarin.com/optimizing-xamarin-forms-apps-for-maximum-performance/">Optimizing Xamarin.Forms Apps for Maximum Performance</a></li>
 </ul>
 Enjoy!
