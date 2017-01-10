@@ -13,14 +13,13 @@ dsq_thread_id:
 ---
 <strong>Antoine de Saint-Exupéry</strong> wrote in his book <strong>The Little Prince</strong> the following phrase:
 <blockquote><em>"Perfection is Achieved Not When There Is Nothing More to Add, But When There Is Nothing Left to Take Away"</em></blockquote>
-<p class="headline hover-highlight entry-title js_entry-title">Think about software development. Many developers tend to create complex architectures, adding not necessary patterns or over-enginering their code. Why they do that? Because they are trying to set the path for future changes.</p>
-<p class="headline hover-highlight entry-title js_entry-title">But.</p>
-<p class="headline hover-highlight entry-title js_entry-title">How many times that hypotethical changes occurs? Almost never. For example: you choose to abstract your database access because, maybe one day, you must be able to connect to a different database. It is really necessary in a iOS app when, typically, your database is SQLite? I don't think.</p>
+<p class="headline hover-highlight entry-title js_entry-title">Think about software development. Many developers tend to create complex architectures, adding unnecessary patterns or over engineered code. Why they do that? Because they are trying to set the path for future changes that is gonna happen almost...never!</p>
+<p class="headline hover-highlight entry-title js_entry-title">For example: you choose to abstract your database access because, maybe one day, you must be able to connect to a different database. Nice and good practice! But, it is really necessary in a iOS app with a short lifecycle when, typically, your database is a small SQLite? I don't think so.</p>
 <p class="headline hover-highlight entry-title js_entry-title">So, in that case, abstract your database access it's like to take "<strong>a sledgehammer to crack a nut</strong>".</p>
 
 <h3 class="headline hover-highlight entry-title js_entry-title">Lets evolve your architecture</h3>
-When your requirements are really not clear at first, write the most simpler code. If you need to read data from database, try to create first a simple interface with direct read. This is not so bad. When you need to access to the database from another point o view, change your architecture by refactoring your code to create your data access layer.
+When your requirements are really not clear at first, write the most simpler code. If you need to read data from database, try to create a simple interface with direct read. This is not so bad at all. When you need to access to the database from another point or view, change your architecture by refactoring your code to create your data access layer.
 
-The idea is simple: <strong>introduce changes in your architecture as late as possibile and only when it is necessary</strong>. You don't know the future, so don't do anything that is not necessary.
+The idea is simple: <strong>introduce changes in your architecture as late as possibile and only if it is strictly necessary</strong>. You can't predicte the future, so don't do anything that unnecessary.
 
-Obviously, if your requirements are clear, develop with your architecture in mind!
+Obviously, if your requirements are clear, keep in mind your architecture while developing!
