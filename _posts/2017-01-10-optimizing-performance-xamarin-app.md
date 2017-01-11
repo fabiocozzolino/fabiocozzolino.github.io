@@ -13,7 +13,7 @@ published: true
 dsq_thread_id:
   - "5451914322"
 ---
-Performance are one of the key features in the app development. If your app is too slow, the users will close immediately. In this post, you can find some interesting videos from Channel9 about performance optimization of apps builded with Xamarin.
+Performance are one of the key features in the app development. If your app is too slow, the users will close it immediately. In this post, you can find some interesting videos from Channel9 about performance optimization of apps builded with Xamarin.
 <h3>Xamarin.Forms Performance Tips and Tricks</h3>
 https://channel9.msdn.com/Shows/XamarinShow/XamarinForms-Performance-Tips-and-Tricks
 <h3>Optimizing App Performance with Xamarin.Forms</h3>
