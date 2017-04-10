@@ -10,15 +10,14 @@ permalink: >
 published: true
 dsq_thread_id:
   - "5713969491"
+inpost_gallery_data:
+  - "1"
 dsq_needs_sync:
   - "1"
 ---
-Last friday, thanks to <a href="http://www.jetbit.it/">JetBit</a> and to my friend Massimo Bilancia, DotNetSide organize the first Xamarin Dev Days in Potenza, Basilicata, Italy. What a great day! Meet people, make networking, share development experience in a wonderful location is always the best way to spend a day.
+Last friday, thanks to <a href="http://www.jetbit.it/">JetBit</a>&nbsp;and to my friend Massimo Bilancia, DotNetSide organize the first Xamarin Dev Days in Potenza, Basilicata, Italy. What a great day! Meet people, make networking, share development experience in a wonderful location is always the best way to spend a day.
 
 Here, some pictures of the day:
-<div style="clear: both;"><a href="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/C8zjx2DXcAALs0C.jpg"><img class="wp-image-5521 alignleft" style="float: left;" src="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/C8zjx2DXcAALs0C.jpg" alt="" width="299" height="225" /></a> <a href="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17760206_10212629301353340_1809254743484563338_n.jpg"><img class="wp-image-5531 alignleft" style="float: left;" src="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17760206_10212629301353340_1809254743484563338_n.jpg" alt="" width="299" height="225" /></a><a href="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17800053_10212629301513344_5633745142622711239_n.jpg"><img class="wp-image-5541 alignleft" src="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17800053_10212629301513344_5633745142622711239_n.jpg" alt="" width="299" height="225" /></a> <a href="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17795793_1203467016443004_2329646584112350591_n.jpg"><img class="wp-image-5551 alignleft" src="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17795793_1203467016443004_2329646584112350591_n.jpg" alt="" width="299" height="225" /></a>
-<a href="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17523539_10212629298433267_7998229249631623154_n.jpg"><img class="wp-image-5561 size-full alignleft" src="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17523539_10212629298433267_7998229249631623154_n-e1491850660657.jpg" alt="" width="299" height="225" /></a> <a href="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17795747_10212629302353365_6088279960042214823_n.jpg"><img class="wp-image-5631  alignleft" src="http://www.fabiocozzolino.eu/wp-content/uploads/2017/04/17795747_10212629302353365_6088279960042214823_n.jpg" alt="" width="299" height="224" /></a>
-Thanks to all attendees!
-Next stop: <a href="https://www.eventbrite.it/e/biglietti-cloud-first-mobile-first-33439432242">april 20 @ bari</a>
 
-</div>
+[ngg_images source="galleries" container_ids="1" sortorder="52,11,41,1,21,31" display_type="photocrati-nextgen_basic_slideshow" gallery_width="600" gallery_height="400" cycle_effect="fade" cycle_interval="5" show_thumbnail_link="0" thumbnail_link_text="[Show thumbnails]" order_by="sortorder" order_direction="ASC" returns="included" maximum_entity_count="500"]Thanks to all attendees!
+Next stop: <a href="https://www.eventbrite.it/e/biglietti-cloud-first-mobile-first-33439432242">april 20 @ bari</a>
