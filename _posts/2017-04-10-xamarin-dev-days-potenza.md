@@ -19,5 +19,8 @@ Last friday, thanks to <a href="http://www.jetbit.it/">JetBit</a>&nbsp;and to my
 
 Here, some pictures of the day:
 
-[ngg_images source="galleries" container_ids="1" sortorder="52,11,41,1,21,31" display_type="photocrati-nextgen_basic_slideshow" gallery_width="600" gallery_height="400" cycle_effect="fade" cycle_interval="5" show_thumbnail_link="0" thumbnail_link_text="[Show thumbnails]" order_by="sortorder" order_direction="ASC" returns="included" maximum_entity_count="500"]Thanks to all attendees!
+[ngg_images source="galleries" container_ids="1" sortorder="52,11,41,1,21,31" display_type="photocrati-nextgen_basic_slideshow" gallery_width="600" gallery_height="400" cycle_effect="fade" cycle_interval="5" show_thumbnail_link="0" thumbnail_link_text="[Show thumbnails]" order_by="sortorder" order_direction="ASC" returns="included" maximum_entity_count="500"]
+
+&nbsp;
+Thanks to all the attendees!
 Next stop: <a href="https://www.eventbrite.it/e/biglietti-cloud-first-mobile-first-33439432242">april 20 @ bari</a>
