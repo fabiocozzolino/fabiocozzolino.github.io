@@ -22,6 +22,7 @@ the reason is the simplest one : I like the Visual Studio 2015 Dark Theme and, s
 Well done guys !
 
 Source:
+<<<<<<< HEAD
   
 <https://blog.xamarin.com/live-from-dotnetconf-cycle-7-xamarin-studio-6-and-more/>
 
@@ -30,5 +31,13 @@ Ps.: obviously there is much more, like the full support of C# 6.0 for code comp
 Check here the entire list of changes:
   
 [https://developer.xamarin.com/releases/studio/xamarin.studio\_6.0/xamarin.studio\_6.0/](https://developer.xamarin.com/releases/studio/xamarin.studio_6.0/xamarin.studio_6.0/)
+=======
+<a href="https://blog.xamarin.com/live-from-dotnetconf-cycle-7-xamarin-studio-6-and-more/">https://blog.xamarin.com/live-from-dotnetconf-cycle-7-xamarin-studio-6-and-more/</a>
+
+Ps.: obviously there is much more, like the full support of C# 6.0 for code completion and refactoring operations! Ah, don't forget also the ability to move windows outside!
+
+Check here the entire list of changes:
+<a href="https://developer.xamarin.com/releases/studio/xamarin.studio_6.0/xamarin.studio_6.0/">https://developer.xamarin.com/releases/studio/xamarin.studio_6.0/xamarin.studio_6.0/</a>
+>>>>>>> origin/master
 
 &nbsp;

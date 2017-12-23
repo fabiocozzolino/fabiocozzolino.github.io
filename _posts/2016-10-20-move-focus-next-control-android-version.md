@@ -42,6 +42,7 @@ namespace TitiusLabs.Forms.Droid.Controls
 		}
 	}
 }
+<<<<<<< HEAD
 </pre>
 
 the code is available, as always, on [github](https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms.Droid/Controls/TLEntryRenderer.cs).
@@ -49,5 +50,14 @@ the code is available, as always, on [github](https://github.com/fabiocozzolino/
 This is the final result:
 
 [<img class="alignnone size-full wp-image-3791" src="https://i2.wp.com/www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif?resize=512%2C844" alt="movefocus_xamarinforms_android" data-recalc-dims="1" />](https://i2.wp.com/www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif)
+=======
+[/code]
+
+the code is available, as always, on <a href="https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms.Droid/Controls/TLEntryRenderer.cs">github</a>.
+
+This is the final result:
+
+<a href="http://www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif"><img class="alignnone size-full wp-image-3791" src="http://www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif" alt="movefocus_xamarinforms_android" width="512" height="844" /></a>
+>>>>>>> origin/master
 
 Nice and simple!

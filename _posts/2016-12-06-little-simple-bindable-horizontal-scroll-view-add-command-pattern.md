@@ -58,7 +58,6 @@ viewCell.View.GestureRecognizers.Add(new TapGestureRecognizer
 	CommandParameter = commandParameter,
 	NumberOfTapsRequired = 1
 });
-</pre>
 
 ### Use the Command pattern to get the selected item
 

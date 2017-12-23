@@ -36,6 +36,7 @@ Now, in the Render method, we can add the following line in the for..each cycle,
 	}),
 	NumberOfTapsRequired = 1
 });
+<<<<<<< HEAD
 </pre>
 
 Now, in your XAML, you can define the handler in this way:
@@ -56,3 +57,26 @@ That&#8217;s really simple! But if you want build a code in line with the Separa
 I&#8217;ll show the step neeeded to add the command pattern to the TLScrollView in the next post of this series.
 
 ### Full code is available [here](https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms/Controls/TLScrollView.cs)
+=======
+[/code]
+
+Now, in your XAML, you can define the handler in this way:
+
+[code language="csharp"]
+&lt;controls:XScrollView Orientation=&quot;Horizontal&quot; ItemsSource=&quot;{Binding Items}&quot; ItemSelected=&quot;Handle_ItemSelected&quot; HeightRequest=&quot;100&quot;&gt;
+[/code]
+
+then you can implement your handle:
+
+[code language="csharp"]
+void Handle_ItemSelected(object sender, Xamarin.Forms.ItemTappedEventArgs e)
+{
+	// your code
+}
+[/code]
+
+That's really simple! But if you want build a code in line with the Separation of Concern, typical principles of MVVM, a SelectedCommand property should be the best way.
+
+I'll show the step neeeded to add the command pattern to the TLScrollView in the next post of this series.
+<h3>Full code is available <a href="https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms/Controls/TLScrollView.cs">here</a></h3>
+>>>>>>> origin/master
