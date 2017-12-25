@@ -37,11 +37,11 @@ In Xamarin.Forms un trigger permette di definire un&#8217;azione al verificarsi 
 Nello specifico scenario, ovviamente, il DataTrigger è il tipo di trigger che fa al caso nostro. Il codice è decisamente semplice. Dobbiamo aggiungere alla collection Triggers di un controllo Xamarin.Forms, ad esempio BoxView, e definire la propriet del ViewModel da controllare e il valore che quella propriet deve avere per attivare il trigger. Se la condizione si verifica, viene utilizzato il Setter definito nel trigger per impostare la propriet BackgroundColor del BoxView su un nuovo colore, Pink in questo caso:
 
 ~~~ xml
-&lt;BoxView.Triggers&gt;
-	&lt;DataTrigger TargetType="BoxView" Binding="{Binding Gender}" Value="{x:Static vm:GenderType.Female}" &gt;
-  		&lt;Setter Property="BackgroundColor" Value="Pink" /&gt;
-	&lt;/DataTrigger&gt;
-&lt;/BoxView.Triggers&gt;
+<BoxView.Triggers>
+	<DataTrigger TargetType="BoxView" Binding="{Binding Gender}" Value="{x:Static vm:GenderType.Female}" >
+  		<Setter Property="BackgroundColor" Value="Pink" />
+	</DataTrigger>
+</BoxView.Triggers>
 ~~~
 
 &nbsp;
@@ -49,24 +49,24 @@ Nello specifico scenario, ovviamente, il DataTrigger è il tipo di trigger che f
 Questo il codice completo del ListView:
 
 ~~~ xml
-&lt;ListView ItemsSource="{Binding Contacts}" Margin="0,50,0,0"&gt;
-	&lt;ListView.ItemTemplate&gt;
-		&lt;DataTemplate&gt;
-			&lt;ViewCell&gt;
-				&lt;StackLayout Orientation="Horizontal"&gt;
-					&lt;BoxView WidthRequest="5" BackgroundColor="Blue"&gt;
-						&lt;BoxView.Triggers&gt;
-							&lt;DataTrigger TargetType="BoxView" Binding="{Binding Gender}" Value="{x:Static vm:GenderType.Female}" &gt;
-  								&lt;Setter Property="BackgroundColor" Value="Pink" /&gt;
-							&lt;/DataTrigger&gt;
-						&lt;/BoxView.Triggers&gt;
-					&lt;/BoxView&gt;
-					&lt;Label Text="{Binding Name}" VerticalOptions="Center" /&gt;
-				&lt;/StackLayout&gt;
-			&lt;/ViewCell&gt;
-		&lt;/DataTemplate&gt;
-	&lt;/ListView.ItemTemplate&gt;
-&lt;/ListView&gt;
+<ListView ItemsSource="{Binding Contacts}" Margin="0,50,0,0">
+	<ListView.ItemTemplate>
+		<DataTemplate>
+			<ViewCell>
+				<StackLayout Orientation="Horizontal">
+					<BoxView WidthRequest="5" BackgroundColor="Blue">
+						<BoxView.Triggers>
+							<DataTrigger TargetType="BoxView" Binding="{Binding Gender}" Value="{x:Static vm:GenderType.Female}" >
+  								<Setter Property="BackgroundColor" Value="Pink" />
+							</DataTrigger>
+						</BoxView.Triggers>
+					</BoxView>
+					<Label Text="{Binding Name}" VerticalOptions="Center" />
+				</StackLayout>
+			</ViewCell>
+		</DataTemplate>
+	</ListView.ItemTemplate>
+</ListView>
 ~~~
 
 e questo il risultato finale:
