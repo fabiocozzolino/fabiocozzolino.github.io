@@ -63,8 +63,6 @@ And you have done! Now Azure automatically start the deployment process and &#82
 
 Yes! You got the following error:
 
-<pre class="azc-text-stream-wrap-text" data-bind="css: { &quot;azc-text-stream-wrap-text&quot;: data.wrap }"><span class="azc-log-stream-text">
-</span></pre>
 ~~~~~~~~
 Command: "D:\home\site\deployments\tools\deploy.cmd"
 Handling ASP.NET Core Web Application deployment.
@@ -83,13 +81,15 @@ Ah, the solution! The Connected App solution also include the Xamarin.iOS and Xa
 
 So, what we&#8217;ll do is to create a custom deployment script to restore, build and publish only the Mobile Service project. To do that we&#8217;ll use a .deployment file ([check instruction here](https://github.com/projectkudu/kudu/wiki/Customizing-deployments)):
 
-<pre class="azc-text-stream-wrap-text" data-bind="css: { &quot;azc-text-stream-wrap-text&quot;: data.wrap }"><span class="azc-log-stream-text">[config]
+~~~~~~~~
+[config]
 command = deploy.cmd
-</span></pre>
+~~~~~~~~
 
 And this is the custom deployment script that you can customize by only replacing the project name:
 
-<pre class="brush: powershell; title: ; notranslate" title="">@if "%SCM_TRACE_LEVEL%" NEQ "4" @echo off
+~~~~~~~~
+@if "%SCM_TRACE_LEVEL%" NEQ "4" @echo off
 
 :: ----------------------
 :: KUDU Deployment Script
@@ -195,7 +195,7 @@ exit /b 1
 :end
 endlocal
 echo Finished successfully.
-</pre>
+~~~~~~~~
 
 Finally, you can publish the .deployment and deploy.cmd files to the root of the repository. Once done, the deployment process restart and now &#8230; **the Mobile Service is up and running!**
 
