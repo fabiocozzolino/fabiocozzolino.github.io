@@ -63,13 +63,16 @@ And you have done! Now Azure automatically start the deployment process and &#82
 
 Yes! You got the following error:
 
-<pre class="azc-text-stream-wrap-text" data-bind="css: { &quot;azc-text-stream-wrap-text&quot;: data.wrap }"><span class="azc-log-stream-text">Command: "D:\home\site\deployments\tools\deploy.cmd"
+<pre class="azc-text-stream-wrap-text" data-bind="css: { &quot;azc-text-stream-wrap-text&quot;: data.wrap }"><span class="azc-log-stream-text">
+~~~~~~~~
+Command: "D:\home\site\deployments\tools\deploy.cmd"
 Handling ASP.NET Core Web Application deployment.
 D:\home\site\repository\XConn\Droid\XConn.Droid.csproj(137,3): error MSB4019: The imported project "D:\Program Files (x86)\dotnet\sdk\1.0.0-preview3-004056\Xamarin\Android\Xamarin.Android.CSharp.targets" was not found. Confirm that the path in the &lt;Import&gt; declaration is correct, and that the file exists on disk.
 D:\home\site\repository\XConn\iOS\XConn.iOS.csproj(163,3): error MSB4019: The imported project "D:\Program Files (x86)\dotnet\sdk\1.0.0-preview3-004056\Xamarin\iOS\Xamarin.iOS.CSharp.targets" was not found. Confirm that the path in the &lt;Import&gt; declaration is correct, and that the file exists on disk.
 Failed exitCode=1, command=dotnet restore "XConn\XConn.sln"
 An error has occurred during web site deployment.
 \r\nD:\Program Files (x86)\SiteExtensions\Kudu\59.51212.2600\bin\Scripts\starter.cmd "D:\home\site\deployments\tools\deploy.cmd"
+~~~~~~~~
 </span></pre>
 
 ## Step 4 | Publish with a Custom Deployment script
