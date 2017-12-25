@@ -64,6 +64,7 @@ And you have done! Now Azure automatically start the deployment process and &#82
 Yes! You got the following error:
 
 <pre class="azc-text-stream-wrap-text" data-bind="css: { &quot;azc-text-stream-wrap-text&quot;: data.wrap }"><span class="azc-log-stream-text">
+</span></pre>
 ~~~~~~~~
 Command: "D:\home\site\deployments\tools\deploy.cmd"
 Handling ASP.NET Core Web Application deployment.
@@ -73,7 +74,6 @@ Failed exitCode=1, command=dotnet restore "XConn\XConn.sln"
 An error has occurred during web site deployment.
 \r\nD:\Program Files (x86)\SiteExtensions\Kudu\59.51212.2600\bin\Scripts\starter.cmd "D:\home\site\deployments\tools\deploy.cmd"
 ~~~~~~~~
-</span></pre>
 
 ## Step 4 | Publish with a Custom Deployment script
 
