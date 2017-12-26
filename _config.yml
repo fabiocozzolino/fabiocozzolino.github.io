@@ -4,7 +4,7 @@ name: 'Fabio Cozzolino&#039;s blog'
 description: >
   A lap around Microsoft .NET, Xamarin,
   Integration, WCF, Azure...
-highlighter: true
+highlighter: rouge
 
 permalink: ':title/'
 site-twitter: fabiocozzolino
@@ -27,6 +27,9 @@ analytics: # Google Analytics
 
 # Build Settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 plugins_dir:
   - jekyll-sitemap
   - jekyll-paginate

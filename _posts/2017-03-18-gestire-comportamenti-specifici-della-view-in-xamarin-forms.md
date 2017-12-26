@@ -36,10 +36,10 @@ In Xamarin.Forms un trigger permette di definire un&#8217;azione al verificarsi 
 
 Nello specifico scenario, ovviamente, il DataTrigger è il tipo di trigger che fa al caso nostro. Il codice è decisamente semplice. Dobbiamo aggiungere alla collection Triggers di un controllo Xamarin.Forms, ad esempio BoxView, e definire la propriet del ViewModel da controllare e il valore che quella propriet deve avere per attivare il trigger. Se la condizione si verifica, viene utilizzato il Setter definito nel trigger per impostare la propriet BackgroundColor del BoxView su un nuovo colore, Pink in questo caso:
 
-~~~ xml
+~~~ xaml
 <BoxView.Triggers>
 	<DataTrigger TargetType="BoxView" Binding="{Binding Gender}" Value="{x:Static vm:GenderType.Female}" >
-  		<Setter Property="BackgroundColor" Value="Pink" />
+		<Setter Property="BackgroundColor" Value="Pink" />
 	</DataTrigger>
 </BoxView.Triggers>
 ~~~
@@ -48,7 +48,7 @@ Nello specifico scenario, ovviamente, il DataTrigger è il tipo di trigger che f
 
 Questo il codice completo del ListView:
 
-~~~ xml
+~~~ xaml
 <ListView ItemsSource="{Binding Contacts}" Margin="0,50,0,0">
 	<ListView.ItemTemplate>
 		<DataTemplate>
