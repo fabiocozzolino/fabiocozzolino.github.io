@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
 baseurl: ""
-url: "http://fabiocozzolino.eu"
+url: "https://fabiocozzolino.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
