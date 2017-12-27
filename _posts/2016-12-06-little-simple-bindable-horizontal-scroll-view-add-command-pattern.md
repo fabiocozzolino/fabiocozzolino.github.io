@@ -20,7 +20,8 @@ In this post, we'll see how to add the Command pattern to the TLScrollView and g
 
 The first step is to add two bindable properties: SelectedCommand and SelectedCommandParameter.
 
-<pre class="brush: csharp; title: ; notranslate" title="">public static readonly BindableProperty SelectedCommandProperty =
+~~~ csharp
+public static readonly BindableProperty SelectedCommandProperty =
 	BindableProperty.Create("SelectedCommand", typeof(ICommand), typeof(TLScrollView), null);
 
 public ICommand SelectedCommand
@@ -37,13 +38,14 @@ public object SelectedCommandParameter
 	get { return GetValue(SelectedCommandParameterProperty); }
 	set { SetValue(SelectedCommandParameterProperty, value); }
 }
-</pre>
+~~~
 
 The first one will be used to reference the Command object instance, the event handler into the view model, while the second one is the instance parameter that will be passed to the event handler.
 
 After that, we need to modify the TLScrollView Render method to use the new SelectedCommand and SelectedCommandParameter properties, if used:
 
-<pre class="brush: csharp; title: ; notranslate" title="">var command = SelectedCommand ?? new Command((obj) =&gt;
+~~~ csharp
+var command = SelectedCommand ?? new Command((obj) =&gt;
 {
 	var args = new ItemTappedEventArgs(ItemsSource, item);
 	ItemSelected?.Invoke(this, args);
@@ -58,39 +60,45 @@ viewCell.View.GestureRecognizers.Add(new TapGestureRecognizer
 	CommandParameter = commandParameter,
 	NumberOfTapsRequired = 1
 });
+~~~
 
 ### Use the Command pattern to get the selected item
 
 To use the Command pattern in our solution, we need to add a property in our viewmodel that will be binded to the UI control:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public ICommand ItemSelected { get; set; }
-</pre>
+~~~ csharp
+public ICommand ItemSelected { get; set; }
+~~~ 
 
 and then initialize it with an event handler in the viewmodel's constructor:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public MyViewModel()
+~~~ csharp
+public MyViewModel()
 {
-	ItemSelected = new Command(arg =&gt; DoSomething());
+	ItemSelected = new Command(arg => DoSomething());
 }
-</pre>
+~~~ 
 
 finally we can bind the SelectedCommand property to the ItemSelected property:
 
-<pre class="brush: xml; title: ; notranslate" title="">&lt;controls:TLScrollView Orientation="Horizontal" ItemsSource="{Binding Items}" SelectedCommand="{Binding ItemSelected}" HeightRequest="100"&gt;
-</pre>
+~~~ xml
+<controls:TLScrollView Orientation="Horizontal" ItemsSource="{Binding Items}" SelectedCommand="{Binding ItemSelected}" HeightRequest="100">
+~~~ 
 
 ### Use my ViewModelBase
 
 One step further is to minimize coding by using [my ViewModelBase implementation](http://www.fabiocozzolino.eu/my-viewmodel-base-class-implementation/). After extending your custom ViewModel with my ViewModelBase, you can simply write a method with the name ItemSelected and the _ExecuteCommand suffix:
 
-<pre class="brush: xml; title: ; notranslate" title="">public void ItemSelected_ExecuteCommand(object args)
+~~~ csharp
+public void ItemSelected_ExecuteCommand(object args)
 {
 }
-</pre>
+~~~ 
 
 After that, you need to add square brackets around the ItemSelected name in your XAML SelectedCommand assignment definition:
 
-<pre class="brush: xml; title: ; notranslate" title="">SelectedCommand="{Binding [ItemSelected]}"
-</pre>
+~~~ xml
+SelectedCommand="{Binding [ItemSelected]}"
+~~~ 
 
 Nice and really simple. As usual, you can find full code with sample on [my github repository](https://github.com/fabiocozzolino/TitiusLabs.Xamarin).

@@ -26,7 +26,8 @@ Bind data to your view is one of the principles on which MVVM is based. Data bin
 
 Implements the INotifyPropertyChanged interface requires some code that can be factored in the ViewModelBase class:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public abstract class ViewModelBase : INotifyPropertyChanged
+~~~ csharp
+public abstract class ViewModelBase : INotifyPropertyChanged
 {
 	public event PropertyChangedEventHandler PropertyChanged;
 
@@ -37,11 +38,12 @@ Implements the INotifyPropertyChanged interface requires some code that can be f
 			handler (this, new PropertyChangedEventArgs(propertyName));
 	}
 }
-</pre>
+~~~ 
 
 With this base class, now you can write our bindable properties in the ViewModel implementation without reimplement the INotifyPropertyChanged every time:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class MyViewModel : ViewModelBase
+~~~ csharp
+public class MyViewModel : ViewModelBase
 {
 	private string _title;
 	public string Title
@@ -60,38 +62,40 @@ With this base class, now you can write our bindable properties in the ViewModel
 		{
 	}		
 }
-</pre>
+~~~ 
 
 As said before, you need to notify to the View that something has changed. A lot of code, right? A step over could helps us to write a smaller code, like this:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class MyViewModel : ViewModelBase
+~~~ csharp
+public class MyViewModel : ViewModelBase
 {
 	public string Title
 	{
-		get { return GetValue&lt;string&gt;(); }
+		get { return GetValue<string>(); }
 		set { SetValue(value); }
 	}		
 }
-</pre>
+~~~ 
 
 Better and simplest. To accomplish this, you can implement the GetValue and SetValue methods in the ViewModelBase class and stores the properties values in a Dictionary:
 
-<pre class="brush: csharp; title: ; notranslate" title="">private Dictionary&lt;string, object&gt; properties = new Dictionary&lt;string, object&gt;();
+~~~ csharp
+private Dictionary<string, object> properties = new Dictionary<string, object>();
 
-protected void SetValue&lt;T&gt;(T value, [CallerMemberName] string propertyName = null)
+protected void SetValue<T>(T value, [CallerMemberName] string propertyName = null)
 {
 	if (!properties.ContainsKey (propertyName)) {
 		properties.Add (propertyName, default(T));
 	}
 
-	var oldValue = GetValue&lt;T&gt;(propertyName);
-	if (!EqualityComparer&lt;T&gt;.Default.Equals(oldValue, value)) {
+	var oldValue = GetValue<T>(propertyName);
+	if (!EqualityComparer<T>.Default.Equals(oldValue, value)) {
 		properties [propertyName] = value;
 		OnPropertyChanged (propertyName);
 	}
 }
 
-protected T GetValue&lt;T&gt;([CallerMemberName] string propertyName = null)
+protected T GetValue<T>([CallerMemberName] string propertyName = null)
 {
 	if (!properties.ContainsKey (propertyName)) {
 		return default(T);
@@ -99,7 +103,7 @@ protected T GetValue&lt;T&gt;([CallerMemberName] string propertyName = null)
 		return (T)properties [propertyName];
 	}
 }
-</pre>
+~~~ 
 
 That piece of code simplifies writing a derived ViewModelBase class. Now the MyViewModel class, with the smaller code, is much more maintenable.
 
@@ -109,7 +113,8 @@ A further step forward in your ViewModelBase consists in develop an automatic an
 
 So, to simplify writing commands implementation, we can create a delegate at ViewModelBase level for each required command. Check this code:
 
-<pre class="brush: csharp; title: ; notranslate" title="">private Dictionary&lt;string, ICommand&gt; commands = new Dictionary&lt;string, ICommand&gt;();
+~~~ csharp
+private Dictionary<string, ICommand> commands = new Dictionary<string, ICommand>();
 
 private const string EXECUTECOMMAND_SUFFIX = "_ExecuteCommand";
 private const string CANEXECUTECOMMAND_SUFFIX = "_CanExecuteCommand";
@@ -118,8 +123,8 @@ public ViewModelBase()
 {
 	this.commands = 
 		this.GetType ().GetTypeInfo ().DeclaredMethods
-		.Where (dm =&gt; dm.Name.EndsWith (EXECUTECOMMAND_SUFFIX))
-		.ToDictionary (k =&gt; GetCommandName (k), v =&gt; GetCommand (v));
+		.Where (dm => dm.Name.EndsWith (EXECUTECOMMAND_SUFFIX))
+		.ToDictionary (k => GetCommandName (k), v => GetCommand (v));
 }
 
 private string GetCommandName(MethodInfo mi)
@@ -130,8 +135,8 @@ private string GetCommandName(MethodInfo mi)
 private ICommand GetCommand (MethodInfo mi)
 {
 	var canExecute = this.GetType().GetTypeInfo().GetDeclaredMethod (GetCommandName(mi) + CANEXECUTECOMMAND_SUFFIX);
-	var executeAction = (Action&lt;object&gt;)mi.CreateDelegate (typeof(Action&lt;object&gt;), this);
-	var canExecuteAction = canExecute != null ? (Func&lt;object, bool&gt;)canExecute.CreateDelegate (typeof(Func&lt;object, bool&gt;), this) : state =&gt; true;
+	var executeAction = (Action<object>)mi.CreateDelegate (typeof(Action<object>), this);
+	var canExecuteAction = canExecute != null ? (Func<object, bool>)canExecute.CreateDelegate (typeof(Func<object, bool>), this) : state => true;
 	return new Command (executeAction, canExecuteAction);
 }
 
@@ -140,11 +145,12 @@ public ICommand this[string name] {
 		return commands [name];
 	}
 }
-</pre>
+~~~ 
 
 When the ViewModel instance is created, we collect any method with the suffix &#8220;ExecuteCommand&#8221; (you can decide to use any kind of suffix), so in the derived class we can write methods with the name _Something_ExecuteCommand:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class MyViewModel : ViewModelBase
+~~~ csharp
+public class MyViewModel : ViewModelBase
 {
 	public void Save_ExecuteCommand(object state)
 	{
@@ -154,14 +160,15 @@ When the ViewModel instance is created, we collect any method with the suffix &#
 	{
 	}
 }
-</pre>
+~~~ 
 
 In this example you see also a method called _Save_CanExecuteCommand. This is optional, since the base class creates a delegate at runtime with return value equals to true if no one has been found.
 
 Finally, in the view, you can write something like this:
 
-<pre class="brush: xml; title: ; notranslate" title="">&lt;Button Command="{Binding [Save]}" CommandParameter="{Binding MyProperty}" /&gt;
-</pre>
+~~~ xml
+<Button Command="{Binding [Save]}" CommandParameter="{Binding MyProperty}" />
+~~~ 
 
 Really simple!
 
