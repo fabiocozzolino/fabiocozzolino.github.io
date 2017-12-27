@@ -43,7 +43,8 @@ Potete utilizzare indifferentemente sia la Key 1 che la Key 2. Le chiavi devono 
 
 In questo post vedremo come utilizzare una delle funzionalit  dei Cognitive Services: le Face API. Il servizio è raggiungibile all&#8217;indirizzo <https://api.projectoxford.ai/face/v1.0/detect>. Il parametro obbligatorio è proprio la chiave che abbiamo visto in precedenza, che deve necessariamente essere indicata nell&#8217;header HTTP <span style="color: #000000;"><strong><span style="font-family: Menlo;">Ocp-Apim-Subscription-Key</span></strong></span>.
 
-<pre class="brush: csharp; title: ; notranslate" title="">public async HttpResponseMessage DetectAsync(Stream stream)
+~~~ csharp
+public async HttpResponseMessage DetectAsync(Stream stream)
 {
 	var url = "https://api.projectoxford.ai/face/v1.0/detect";
 
@@ -53,11 +54,12 @@ In questo post vedremo come utilizzare una delle funzionalit  dei Cognitive Serv
 	var client = new HttpClient ();
 	return await client.PostAsync (url, requestContent);
 }
-</pre>
+~~~
 
 Con questo codice inviamo un&#8217;immagine, contenente volti, al servizio di face detection, impostando la chiave nell&#8217;header. La risposta è un json simile a questo:
 
-<pre class="brush: jscript; title: ; notranslate" title="">[
+~~~ json
+[
     {
         "faceId": "4a97f6af-bc7d-4c0c-be41-dca3eea0937f",
         "faceRectangle": {
@@ -95,13 +97,14 @@ Con questo codice inviamo un&#8217;immagine, contenente volti, al servizio di fa
         }
     }
 ]
-</pre>
+~~~
 
 Il json riporta informazioni sulla posizione e dimensione del viso nell&#8217;immagine, la posizione di caratteristiche somatiche come le pupile, il naso, la bocca, etc&#8230; Infine, vengono riportate informazioni sul viso rilevato: ha la barba, i baffi o le basette, porta gli occhiali, l&#8217;et , il sesso, se sta sorridendo e l&#8217;eventuale inclinazione del viso.
 
 Il json può essere trasformato in un set di classi C#. Ne riporto una parte per brevit :
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class FaceRectangle
+~~~ csharp
+public class FaceRectangle
 {
 	public int top { get; set; }
 	public int left { get; set; }
@@ -114,11 +117,12 @@ public class Face
 	public string faceId { get; set; }
 	public FaceRectangle faceRectangle { get; set; }
 }
-</pre>
+~~~
 
 Infine, modifichiamo il nostro metodo DetectAsync per recuperare il JSON dalla risposta HTTP e deserializzarlo in un array di oggetti di tipo Face:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public async Task&lt;Face[]&gt; DetectAsync(Stream stream)
+~~~ csharp
+public async Task<Face[]> DetectAsync(Stream stream)
 {
 	...
 	var client = new HttpClient ();
@@ -127,13 +131,14 @@ Infine, modifichiamo il nostro metodo DetectAsync per recuperare il JSON dalla r
 	var responseContent = response.Content as StreamContent;
 	var jsonResponse = await responseContent.ReadAsStringAsync ();
 
-	return JsonConvert.DeserializeObject&lt;Face[]&gt; (jsonResponse);
+	return JsonConvert.DeserializeObject<Face[]> (jsonResponse);
 }
-</pre>
+~~~
 
-E voil . Ora possiamo utilizzare la classe Face per recuperare le informazioni e tracciare un rettangolo intorno al viso.
+E voilà. Ora possiamo utilizzare la classe Face per recuperare le informazioni e tracciare un rettangolo intorno al viso.
 
-<pre class="brush: csharp; title: ; notranslate" title="">var client = new FaceClient ();
+~~~ csharp
+var client = new FaceClient ();
 var faces = await client.DetectAsync (inputImage);
 foreach (var item in faces) {
 
@@ -153,7 +158,7 @@ foreach (var item in faces) {
 
 	bodyLayout.Children.Add (layout, new Point ((item.faceRectangle.left - 10) / 2, ((item.faceRectangle.top - 10) / 2) - 20));
 }
-</pre>
+~~~
 
 Il codice mostra come ciclare nel set di classi Face restituite dal servizio per costruire dei rettangoli intorno ai volti identificati nell&#8217;immagine. Il tutto all&#8217;interno di un&#8217;app sviluppata con Xamarin.Forms.
 
@@ -165,12 +170,13 @@ Alternativamente, e più semplicemente, possiamo utilizzare l&#8217;SDK disponib
 
 Ora possiamo sostituire all&#8217;invocazione via REST API, l&#8217;utilizzo diretto della classe FaceServiceClient.
 
-<pre class="brush: csharp; title: ; notranslate" title="">var client = new Microsoft.ProjectOxford.Face.FaceServiceClient (your-subscription-key);
+~~~ csharp
+var client = new Microsoft.ProjectOxford.Face.FaceServiceClient (your-subscription-key);
 var faces = await client.DetectAsync (inputImage);
 foreach (var item in faces) {
     ...
 }
-</pre>
+~~~
 
 il resto del codice non cambia rispetto a quanto abbiamo fatto con le REST API.
 
@@ -178,27 +184,23 @@ il resto del codice non cambia rispetto a quanto abbiamo fatto con le REST API.
 
 Ma le Face API sono in grado di restituire molte più informazioni rispetto al semplice &#8220;rettangolo&#8221; che racchiude il volto. Per ottenerle è sufficiente specificare nella querystring i parametri:
 
-  * **returnFaceId
-  
-** restituisce l&#8217;identificativo del volto
-  * **returnFaceLandmarks**
-  
-    restituisce informazioni sulle caratteristiche del volto, come la posizione degli occhi, della bocca, del naso, ecc&#8230;
-  * **returnFaceAttributes**
-  
-    restituisce gli attributi del viso, come la barba, i baffi, il sorriso, l&#8217;et , il sesso, etc&#8230;
+* **returnFaceId** restituisce l&#8217;identificativo del volto
+* **returnFaceLandmarks** restituisce informazioni sulle caratteristiche del volto, come la posizione degli occhi, della bocca, del naso, etc...
+* **returnFaceAttributes** restituisce gli attributi del viso, come la barba, i baffi, il sorriso, l&#8217;et , il sesso, etc...
 
 Utilizzando le Face API possiamo modificare l&#8217;URL utilizzato con questo:
 
-<pre class="brush: csharp; title: ; notranslate" title="">var returnFaceId = true;
+~~~ csharp
+var returnFaceId = true;
 var returnFaceLandmarks = true;
 var returnFaceAttributes = "age,gender,smile,facialHair,headPose,glasses";
 var url = $"https://api.projectoxford.ai/face/v1.0/detect?returnFaceId={returnFaceId}&amp;returnFaceLandmarks={returnFaceLandmarks}&amp;returnFaceAttributes={returnFaceAttributes}";
-</pre>
+~~~
 
 Per recuperare le informazioni dal JSON, infine, aggiungiamo le seguenti classi e la propriet faceAttributes a quanto gi scritto:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class HeadPose
+~~~ csharp
+public class HeadPose
 {
 	public double pitch { get; set; }
 	public double roll { get; set; }
@@ -227,18 +229,19 @@ public class Face
 	...
 	public FaceAttributes faceAttributes { get; set; }
 }
-</pre>
+~~~
 
 Ora siamo in grado di ottenere le informazioni aggiuntive sui volti identificati. L&#8217;utilizzo con la Client Library è altrettanto semplice:
 
-<pre class="brush: csharp; title: ; notranslate" title="">var client = new Microsoft.ProjectOxford.Face.FaceServiceClient (SubscriptionKeys.FaceId);
+~~~ csharp
+var client = new Microsoft.ProjectOxford.Face.FaceServiceClient (SubscriptionKeys.FaceId);
 var faces = await client.DetectAsync(imageStream, 
 	returnFaceId:true, 
 	returnFaceLandmarks:true, 
 	returnFaceAttributes: new [] { 
 	Microsoft.ProjectOxford.Face.FaceAttributeType.Age,
 	Microsoft.ProjectOxford.Face.FaceAttributeType.Gender});
-</pre>
+~~~
 
 ## Risultato
 

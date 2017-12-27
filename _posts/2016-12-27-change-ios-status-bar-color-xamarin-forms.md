@@ -20,7 +20,8 @@ Xamarin.Forms is a great way to abstract the local implementation. But, you know
 
 Xamarin.Forms implements, in the NavigationRenderer, a way to automatically set the style (dark/default or light) by checking the Luminosity value of the BarTextColor property. Check the following code:
 
-<pre class="brush: csharp; title: ; notranslate" title="">if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.Luminosity &lt;= 0.5)
+~~~ csharp
+if (statusBarColorMode == StatusBarTextColorMode.DoNotAdjust || barTextColor.Luminosity <= 0.5)
 {
 	// Use dark text color for status bar
 	UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.Default;
@@ -30,7 +31,7 @@ else
 	// Use light text color for status bar
 	UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
 }
-</pre>
+~~~
 
 For full code, check the [NavigationRenderer](https://github.com/xamarin/Xamarin.Forms/blob/master/Xamarin.Forms.Platform.iOS/Renderers/NavigationRenderer.cs) source on [github Xamarin.Forms project](https://github.com/xamarin/Xamarin.Forms).
 
@@ -38,7 +39,8 @@ Now, if in your code you set the BarTextColor to black, then the status bar styl
 
 So, if we want to set the BarTextColor, in a classic Xamarin.Forms App class constructor, we&#8217;ll have something like this:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public App()
+~~~ csharp
+public App()
 {
 	InitializeComponent();
 
@@ -48,7 +50,7 @@ So, if we want to set the BarTextColor, in a classic Xamarin.Forms App class con
 		BarTextColor = Color.White
 	};
 }
-</pre>
+~~~
 
 But, this is not enough.
 

@@ -21,12 +21,13 @@ Some days ago [I have published](http://www.fabiocozzolino.eu/move-focus-next-co
 
 The control is so simple that in just few lines of codes we&#8217;ll be able to realize the Android version. Here the renderer code:
 
-<pre class="brush: csharp; title: ; notranslate" title="">[assembly: ExportRenderer(typeof(TLEntry), typeof(TLEntryRenderer))]
+~~~ csharp
+[assembly: ExportRenderer(typeof(TLEntry), typeof(TLEntryRenderer))]
 namespace TitiusLabs.Forms.Droid.Controls
 {
 	public class TLEntryRenderer : EntryRenderer
 	{
-		protected override void OnElementChanged(ElementChangedEventArgs&lt;Entry&gt; e)
+		protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
 		{
 			base.OnElementChanged(e);
 
@@ -34,7 +35,7 @@ namespace TitiusLabs.Forms.Droid.Controls
 			if (element.ReturnButton == ReturnButtonType.Next)
 			{
 				Control.ImeOptions = Android.Views.InputMethods.ImeAction.Next;
-				Control.EditorAction += (sender, args) =&gt;
+				Control.EditorAction += (sender, args) =>
 				{
 					element.OnNext();
 				};
@@ -42,22 +43,12 @@ namespace TitiusLabs.Forms.Droid.Controls
 		}
 	}
 }
-<<<<<<< HEAD
-</pre>
+~~~
 
 the code is available, as always, on [github](https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms.Droid/Controls/TLEntryRenderer.cs).
 
 This is the final result:
 
 [<img class="alignnone size-full wp-image-3791" src="https://i2.wp.com/www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif?resize=512%2C844" alt="movefocus_xamarinforms_android" data-recalc-dims="1" />](https://i2.wp.com/www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif)
-=======
-[/code]
-
-the code is available, as always, on <a href="https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms.Droid/Controls/TLEntryRenderer.cs">github</a>.
-
-This is the final result:
-
-<a href="http://www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif"><img class="alignnone size-full wp-image-3791" src="http://www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif" alt="movefocus_xamarinforms_android" width="512" height="844" /></a>
->>>>>>> origin/master
 
 Nice and simple!

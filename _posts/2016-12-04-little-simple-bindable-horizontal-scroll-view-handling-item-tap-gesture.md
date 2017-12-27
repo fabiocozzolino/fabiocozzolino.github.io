@@ -31,7 +31,7 @@ Now, in the Render method, we can add the following line in the for..each cycle,
 ~~~ csharp
 viewCell.View.GestureRecognizers.Add(new TapGestureRecognizer
 {
-	Command = new Command((obj) =&gt;
+	Command = new Command((obj) =>
 	{
 		var args = new ItemTappedEventArgs(ItemsSource, item);
 		ItemTapped?.Invoke(this, args);

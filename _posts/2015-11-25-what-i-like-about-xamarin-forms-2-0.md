@@ -16,9 +16,10 @@ This is the first post about the new features included in Xamarin.Forms 2.0, rel
 
 In the previous versions of Xamarin.Forms when you made some mistakes in XAML, like a wrong property or a wrong value, you can&#8217;t catch the error until start a new debug session. Xamarin.Forms 2.0 adds a new attribute that allows checking XAML at compile-time. You have only add that code in the AssemblyInfo.cs file:
 
-<pre class="brush: csharp; title: ; notranslate" title="">using Xamarin.Forms.Xaml;
+~~~ csharp 
+using Xamarin.Forms.Xaml;
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-</pre>
+~~~
 
 Now you got a compile-time error in case of wrong XAML:
 

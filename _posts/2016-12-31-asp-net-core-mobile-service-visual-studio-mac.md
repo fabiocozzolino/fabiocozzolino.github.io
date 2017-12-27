@@ -66,8 +66,8 @@ Yes! You got the following error:
 ~~~~~~~~
 Command: "D:\home\site\deployments\tools\deploy.cmd"
 Handling ASP.NET Core Web Application deployment.
-D:\home\site\repository\XConn\Droid\XConn.Droid.csproj(137,3): error MSB4019: The imported project "D:\Program Files (x86)\dotnet\sdk\1.0.0-preview3-004056\Xamarin\Android\Xamarin.Android.CSharp.targets" was not found. Confirm that the path in the &lt;Import&gt; declaration is correct, and that the file exists on disk.
-D:\home\site\repository\XConn\iOS\XConn.iOS.csproj(163,3): error MSB4019: The imported project "D:\Program Files (x86)\dotnet\sdk\1.0.0-preview3-004056\Xamarin\iOS\Xamarin.iOS.CSharp.targets" was not found. Confirm that the path in the &lt;Import&gt; declaration is correct, and that the file exists on disk.
+D:\home\site\repository\XConn\Droid\XConn.Droid.csproj(137,3): error MSB4019: The imported project "D:\Program Files (x86)\dotnet\sdk\1.0.0-preview3-004056\Xamarin\Android\Xamarin.Android.CSharp.targets" was not found. Confirm that the path in the <Import> declaration is correct, and that the file exists on disk.
+D:\home\site\repository\XConn\iOS\XConn.iOS.csproj(163,3): error MSB4019: The imported project "D:\Program Files (x86)\dotnet\sdk\1.0.0-preview3-004056\Xamarin\iOS\Xamarin.iOS.CSharp.targets" was not found. Confirm that the path in the <Import> declaration is correct, and that the file exists on disk.
 Failed exitCode=1, command=dotnet restore "XConn\XConn.sln"
 An error has occurred during web site deployment.
 \r\nD:\Program Files (x86)\SiteExtensions\Kudu\59.51212.2600\bin\Scripts\starter.cmd "D:\home\site\deployments\tools\deploy.cmd"
@@ -100,7 +100,7 @@ And this is the custom deployment script that you can customize by only replacin
 :: -------------
 
 :: Verify node.js installed
-where node 2&gt;nul &gt;nul
+where node 2>nul >nul
 IF %ERRORLEVEL% NEQ 0 (
   echo Missing node.js executable, please install node.js, if already installed make sure it can be reached from current environment.
   goto error
@@ -184,7 +184,7 @@ exit /b %ERRORLEVEL%
 endlocal
 echo An error has occurred during web site deployment.
 call :exitSetErrorLevel
-call :exitFromFunction 2&gt;nul
+call :exitFromFunction 2>nul
 
 :exitSetErrorLevel
 exit /b 1

@@ -14,11 +14,12 @@ categories:
 ---
 Xamarin.Forms provides the ability to create easy and wonderful views animations with few lines of code. For example, if you need to rotate a View, you can simple set the Rotation property, like this:
 
-<pre class="brush: csharp; title: ; notranslate" title="">Device.StartTimer (TimeSpan.FromMilliseconds (100), () =&gt; {
+~~~ csharp
+Device.StartTimer (TimeSpan.FromMilliseconds (100), () => {
     this.Ball.Rotation+=1;
     return true;
 });
-</pre>
+~~~
 
 So, you can get this effect:
 

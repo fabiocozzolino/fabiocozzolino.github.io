@@ -45,7 +45,7 @@ The first one will be used to reference the Command object instance, the event h
 After that, we need to modify the TLScrollView Render method to use the new SelectedCommand and SelectedCommandParameter properties, if used:
 
 ~~~ csharp
-var command = SelectedCommand ?? new Command((obj) =&gt;
+var command = SelectedCommand ?? new Command((obj) =>
 {
 	var args = new ItemTappedEventArgs(ItemsSource, item);
 	ItemSelected?.Invoke(this, args);

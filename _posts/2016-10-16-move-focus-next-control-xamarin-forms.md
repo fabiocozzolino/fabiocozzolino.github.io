@@ -20,7 +20,8 @@ Spending some time with good friends is always a great way to start ideas. So, w
 
 First of all, we have to create a custom control because the user needs to set the type of return button on the keyboard:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class TLEntry : Xamarin.Forms.Entry
+~~~ csharp
+public class TLEntry : Xamarin.Forms.Entry
 {
 	public static readonly BindableProperty ReturnButtonProperty = 
 		BindableProperty.Create("ReturnButton", typeof(ReturnButtonType), typeof(TLEntry), ReturnButtonType.None);
@@ -31,11 +32,12 @@ First of all, we have to create a custom control because the user needs to set t
 		set { SetValue(ReturnButtonProperty, value); }
 	}
 }
-</pre>
+~~~
 
 After doing that, we need to handle the tap on the button and move the focus on the next control. One way to do that is by knowing the next control and set the focus to it after the next button was pressed. So now we need to know the next control by settings a specific property:
 
-<pre class="brush: csharp; title: ; notranslate" title="">[assembly:ExportRenderer(typeof(TLEntry), typeof(TLEntryRenderer))]
+~~~ csharp
+[assembly:ExportRenderer(typeof(TLEntry), typeof(TLEntryRenderer))]
 ...
 public class TLEntry
 {
@@ -53,7 +55,7 @@ public class TLEntry
 		NextView?.Focus();
 	}
 }
-</pre>
+~~~
 
 Now is the time to create the platform specific renderers.
 
@@ -61,7 +63,8 @@ Now is the time to create the platform specific renderers.
 
 A [renderer](https://developer.xamarin.com/guides/xamarin-forms/custom-renderer/) is a special class with the role of transform a Xamarin Forms control in a native control. So now we needs to transform the TLEntry in a UITextField for the iOS platform. Since we already have renderers for standard control, handle the new ReturnButton and NextView properties simply means to extend the base renderer and create a new one like this:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public class TLEntryRenderer : EntryRenderer
+~~~ csharp
+public class TLEntryRenderer : EntryRenderer
 {
 	protected override void OnElementChanged(ElementChangedEventArgs&amp;amp;amp;amp;amp;amp;amp;amp;lt;Entry&amp;amp;amp;amp;amp;amp;amp;amp;gt; e)
 	{
@@ -79,13 +82,14 @@ A [renderer](https://developer.xamarin.com/guides/xamarin-forms/custom-renderer/
 		}
 	}
 }
-</pre>
+~~~
 
 With this code, we set the ReturnKeyType on UITextView and add an handler that capture the pressure on the return button and go to the next item.
 
 Now, in your Page, you can do something similar:
 
-<pre class="brush: csharp; title: ; notranslate" title="">public partial class FormSamplesPage : ContentPage
+~~~ csharp
+public partial class FormSamplesPage : ContentPage
 {
 	TLEntry Entry1 = new TLEntry();
 	TLEntry Entry2 = new TLEntry();
@@ -109,7 +113,7 @@ Now, in your Page, you can do something similar:
 		this.Body.Children.Add(Entry3);
 	}
 }
-</pre>
+~~~
 
 this is the final result:
 
