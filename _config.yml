@@ -1,42 +1,91 @@
-url: http://fabiocozzolino.azurewebsites.net
-title: Fabio Cozzolino's blog
-name: 'Fabio Cozzolino&#039;s blog'
-description: >
-  A lap around Microsoft .NET, Xamarin,
-  Integration, WCF, Azure...
-highlighter: rouge
+# SITE CONFIGURATION
+baseurl: ""
+url: "http://fabiocozzolino.github.io"
 
-permalink: ':title/'
-site-twitter: fabiocozzolino
+# THEME-SPECIFIC CONFIGURATION
+theme_settings:
+  # Meta
+  title: Fabio Cozzolino's blog
+  avatar: assets/img/fabio.jpeg
+  favicon: assets/favicon.ico
+  gravatar: # Email MD5 hash
+  description: "A LAP AROUND MICROSOFT .NET, XAMARIN, INTEGRATION, WCF, AZURE…" # used by search engines
 
-# Author Settings
-author: Fabio Cozzolino # add your name
-author-img: fabio.jpeg # add your photo
-about-author: Hi, welcome to my blog! Here you'll find post about my passions, ideas, code and all the things that I like to share. Enjoy all the content and feel free to tell me what you think! # add description
-twitter: fabiocozzolino # add your Twitter handle
-facebook: fabio.cozzolino.10 # add your Facebook handle
-github: fabiocozzolino # add your Github handle
-linkedin: cozzolinofabio # add your Linkedin handle
-email: me@fabiocozzolino.eu # add your Email address
+  # Header and footer text
+  header_text: > #two or three lines to describe your site
+     <p>A LAP AROUND MICROSOFT .NET, XAMARIN, INTEGRATION, WCF, AZURE…</p>
+  header_text_feature_image: assets/img/pexels/trani.jpg
+  footer_text: >
+   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
-# Disqus
-discus-identifier: fabiocozzolino # add your discus identifier
+  # Icons
+  rss: true
+  email_address: # Full email address, e.g. "sam@example.com"
+  behance:
+  bitbucket:
+  dribbble:
+  facebook:
+  flickr:
+  gitlab:
+  github: "fabiocozzolino"
+  google_plus:
+  instagram:
+  keybase:
+  linkedin:  # Full URL
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter: fabiocozzolino # "twitter username"
+  vimeo:
+  wordpress:
+  youtube:
 
-# Tracker
-analytics: # Google Analytics
+  # Scripts / Features 
+  google_analytics: # Tracking ID, e.g. "UA-000000-01"
+  disqus_shortname: fabiocozzolino
+  katex: true # Enable if using math markup
+  portfolio: false
+  search: true
+  tags: true
+  
+  
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next_post: "Next post"
+  str_previous_post: "Previous post"
+  str_next_page: "Next"
+  str_previous_page: "Prev"
+  str_continue_reading: "Continue reading"
+  str_javascript_required_disqus: "Please enable JavaScript to view comments."
 
-# Build Settings
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
 
-plugins_dir:
-  - jekyll-sitemap
-  - jekyll-paginate
-  - jemoji
+  # Post navigation
+  post_navigation: true
 
+# PAGINATION
 paginate: 10
-paginate_path: "/page/:num"
+paginate_path: "blog/page:num"
 
-exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
+# PORTFOLIO
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:name
+
+# BUILD SETTINGS
+markdown: kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: :compressed
+plugins: [jekyll-paginate, jekyll-seo-tag]
+theme: type-on-strap # If using the theme as a jekyll theme gem
+exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]
