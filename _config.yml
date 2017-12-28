@@ -19,7 +19,7 @@ theme_settings:
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Icons
-  rss: true
+  rss: false
   email_address: # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
@@ -31,7 +31,7 @@ theme_settings:
   google_plus:
   instagram:
   keybase:
-  linkedin:  # Full URL
+  linkedin: https://www.linkedin.com/in/cozzolinofabio/ # Full URL
   pinterest:
   reddit:
   soundcloud:
@@ -48,8 +48,8 @@ theme_settings:
   disqus_shortname: fabiocozzolino
   katex: true # Enable if using math markup
   portfolio: false
-  search: true
-  tags: true
+  search: false
+  tags: false
   
   
   # Localization strings
