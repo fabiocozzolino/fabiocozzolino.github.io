@@ -17,6 +17,7 @@ Since in MVVM the ViewModel doesn't know anything about the View, we need to not
 ~~~ csharp
 public class ViewModelBase
 {
+    ...
     public Func<ViewModelBase, Task> OnNavigationRequest { get; set; }
   
     public Task NavigateTo<TViewModel>(TViewModel targetViewModel) where TViewModel : ViewModelBase
@@ -29,6 +30,7 @@ On the other side, the Page will register the delegate when appearing and will c
 ~~~ csharp
 public class PageBase<TViewModel> : ContentPage, IView<TViewModel> where TViewModel:ViewModelBase,new()
 {
+    ...
     public TViewModel ViewModel
     {
         get { return GetValue(BindingContextProperty) as TViewModel; }
