@@ -19,7 +19,7 @@ public Func<ViewModelBase, Task> OnNavigationRequest;
 
 public Task NavigateTo<TViewModel>(TViewModel targetViewModel) where TViewModel : ViewModelBase
 {
-  await OnNavigationRequest?.Invoke(targetViewModel);
+    await OnNavigationRequest?.Invoke(targetViewModel);
 }
 ~~~ 
 On the other side, the Page will register the delegate when appearing and will cancel when disappearing:
