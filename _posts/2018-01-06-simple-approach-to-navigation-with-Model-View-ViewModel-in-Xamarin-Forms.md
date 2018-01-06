@@ -15,11 +15,20 @@ Let me show you the code.
 ## The Code
 Since in MVVM the ViewModel doesn't know anything about the View, we need to notify the View when a request for navigation is in place. So, to do this, our implementation provides a ViewModelBase class that, by using a delegate, inform a subscriber (the View) that navigation has been requested. 
 ~~~ csharp
-public Func<ViewModelBase, Task> OnNavigationRequest;
-
-public Task NavigateTo<TViewModel>(TViewModel targetViewModel) where TViewModel : ViewModelBase
+public class PageBase<TViewModel> : ContentPage, IView<TViewModel> where TViewModel:ViewModelBase,new()
 {
-    await OnNavigationRequest?.Invoke(targetViewModel);
+    public TViewModel ViewModel
+    {
+        get { return GetValue(BindingContextProperty) as TViewModel; }
+        set { SetValue(BindingContextProperty, value); }
+    }
+  
+    public Func<ViewModelBase, Task> OnNavigationRequest;
+  
+    public Task NavigateTo<TViewModel>(TViewModel targetViewModel) where TViewModel : ViewModelBase
+    {
+        await OnNavigationRequest?.Invoke(targetViewModel);
+    }
 }
 ~~~ 
 On the other side, the Page will register the delegate when appearing and will cancel when disappearing:
