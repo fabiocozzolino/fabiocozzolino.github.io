@@ -60,9 +60,9 @@ Obviously, feel free to write it as you prefer.
 
 ## Ok, let's use it!
 Now, you will be able to start navigation in ViewModel by using the following code:
-
+~~~ csharp
 await NavigateTo(new OtherPageViewModel());
-
+~~~ 
 Cool!
 
 ## Conclusion
