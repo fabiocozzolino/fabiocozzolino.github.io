@@ -4,6 +4,7 @@ title: A simple approach to navigation with Model-View-ViewModel in Xamarin.Form
 date: 2018-01-06T16:58:11.000Z
 author: fabiocozzolino
 layout: post
+permalink: /simple-approach-to-navigation-with-Model-View-ViewModel-in-Xamarin-Forms/
 tags:
   - Xamarin
   - Xamarin.Forms
