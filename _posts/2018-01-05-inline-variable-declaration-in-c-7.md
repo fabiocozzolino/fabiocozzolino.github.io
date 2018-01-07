@@ -3,7 +3,7 @@ title: Inline variable declaration in C# 7
 date: 2018-01-04T10:58:11+00:00
 author: fabiocozzolino
 layout: post
-categories:
+tags:
   - C#
 published: true
 ---
