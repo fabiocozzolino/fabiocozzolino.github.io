@@ -9,7 +9,7 @@ tags:
   - Xamarin
   - Xamarin.Forms
 ---
-Model-View-ViewModel its a widely used architectural pattern that helps you to separate the UI from the presentation logic responsibility. In your ViewModel you can provide data to the View through binding and handle the action by using commands, but what about the navigation? Who is responsible for showing another view?
+Model-View-ViewModel is a widely used architectural pattern that helps you to separate UI from presentation logic responsibility. In your ViewModel you can provide data to the View through binding and handle the action by using commands, but what about the navigation? Who is responsible for showing another view?
 In this post, we'll see how the MVVM start the navigation in a straightforward approach, based on the assumption that navigation from ViewModel is a "request of navigation". The "request of navigation" is sent to the View, the real executor, by using a set of specific delegates.
 
 ## Show Me The Code
