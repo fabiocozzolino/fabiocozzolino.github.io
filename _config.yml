@@ -1,6 +1,7 @@
 # SITE CONFIGURATION
 baseurl: ""
 url: "http://fabiocozzolino.eu"
+title: "Fabio Cozzolino's blog | A lap around .NET, Xamarin, Integration, WCF, Azure..."
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -15,8 +16,7 @@ theme_settings:
   header_text: > #two or three lines to describe your site
      <p>A LAP AROUND MICROSOFT .NET, XAMARIN, INTEGRATION, WCF, AZURE…</p>
   header_text_feature_image: assets/img/pexels/trani.jpg
-  footer_text: >
-   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+
 
   # Icons
   rss: false
