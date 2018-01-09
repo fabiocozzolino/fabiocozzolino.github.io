@@ -24,4 +24,4 @@ the new feature will enable you to write something like this:
     else
         Console.WriteLine("Can't parse DateTime");
 
-Cool!
+Really cool!
