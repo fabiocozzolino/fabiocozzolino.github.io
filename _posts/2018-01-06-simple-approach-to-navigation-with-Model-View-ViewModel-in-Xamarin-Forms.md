@@ -10,13 +10,13 @@ tags:
   - Xamarin.Forms
 ---
 Model-View-ViewModel is a widely used architectural pattern that helps you to separate UI from presentation logic responsibility. In your ViewModel you can provide data to the View through binding and handle the action by using commands, but what about the navigation? Who is responsible for showing another view?<br/><br/>
-In this post, we'll see how the MVVM starts the navigation in a straightforward approach, based on the assumption that navigation from ViewModel is a "request of navigation". The "request of navigation" is sent to the View, the real executor, by using a set of specific delegates.<br/><br/>
 The following schema show how the View, the ViewModel and the Model interact in the MVVM architecture:
 
 <p align="center">
   <img src="https://i-msdn.sec.s-msft.com/dynimg/IC564167.png"><br/>
   <b>source: </b>https://msdn.microsoft.com/en-us/library/hh848246.aspx<br>
 </p>
+In this post, we'll see how the MVVM starts the navigation in a straightforward approach, based on the assumption that navigation from ViewModel is a "request of navigation". The "request of navigation" is sent to the View, the real executor, by using a set of specific delegates.
 
 ## Show Me The Code
 Since in MVVM the ViewModel doesn't know anything about the View, we need to notify the View when a request for navigation is in place. So, to do this, our implementation provides a ViewModelBase class that, by using a delegate, inform a subscriber (the View) that navigation has been requested. 
