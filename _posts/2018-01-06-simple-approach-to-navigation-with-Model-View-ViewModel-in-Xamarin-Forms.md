@@ -64,6 +64,7 @@ public class PageBase<TViewModel> : ContentPage, IView<TViewModel> where TViewMo
     async Task HandleNavigationRequest(ViewModelBase targetViewModel)
     {
         var targetView = ViewResolver.GetViewFor(targetViewModel);
+        targetView.BindingContext = targetViewModel;
         await Navigation.PushAsync(targetView);
     }
 }
@@ -77,9 +78,7 @@ internal static class ViewResolver
         var targetViewName = targetViewModel.GetType().Name.Replace("ViewModel", "Page");
         var definedTypes = targetViewModel.GetType().GetTypeInfo().Assembly.DefinedTypes;
         var targetType = definedTypes.FirstOrDefault(t => t.Name == targetViewName);
-        var page = Activator.CreateInstance(targetType.AsType()) as Page;
-        page.BindingContext = targetViewModel;
-        return page;
+        return Activator.CreateInstance(targetType.AsType()) as Page;
     }
 }
 ~~~ 
