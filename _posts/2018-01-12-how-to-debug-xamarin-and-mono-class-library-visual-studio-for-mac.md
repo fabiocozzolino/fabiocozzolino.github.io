@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: How to debug Xamarin and Mono class library with Visual Studio for Mac
 date: 2018-01-12T08:58:11.000Z
 author: fabiocozzolino
