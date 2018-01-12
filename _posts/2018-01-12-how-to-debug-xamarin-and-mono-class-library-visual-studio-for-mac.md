@@ -11,7 +11,7 @@ tags:
   - Visual Studio for Mac
 ---
 Enabling the debugging of Xamarin or Mono class library in Visual Studio for Mac is really very simple and is well described in [this page](https://docs.microsoft.com/it-it/visualstudio/mac/debugging#debugging-monos-class-libraries).
-You can uncheck the *Debug project code only; do not step into framework code.* in *Visual Studio for Mac* > *Preferences* > *Debugger* and the game is done:
+The only step you need to do is uncheck the *Debug project code only; do not step into framework code.* in *Visual Studio for Mac* > *Preferences* > *Debugger*:
 
 ![Visual Studio for Mac Enable Debug](http://www.fabiocozzolino.eu/assets/img/vs-enable-debug.png)
 
