@@ -16,6 +16,8 @@ theme_settings:
   header_text: > #two or three lines to describe your site
      <p>A LAP AROUND MICROSOFT .NET, XAMARIN, INTEGRATION, WCF, AZURE…</p>
   header_text_feature_image: assets/img/pexels/trani.jpg
+  footer_text: > 
+     <p>A Jekyll theme</p>
 
 
   # Icons
