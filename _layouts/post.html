@@ -15,7 +15,9 @@ layout: default
    <!-- Tag list -->
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
   {% include tags_list.html tags=tag_list %}
-    
+  
+</article>
+
 <br/>
 <br/>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -29,10 +31,6 @@ layout: default
 (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 <br/>
-<br/>
-  
-</article>
-
 
 <!-- Disqus -->
 {% if site.theme_settings.disqus_shortname %}
