@@ -1,7 +1,7 @@
 ---
 published: true
 title: Develop a Blazor project with Visual Studio Code on Mac
-date: 2018-12-03T08:58:11.000Z
+date: 2018-12-02T08:58:11.000Z
 author: fabiocozzolino
 layout: post
 permalink: /develop-blazor-project-visual-studio-code-mac/
