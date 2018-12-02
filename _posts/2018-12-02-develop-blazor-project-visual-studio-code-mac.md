@@ -34,5 +34,5 @@ Now, you will be able to run the project by simply execute the following command
 ![Run a Blazor app on mac](/assets/img/dotnet-run.png)
 
 # And if something goes wrong...
-Be sure to have the latest .NET Core version installed on your development machine. Go to https://dotnet.microsoft.com/download [Micosoft Download](https://dotnet.microsoft.com/download)
+Be sure to have the latest .NET Core version installed on your development machine. Go to https://dotnet.microsoft.com/download 
 
