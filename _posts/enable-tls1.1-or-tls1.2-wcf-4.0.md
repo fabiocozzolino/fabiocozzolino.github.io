@@ -1,0 +1,26 @@
+---
+published: true
+title: Enable Tls 1.1 or Tls 1.2 on WCF 4.0
+date: 2018-12-04T10:58:11.000Z
+author: fabiocozzolino
+layout: post
+permalink: /enable-tls1.1-or-tls1.2-wcf-4.0/
+tags:
+  - WCF
+  - Tls
+  - Security
+---
+Windows Communication Foundation 4.0 support Ssl3/Tls1.0 out-of-the-box. If you need to support Tls1.1 or Tls1.2, you must update to .NET Framework 4.6.
+If you can't do that, try the following workaround:
+
+Set the SecurityProtocol to 768 if you want to use Tls1.1
+~~~ C#
+System.Net.ServicePointManager.SecurityProtocol = (System.Net.SecurityProtocolType)768;
+~~~
+
+or set to 3072 if you want to use Tls1.2
+~~~ C#
+System.Net.ServicePointManager.SecurityProtocol = (System.Net.SecurityProtocolType)3072;
+~~~
+
+Enjoy!
