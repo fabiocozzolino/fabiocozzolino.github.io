@@ -8,7 +8,7 @@ permalink: /develop-blazor-project-visual-studio-code-mac/
 tags:
   - ASP.NET
   - Blazor
-  - Visual Studio Core for Mac
+  - Visual Studio Code for Mac
 ---
 Blazor is a new, experimental, framework for develop Single Page Application by using the same framework, library and language: C#. It is really powerful and you can use it on every OS and on every browser that supports WebAssembly.
 In this post we will see how you can create a project by using MacOS and Visual Studio Code
