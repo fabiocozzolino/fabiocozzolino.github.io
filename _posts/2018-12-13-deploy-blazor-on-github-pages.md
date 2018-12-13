@@ -22,6 +22,10 @@ now, as you can see in the last row, you'll find the output in the `publish` fol
 ![Deployment files](/assets/img/blazor-deployment-files.png)
 
 # Deploy on GitHub Pages
-First of all, you need to create your GitHub Pages site by following the instruction on [this page](https://guides.github.com/features/pages/). Copy the deployment files to your GitHub Page repository. Finally, add an empty `.nojekyll` file to disable the default [Jekyll](https://github.com/jekyll/jekyll) interpreter for GitHub Pages.
+First of all, you need to create your GitHub Pages site by following the instruction on [this page](https://guides.github.com/features/pages/). Now, the final steps:
 
-Now, you are ready to run your GitHub Pages build with Blazor.
+1. Clone your repository https://github.com/*yourusername*/*yourusername.github.io*
+2. Copy the deployment files from the `dist` folder to your GitHub local repository
+3. Add an empty `.nojekyll` file to disable the default [Jekyll](https://github.com/jekyll/jekyll) interpreter for GitHub Pages
+
+That's all, you are ready to run your GitHub Pages build with Blazor.
