@@ -12,8 +12,8 @@ tags:
 ---
 In my [previous post](http://www.fabiocozzolino.eu/develop-blazor-project-visual-studio-code-mac/), I've introduced Blazor and how you can create a new project by using Visual Studio Code on MacOS. Now we'll se how to publish our Blazor app to GitHub Pages.
 
-# Create deployment
-As we already known, with .NET you can use the CLI (Command Line Interface) to do a lot of things, like create or build a project from Terminal. By using the same approach, we can create the deployment files with the `dotnet publish` command:
+# Create deployment files
+As we already known, with .NET you can use the CLI (Command Line Interface) to do a lot of things, like create or build a project from Terminal. By using the same approach, we can create the deployment files with the `dotnet publish -c Release` command:
 
 ![Publish Blazor app](/assets/img/dotnet-publish.png)
 
