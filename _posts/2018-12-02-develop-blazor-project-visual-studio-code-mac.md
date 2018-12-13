@@ -14,7 +14,11 @@ Blazor is a new, experimental, framework for develop Single Page Application by 
 In this post we will see how you can create a project by using MacOS and Visual Studio Code
 
 # Create a new project with CLI
-The Command Line Interface is the most simple way to create a new project. To create a Blazor project you can simply write the following command on MacOS terminal:
+The Command Line Interface is the most simple way to create a new project. To create a Blazor project, first of all you need to install the Blazor templates. On Visual Studio Code, open the terminal window by going to View -> Terminal, then write the following command:
+
+![Install Blazor templates](/assets/img/dotnet-install-blazor-templates.png)
+
+then, you can simply write the following command:
 
 ![Create new Blazor project](/assets/img/dotnet-new-blazor.png)
 
