@@ -1,0 +1,26 @@
+---
+published: false
+title: The True story about Strings
+date: 2018-12-18T08:58:11.000Z
+author: fabiocozzolino
+layout: post
+permalink: /the-true-story-about-strings/
+tags:
+  - .NET
+  - Strings
+  - Memory
+---
+Strings is one of the most popular reference type in .NET. They are largely used in .NET framework: if you try to check memory with a profiler, you'll see a lot of strings allocated. This is not a problem per se, but probably it deserve our attention.
+In .NET, strings have special threatment: they are immutable. In other words, you can't change their value without create a new string and destroy the old one. Check the following code:
+
+```csharp
+string t1 = "Fabio";
+t1 += " is the";
+t1 += " owner";
+t1 += " of this blog";
+```
+
+this will cause temporary three strings allocation.
+
+
+
