@@ -4,7 +4,7 @@ title: How to enable Face ID on Xamarin.iOS
 date: 2019-01-15T21:58:11.000Z
 author: fabiocozzolino
 layout: post
-permalink: /enable-faceid-on-xamarin-ios/
+permalink: /enable-face-id-on-xamarin-ios/
 tags:
   - Xamarin
   - iOS
