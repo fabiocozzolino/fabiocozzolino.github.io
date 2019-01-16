@@ -11,7 +11,9 @@ tags:
 ---
 With iPhone X, Apple release a new biometric authentication way: Face ID. Like others things, you need to obtain access to that feature. To achieve this, you must add the `NSFaceIDUsageDescription` key to the info.plist file:
 
-![Enable FaceId](/assets/img/faceid-enabled.png)
+<p align="center">
+  <img src="/assets/img/faceid-enabled.png" alt="Enable Face ID">
+</p>
 
 The, optional, description will be good if you want to explain why your app request the ability to authenticate with Face ID.
 
