@@ -23,12 +23,12 @@ if (context.CanEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, 
 {
     var replyHandler = new LAContextReplyHandler((success, error) => 
     {
-				InvokeOnMainThread (() => {
-						if (success) {
-			  				// user authenticated
-						} else {
-        				// user not authenticated
-    				}
+		InvokeOnMainThread (() => {
+			if (success) {
+			  	// user authenticated
+			} else {
+        		// user not authenticated
+    		}
         });
     });
     context.EvaluatePolicy (LAPolicy.DeviceOwnerAuthenticationWithBiometrics, "Authenticate", replyHandler);
