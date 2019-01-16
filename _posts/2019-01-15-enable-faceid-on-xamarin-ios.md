@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: How to enable Face ID on Xamarin.iOS
 date: 2019-01-15T21:58:11.000Z
 author: fabiocozzolino
@@ -18,13 +18,25 @@ The, optional, description will be good if you want to explain why your app requ
 After that, you will be able to use Face ID authentication:
 
 ```csharp
-string t1 = "Fabio";
-t1 += " is the";
-t1 += " owner";
-t1 += " of this blog";
+var context = new LAContext ();
+if (context.CanEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, out AuthError))
+{
+    var replyHandler = new LAContextReplyHandler((success, error) => 
+    {
+				InvokeOnMainThread (() => {
+						if (success) {
+			  				// user authenticated
+						} else {
+        				// user not authenticated
+    				}
+        });
+    });
+    context.EvaluatePolicy (LAPolicy.DeviceOwnerAuthenticationWithBiometrics, "Authenticate", replyHandler);
+}
 ```
 
-this will cause temporary three strings allocation.
+the above code will works for both Touch ID and Face ID.
 
+Enjoy!
 
 
