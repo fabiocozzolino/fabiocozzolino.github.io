@@ -18,20 +18,24 @@ The, optional, description will be good if you want to explain why your app requ
 After that, you will be able to use Face ID authentication:
 
 ```csharp
-var context = new LAContext ();
-if (context.CanEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, out AuthError))
+var context = new LAContext();
+if (context.CanEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, out NSError authError))
 {
-    var replyHandler = new LAContextReplyHandler((success, error) => 
+    var replyHandler = new LAContextReplyHandler((success, error) =>
     {
-		InvokeOnMainThread (() => {
-			if (success) {
-			  	// user authenticated
-			} else {
-        		// user not authenticated
-    		}
+        InvokeOnMainThread(() =>
+        {
+            if (success)
+            {
+                // user authenticated
+            }
+            else
+            {
+                // user not authenticated
+            }
         });
     });
-    context.EvaluatePolicy (LAPolicy.DeviceOwnerAuthenticationWithBiometrics, "Authenticate", replyHandler);
+    context.EvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, "Authenticate", replyHandler);
 }
 ```
 
