@@ -40,9 +40,12 @@ In Azure Function App, you can add to plus button to create a new HTTP function:
 <p align="center">
   <img src="/assets/img/add-function.png" alt="Add Function">
 </p>
-then, select the in-portal mode to quickly create a function online:
+then, select the `in-portal` mode and `WebHook + API` to quickly create a function online:
 <p align="center">
   <img src="/assets/img/in-portal-function.png" alt="Function App">
+</p>
+<p align="center">
+  <img src="/assets/img/in-portal-function-webhook.png" alt="Function App">
 </p>
 
 
