@@ -36,6 +36,14 @@ To build your own Azure Functions, you can follow just few simple steps:
 </p>
 
 # Now it's time to write code
+In Azure Function App, you can add to plus button to create a new HTTP function:
+<p align="center">
+  <img src="/assets/img/add-function.png" alt="Add Function">
+</p>
+then, select the in-portal mode to quickly create a function online:
+<p align="center">
+  <img src="/assets/img/in-portal-function.png" alt="Function App">
+</p>
 
 
 This is the first post of a series dedicated to strings usage in .NET. Strings is one of the most popular reference type in .NET. They are largely used in .NET framework: if you try to check memory with a profiler, you'll see a lot of strings allocated. This is not a problem per se, but probably it deserve our attention.
