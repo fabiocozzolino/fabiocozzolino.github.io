@@ -1,7 +1,7 @@
 ---
-published: false
+published: true
 title: Use Azure Functions from Microsoft Blazor app
-date: 2019-01-18T08:58:11.000Z
+date: 2019-02-07T09:45:11.000Z
 author: fabiocozzolino
 layout: post
 permalink: /use-azure-functions-from-microsoft-blazor-app/
@@ -48,24 +48,51 @@ then, select the `in-portal` mode and `WebHook + API` to quickly create a functi
   <img src="/assets/img/in-portal-function-webhook.png" alt="Function App">
 </p>
 
+Now click on `HttpTrigger1` on left panel:
 
-This is the first post of a series dedicated to strings usage in .NET. Strings is one of the most popular reference type in .NET. They are largely used in .NET framework: if you try to check memory with a profiler, you'll see a lot of strings allocated. This is not a problem per se, but probably it deserve our attention.
-In .NET, strings have special threatment: they are immutable. In other words, you can't change their value without create a new string and destroy the old one. From [MSDN](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/strings/index)
+<p align="center">
+  <img src="/assets/img/in-portal-function-httptrigger.png" alt="HttpTrigger1">
+</p>
 
-> A string is an object of type String whose value is text. Internally, the text is stored as a sequential read-only collection of Char objects.
-
-
-
-Check the following code:
+On right panel you'll see the startup code on file run.csx
 
 ```csharp
-string t1 = "Fabio";
-t1 += " is the";
-t1 += " owner";
-t1 += " of this blog";
+#r "Newtonsoft.Json"
+
+using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    string name = req.Query["name"];
+
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
+    name = name ?? data?.name;
+
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+}
 ```
 
-this will cause temporary three strings allocation.
+You can adapt and change the above code as you like to meet your needs.
+
+# Run, run your code
+Finally, it's time to press on `RUN` button and see the result in the right panel:
+
+<p align="center">
+  <img src="/assets/img/in-portal-function-result.png" alt="Function Result">
+</p>
+
+And that's all! You can write Azure Function triggered by HTTP requests by using the online portal editor.
+
+Enjoy!
+
 
 
 
