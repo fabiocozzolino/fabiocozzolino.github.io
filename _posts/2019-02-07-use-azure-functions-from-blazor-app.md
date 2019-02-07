@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 title: Use Azure Functions from Microsoft Blazor app
 date: 2019-02-07T09:45:11.000Z
 author: fabiocozzolino
