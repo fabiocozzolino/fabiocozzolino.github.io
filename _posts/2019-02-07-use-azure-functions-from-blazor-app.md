@@ -91,6 +91,13 @@ Finally, it's time to press on `RUN` button and see the result in the right pane
 
 And that's all! You can write Azure Function triggered by HTTP requests by using the online portal editor.
 
+# Wait ... and Blazor?
+Azure Functions give you the ability to create a serverless architecture. This means that you can call your function from anywhere.
+
+```csharp
+var eventResponse = await http.GetJsonAsync<EventResponse>(url);
+```
+
 Enjoy!
 
 
