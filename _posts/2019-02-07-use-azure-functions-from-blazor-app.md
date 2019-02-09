@@ -44,8 +44,6 @@ In Azure Function App, you can click in `+` button to create a new HTTP function
 select the `in-portal` mode and then `WebHook + API` to quickly create a function online:
 <p align="center">
   <img src="/assets/img/in-portal-function.png" alt="Function App">
-</p>
-<p align="center">
   <img src="/assets/img/in-portal-function-webhook.png" alt="Function App">
 </p>
 
