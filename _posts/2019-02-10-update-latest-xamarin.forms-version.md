@@ -10,8 +10,11 @@ tags:
   - .NET
   - Xamarin
 ---
-Recently, I decided to upgrade my TitiusLabs.Xamarin library to the latest version of Xamarin.Forms and to .NET Standard 2.0. Here a small guide you need to complete to same path
-First of all, you need to be sure to have the right .NET Core version installed so, go to the [download page](https://dotnet.microsoft.com/download) and install it!
+Recently, I decided to upgrade my TitiusLabs.Xamarin library to the latest version of Xamarin.Forms and to .NET Standard 2.0. Here a small guide you need to follow if you want to upgrade your project from a very old version.
+
+First of all, you need to be sure to have the right .NET Core version installed so, if not, go to the [download page](https://dotnet.microsoft.com/download) and install it!
+
+
 
 
 # Just few steps
