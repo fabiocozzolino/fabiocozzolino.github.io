@@ -28,7 +28,7 @@ Now, simply open the ```.csproj``` file and full replace it with the following x
 </Project>
 ```
 
-# Check your job
+# Check your solution
 Reopen your solution, or refresh it, and check if all projects correcly loads and reference your .NET Standard project. Most probably, you'll get the following errors:
 
 <p align="center">
