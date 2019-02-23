@@ -1,14 +1,14 @@
 ---
-published: false
+published: true
 title: Update Portable Class Library project to .NET Standard
-date: 2019-02-10T09:45:11.000Z
+date: 2019-02-23T09:45:11.000Z
 author: fabiocozzolino
 layout: post
-permalink: /update-latest-xamarin.forms-version/
+permalink: /update-portable-class-library-project-to-.net-standard/
 tags:
-  - Xamarin.Forms
   - .NET
-  - Xamarin
+  - .NET Standard
+  - .NET Core
 ---
 Recently, I decided to upgrade my TitiusLabs.Xamarin library to the latest version of Xamarin.Forms and to .NET Standard 2.0. Here a small guide you need to follow if you want to upgrade your project from a very old version. 
 
