@@ -15,7 +15,7 @@ Recently, I decided to upgrade my TitiusLabs.Xamarin library to the latest versi
 # Update your project to .NET Standard 2.0
 The first step in my path is the update of the TitiusLabs.Core project, a Portable Class Library (PCL) project, to a .NET Standard Library. To proceed, you need to be sure to have the right .NET Core version installed so, if not, go to the [download page](https://dotnet.microsoft.com/download) and install it!
 
-Now, simply open the .csproj file and full replace it with the following xml:
+Now, simply open the ```.csproj``` file and full replace it with the following xml:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -29,6 +29,20 @@ Now, simply open the .csproj file and full replace it with the following xml:
 ```
 
 # Check your job
-Reopen your solution, or refresh it, and check if all projects correcly loads and reference your .NET Standard project.
+Reopen your solution, or refresh it, and check if all projects correcly loads and reference your .NET Standard project. Most probably, you'll get the following errors:
+
+<p align="center">
+  <img src="/assets/img/net-standard-errors.png" alt=".NET Standard errors">
+</p>
+
+If you want to still use ```AssemblyInfo.cs```, then add the following xml element into the ```.csproj```:
+
+```xml
+<PropertyGroup>
+   <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+</PropertyGroup> 
+```
+
+Now your code will work fine. To choose the correct version, be sure to check .NET Standard compatibility [on this page](https://github.com/dotnet/standard/blob/master/docs/versions.md).
 
 That's all!
