@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Auto generate AssemblyInfo.cs in .NET Core
 date: 2019-02-24T10:05:00.000Z
 author: fabiocozzolino
