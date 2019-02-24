@@ -12,7 +12,7 @@ tags:
 ---
 As you can see in [my last post](/update-portable-class-library-project-to-.net-standard/), I'm moving my [TitiusLabs.Core](https://github.com/fabiocozzolino/TitiusLabs.Xamarin) PCL to .NET Standard. After project migration, you can choose to maintain AssemblyInfo - and in [my previous post](/update-portable-class-library-project-to-.net-standard/) you can see how to do it - or move to an auto generation model, as we'll see in this post.
 
-To auto generate the AssemblyInfo, simply put the following ```PropertyGroup``` element in your ```.csproj```:
+To auto generate the ```AssemblyInfo.cs```, simply put the following ```PropertyGroup``` element in your ```.csproj```:
 
 ```xml
 <PropertyGroup>
@@ -25,7 +25,7 @@ To auto generate the AssemblyInfo, simply put the following ```PropertyGroup``` 
 </PropertyGroup>
 ```
 
-be sure the remove the ```AssemblyInfo.cs``` and set to ```true``` the ```GenerateAssemblyInfo``` in ```.csproj```:
+To avoid the ```Duplicate 'System.Reflection.AssemblyCompanyAttribute' attribute (CS0579)```, be sure the remove the ```AssemblyInfo.cs``` and set to ```true``` the ```GenerateAssemblyInfo``` in ```.csproj```:
 
 ```xml
 <PropertyGroup>
