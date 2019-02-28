@@ -1,53 +1,57 @@
 ---
-published: false
+published: true
 title: Using C# 8 on Visual Studio 2019 for Mac Preview 2
-date: 2019-02-28T10:05:00.000Z
+date: 2019-02-21:05:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /-using-C#-8-on-Visual-Studio-2019-for-Mac-Preview/
+permalink: /using-C#-8-on-Visual-Studio-2019-for-Mac-Preview/
 tags:
   - .NET
   - .NET Standard
   - .NET Core
   - C#
 ---
+With Visual Studio 2019 Preview you can start to play with C# 8 and their great new features. In this post we'll see how you can use C# 8 Preview with Visual Studio for Mac 2019 Preview.
 
-download Visual Studio 2019 for Mac
-https://visualstudio.microsoft.com/vs/preview/?os=mac
+# Prepare your Mac
+First of all, you need to download the following packages:
+- [Visual Studio 2019 for Mac](https://visualstudio.microsoft.com/vs/preview/?os=mac)
+- [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
-download .NET Core 3.0
-https://dotnet.microsoft.com/download/dotnet-core/3.0
+After installation is complete, create a .NET Console Application:
+<p align="center">
+  <img src="/assets/img/create-consolle-app.png" alt="Create Console Application">
+</p>
 
-https://docs.microsoft.com/en-us/dotnet/csharp/nullable-references
+# Setting up your project
+Now, click on projects `Options > General` and then set `Target Framework` to `.NET Core 3.0`:
+<p align="center">
+  <img src="/assets/img/set-target-framework.png" alt="Set Target Framework">
+</p>
 
-create project console
+To successfully build the project, you need to add the `Microsoft.Net.Compilers` package, preview version, from `NuGet`: 
+<p align="center">
+  <img src="/assets/img/add-nuget-compilers.png" alt="Add Microsoft.Net.Compilers package">
+</p>
 
-change .net standard to 3.0
-change language to preview on csproj
-
-add nuget Microsoft.Compiler
-
-As you can see in [my last post](/update-portable-class-library-project-to-.net-standard/), I'm moving my [TitiusLabs.Core](https://github.com/fabiocozzolino/TitiusLabs.Xamarin) PCL to .NET Standard. After project migration, you can choose to maintain AssemblyInfo - and in [my previous post](/update-portable-class-library-project-to-.net-standard/) you can see how to do it - or move to an auto generation model, as we'll see in this post.
-
-To auto generate the ```AssemblyInfo.cs```, simply put the following ```PropertyGroup``` element in your ```.csproj```:
-
+Finally, edit the `.csproj` and add the following xml elements:
 ```xml
-<PropertyGroup>
-  <Company>TitiusLabs</Company>
-  <Authors>Fabio Cozzolinon</Authors>
-  <PackageId>TitiusLabs.Core</PackageId>
-  <Version>1.0.0</Version>
-  <AssemblyVersion>1.0.0.0</AssemblyVersion>
-  <FileVersion>1.0.0.0</FileVersion>
+<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <LangVersion>Preview</LangVersion>
+</PropertyGroup>
+<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <LangVersion>Preview</LangVersion>
 </PropertyGroup>
 ```
 
-To avoid the ```Duplicate 'System.Reflection.AssemblyCompanyAttribute' attribute (CS0579)```, be sure the remove the ```AssemblyInfo.cs``` and set to ```true``` the ```GenerateAssemblyInfo``` in ```.csproj```:
+You can check the full list of `LangVersion` [here](https://devblogs.microsoft.com/dotnet/an-update-to-c-versions-and-c-tooling/).
 
-```xml
-<PropertyGroup>
-   <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
-</PropertyGroup>
-```
+# Start to play with C# 8
+Ready to write you first C# 8 app? Go!
+<p align="center">
+  <img src="/assets/img/csharp-8-on-mac.png" alt="Your first C# 8">
+</p>
 
-And that's all!
+You'll see some strange warning, by the way ... it's a preview!
+
+Check [here](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8) what's new in C# 8 and give it a try!
