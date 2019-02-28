@@ -4,7 +4,7 @@ title: Using C# 8 on Visual Studio 2019 for Mac Preview 2
 date: 2019-02-28T21:05:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /using-C#-8-on-Visual-Studio-2019-for-Mac-Preview/
+permalink: /using-csharp-8-on-Visual-Studio-2019-for-Mac-Preview/
 tags:
   - .NET
   - .NET Standard
