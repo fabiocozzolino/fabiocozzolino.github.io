@@ -11,7 +11,7 @@ tags:
   - .NET Core
   - C#
 ---
-With Visual Studio 2019 Preview you can start to play with C# 8 and their great new features. In this post we'll see how you can use C# 8 Preview with Visual Studio for Mac 2019 Preview.
+With Visual Studio 2019 Preview you can start to play with C# 8 and their great new features. In this post we'll see how you can use C# 8 Preview with Visual Studio 2019 for Mac Preview.
 
 # Prepare your Mac
 First of all, you need to download the following packages:
