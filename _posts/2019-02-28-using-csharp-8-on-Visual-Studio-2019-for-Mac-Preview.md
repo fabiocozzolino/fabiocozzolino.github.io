@@ -11,14 +11,14 @@ tags:
   - .NET Core
   - C#
 ---
-With Visual Studio 2019 Preview you can start to play with C# 8 and their great new features. In this post we'll see how you can use C# 8 Preview with Visual Studio 2019 for Mac Preview.
+With Visual Studio 2019 Preview you can start to play with C# 8 and its great new features. While on Windows you only needs to install Visual Studio 2019 and .NET Core 3.0, on Mac you needs some additionally trick to make it works. In this post we'll see how you can use C# 8 Preview with Visual Studio 2019 for Mac Preview.
 
 # Prepare your Mac
-First of all, you need to download the following packages:
+First of all, you need to download and install the following packages:
 - [Visual Studio 2019 for Mac](https://visualstudio.microsoft.com/vs/preview/?os=mac)
 - [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
-After installation is complete, create a .NET Console Application:
+After installation is complete, start Visual Studio 2019 and create a .NET Core Console Application:
 <p align="center">
   <img src="/assets/img/create-consolle-app.png" alt="Create Console Application">
 </p>
