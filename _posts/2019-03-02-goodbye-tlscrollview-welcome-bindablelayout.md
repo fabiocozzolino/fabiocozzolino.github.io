@@ -1,6 +1,6 @@
 ---
 published: true
-title: Goodbye HorizontalListView, welcome to BindableLayout
+title: Goodbye TLScrollView. Welcome BindableLayout!
 date: 2019-03-02T11:05:00.000Z
 author: fabiocozzolino
 layout: post
