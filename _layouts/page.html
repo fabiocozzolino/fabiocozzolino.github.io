@@ -15,8 +15,6 @@ layout: default
   </header>
   <section class="post-content">{{ content }}</section>
     
-  Found a problem? <a href="{{site.github.repository_url}}/blob/gh-pages/{{page.path}}">Edit this page</a>
-    
   <!-- Tag list for portfolio -->
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
   {% include tags_list.html tags=tag_list %}
