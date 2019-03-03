@@ -11,6 +11,10 @@ layout: default
   </header>
   
   <section class="post-content">{{ content }}</section>
+  
+  <p>
+    Found a problem? <a href="{{site.github.repository_url}}/tree/master/_posts/{{page.path}}">Edit this post</a>
+  </p>
    
    <!-- Tag list -->
   {% capture tag_list %}{{ page.tags | join: "|"}}{% endcapture %}
