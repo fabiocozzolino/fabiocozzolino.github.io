@@ -19,49 +19,33 @@ About three years ago I wrote a [blog post](/a-little-and-simple-bindable-horizo
 Looking back, in my post you can see how to use the `TLScrollView` control:
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:TitiusLabs.Forms.Controls;assembly=TitiusLabs.Forms"
-    xmlns:local="clr-namespace:FormSamples" x:Class="FormSamples.Core.Views.FormSamplesPage">
-    <StackLayout Padding="20">
-        <controls:TLScrollView Orientation="Horizontal" ItemsSource="{Binding Items}" HeightRequest="100">
-            <controls:TLScrollView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="5">
-                            <controls:TLImageCircle Source="{Binding Image}" HeightRequest="80" WidthRequest="80" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </controls:TLScrollView.ItemTemplate>
-        </controls:TLScrollView>
-    </StackLayout>
-</ContentPage>
+<controls:TLScrollView Orientation="Horizontal" ItemsSource="{Binding Items}" HeightRequest="100">
+    <controls:TLScrollView.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <StackLayout Padding="5">
+                    <controls:TLImageCircle Source="{Binding Image}" HeightRequest="80" WidthRequest="80" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </controls:TLScrollView.ItemTemplate>
+</controls:TLScrollView>
 ```
 
 Change the code to support the `BindableLayout` is really simple. You don't need to use my custom control since the `BindableLayout` is applicable to all Layout Xamarin.Forms controls. So, using the `StackLayout`, add the `BindableLayout.ItemsSource` attribute and the `BindableLayout.ItemTemplate` attribute to implement the binding. Here you can see the new code:
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:TitiusLabs.Forms.Controls;assembly=TitiusLabs.Forms"
-    xmlns:local="clr-namespace:FormSamples" x:Class="FormSamples.Core.Views.FormSamplesPage">
-    <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Items}" HeightRequest="100">
-        <BindableLayout.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout Padding="5">
-                        <controls:TLImageCircle Source="{Binding Image}" HeightRequest="80" WidthRequest="80" />
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </BindableLayout.ItemTemplate>
-    </StackLayout>
-</ContentPage>
+<StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Items}" HeightRequest="100">
+    <BindableLayout.ItemTemplate>
+        <DataTemplate>
+            <ViewCell>
+                <StackLayout Padding="5">
+                    <controls:TLImageCircle Source="{Binding Image}" HeightRequest="80" WidthRequest="80" />
+                </StackLayout>
+            </ViewCell>
+        </DataTemplate>
+    </BindableLayout.ItemTemplate>
+</StackLayout>
 ```
 
 Check [here](https://blog.xamarin.com/xamarin-forms-3-5-a-little-bindable-love/) how the `BindableLayout` works.
