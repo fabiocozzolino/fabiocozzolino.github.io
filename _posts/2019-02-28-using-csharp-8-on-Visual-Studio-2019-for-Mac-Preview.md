@@ -57,3 +57,11 @@ You'll see some strange warning, by the way ... it's a preview!
 Check [here](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8) what's new in C# 8 and give it a try!
 
 > **Note** Most of the C# 8.0 language features will run on any version of .NET, but a few of them, like Async streams, indexers and ranges, all rely on new framework types that will be part of .NET Standard 2.1
+
+# UPDATE Visual Studio 2019 Preview 3 for Mac
+With the [recently released Preview 3](https://devblogs.microsoft.com/visualstudio/visual-studio-2019-for-mac-preview-3/), you can set the C# language to Preview directly on project options:
+<p align="center">
+  <img src="/assets/img/vs-preview-csharp.png" alt="Visual Studio 2019 Preview 3">
+</p>
+
+Update it if you have already installed!
