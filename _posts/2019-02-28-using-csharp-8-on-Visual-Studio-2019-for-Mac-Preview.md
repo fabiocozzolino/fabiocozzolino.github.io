@@ -15,10 +15,10 @@ With Visual Studio 2019 Preview you can start to play with C# 8 and its great ne
 
 # Prepare your Mac
 First of all, you need to download and install the following packages:
-- [Visual Studio 2019 for Mac](https://visualstudio.microsoft.com/vs/preview/?os=mac)
+- [Visual Studio 2019 for Mac Preview](https://visualstudio.microsoft.com/vs/preview/?os=mac)
 - [.NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)
 
-After installation is complete, start Visual Studio 2019 and create a .NET Core Console Application:
+After installation is complete, start Visual Studio 2019 for Mac Preview and create a .NET Core Console Application:
 <p align="center">
   <img src="/assets/img/create-consolle-app.png" alt="Create Console Application">
 </p>
@@ -58,8 +58,8 @@ Check [here](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8) 
 
 > **Note** Most of the C# 8.0 language features will run on any version of .NET, but a few of them, like Async streams, indexers and ranges, all rely on new framework types that will be part of .NET Standard 2.1
 
-# UPDATE Visual Studio 2019 Preview 3 for Mac
-With the [recently released Preview 3](https://devblogs.microsoft.com/visualstudio/visual-studio-2019-for-mac-preview-3/), you can set the C# language to Preview directly on project options:
+# UPDATE Visual Studio 2019 for Mac Preview 3
+With the [recently released Preview 3](https://devblogs.microsoft.com/visualstudio/visual-studio-2019-for-mac-preview-3/), you can set the C# language to `Preview` directly on project options:
 <p align="center">
   <img src="/assets/img/vs-preview-csharp8.png" alt="Visual Studio 2019 Preview 3">
 </p>
