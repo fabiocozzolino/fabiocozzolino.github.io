@@ -1,6 +1,6 @@
 ---
 published: true
-title: Using C# 8 on Visual Studio 2019 for Mac Preview 2
+title: Using C# 8 on Visual Studio 2019 for Mac Preview
 date: 2019-02-28T21:05:00.000Z
 author: fabiocozzolino
 layout: post
@@ -61,7 +61,7 @@ Check [here](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-8) 
 # UPDATE Visual Studio 2019 Preview 3 for Mac
 With the [recently released Preview 3](https://devblogs.microsoft.com/visualstudio/visual-studio-2019-for-mac-preview-3/), you can set the C# language to Preview directly on project options:
 <p align="center">
-  <img src="/assets/img/vs-preview-csharp.png" alt="Visual Studio 2019 Preview 3">
+  <img src="/assets/img/vs-preview-csharp8.png" alt="Visual Studio 2019 Preview 3">
 </p>
 
 Update it if you have already installed!
