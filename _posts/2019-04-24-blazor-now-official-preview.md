@@ -1,6 +1,6 @@
 ---
 published: false
-title: It's time to update: Blazor now in official preview
+title: Blazor now in official preview
 date: 2019-04-24T11:05:00.000Z
 author: fabiocozzolino
 layout: post
