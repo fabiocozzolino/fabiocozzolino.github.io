@@ -29,14 +29,16 @@ To upgrade your existing Blazor apps to the new Blazor preview first make sure y
 - Rename `components.webassembly.js` to `blazor.webassembly.js`
 - Remove any use of the `Microsoft.AspNetCore.Components.Services` namespace and replace with `Microsoft.AspNetCore.Components` as required.
 - Update server projects to use endpoint routing:
+
+Replace this:
 ```cs
-// Replace this:
 app.UseMvc(routes =>
 {
     routes.MapRoute(name: "default", template: "{controller}/{action}/{id?}");
 });
-
-// With this:
+```
+With this:
+```cs
 app.UseRouting();
 
 app.UseEndpoints(routes =>
