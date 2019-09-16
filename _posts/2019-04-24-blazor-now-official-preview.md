@@ -16,10 +16,7 @@ Some days ago, the ASP.NET team announce the official preview of Blazor, the Mic
 # Upgrade to Blazor preview
 To upgrade your existing Blazor apps to the new Blazor preview first make sure you’ve installed the prerequisites listed above then follow these steps:
 
-- Update all `Microsoft.AspNetCore.Blazor.*` package references to 3.0.0-preview4-19216-03 by changing the `PackageReference` in `csproj`:
-```xml
-<PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview4-19216-03" />
-```
+- Update all `Microsoft.AspNetCore.Blazor.*` package references to 3.0.0-preview4-19216-03 by changing the `PackageReference` in `csproj` with this: `<PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.0.0-preview4-19216-03" />`
 - Remove any package reference to `Microsoft.AspNetCore.Components.Server`
 - Remove any `DotNetCliToolReference` to `Microsoft.AspNetCore.Blazor.Cli` and replace with a package reference to `Microsoft.AspNetCore.Blazor.DevServer`
 - In client Blazor projects remove the `<RunCommand>dotnet</RunCommand>` and `<RunArguments>blazor serve</RunArguments>` properties
