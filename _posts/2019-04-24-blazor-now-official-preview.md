@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Blazor now in official preview
 date: 2019-04-24T11:05:00.000Z
 author: fabiocozzolino
