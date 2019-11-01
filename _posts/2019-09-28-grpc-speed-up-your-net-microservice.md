@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: gRPC: speed up your microservice
 date: 2019-09-28T11:05:00.000Z
 author: fabiocozzolino
