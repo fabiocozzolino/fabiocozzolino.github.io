@@ -15,8 +15,18 @@ For those who still don't know, gRPC is a RPC (Remote Procedure Call) framework 
 
 # On my way to gRPC
 RPC is not a new concept. We starts to talk about RPC in the late sixties but the first real implementation comes in the early 80s. It become very popular only in the nineties with Java Remote Method Invocation. In the following years we try to manage RPC in many ways: CORBA, .NET Remoting and WCF are just some example of this attempt. 
+
 But, why gRPC? Well, in the last few years, new scenarios comes - think about the increased number of connection from mobile device - and we needs to adapt software architecture to responde to this new requirements: interoperability, openness, scalability, performance. gRPC was created with exactly these characteristics in mind and is based on two different technology: HTTP/2 and Protobuf.
+
+<p align="center">
+  <img src="/assets/img/multiplexing01.svg" alt="HTTP/2 stream">
+</p>
+
 HTTP/2 represents the evolution of the most famous HTTP/1.1 protocol, providing the best way to transport data by supporting binary and an optimized connection use (single connection vs multiple connection). The transmitted binary data, in the gRPC case, is represented by the use of Protobuf. 
+
+Protobuf is a "Google’s mature open source mechanism for serializing structured data". So, what this means? One of the big problem with REST is that you don't have something like a WSDL doc that describe the service and helps you build a client, but you need documentation or samples before you can do it. With Protobuf you can write 
+
+# gRPC in .NET
 
 
 
