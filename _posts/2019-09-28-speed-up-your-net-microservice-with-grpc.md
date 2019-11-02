@@ -1,10 +1,10 @@
 ---
 published: true
-title: gRPC: speed up your microservice
+title: Speed up your .NET microservice with gRPC
 date: 2019-09-28T11:05:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /gRPC-speed-up-your-net-microservice/
+permalink: /speed-up-your-net-microservice-with-grpc/
 tags:
   - gRPC
   - .NET
