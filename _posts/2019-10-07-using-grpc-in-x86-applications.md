@@ -20,7 +20,7 @@ Luckly, a solution is really simple:
 
 Before start to build, you need to build the C++ library. You can proceed in two ways:
 * follow the steps on [building page](https://github.com/grpc/grpc/blob/master/BUILDING.md)
-* be sure that you have the x86 version of `grpc_csharp_ext.dll` in `cmake\build\x86\Release` folder
+* be sure that you have the x86 version of `grpc_csharp_ext.dll` in `cmake\build\x86\Release` (or `Debug`) folder
 
 To get the libraries, create a new project and add a nuget reference to Grpc package. Then go to `packages\Grpc.Core.2.24.0\runtimes\win\native` and copy the `grpc_csharp_ext.x86.dll` library in the previously mentioned `cmake\build\x86\Release` folder. Finally, be sure to rename the library in `grpc_csharp_ext.dll`. Now you'll be able to build from Visual Studio 2019.
 
