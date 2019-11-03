@@ -1,7 +1,7 @@
 ---
 published: true
 title: Using gRPC in x86 applications
-date: 2019-09-28T11:05:00.000Z
+date: 2019-10-07T18:30:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /using-grpc-in-32bit-applications/
