@@ -1,10 +1,10 @@
 ---
 published: true
-title: Using gRPC in x86 applications
+title: Using gRPC in x86 .NET applications
 date: 2019-10-07T18:30:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /using-grpc-in-32bit-applications/
+permalink: /using-grpc-in-x86-net-applications/
 tags:
   - gRPC
   - .NET
