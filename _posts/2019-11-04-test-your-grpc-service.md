@@ -19,7 +19,7 @@ Currently, I've founded BloomRPC, inspired by Postman, as one of the most simple
   <img src="/assets/img/grpc-bloomrpc.png" alt="BloomRPC example">
 </p>
 
-In this example I'm runing and testing the (Greeter server example)[https://github.com/grpc/grpc-dotnet/tree/master/examples/Greeter] from (gRPC-dotnet)[https://github.com/grpc/grpc-dotnet/tree/master/examples/Greeter]. 
+In this example I'm runing and testing the [Greeter server example](https://github.com/grpc/grpc-dotnet/tree/master/examples/Greeter) from [gRPC-dotnet](https://github.com/grpc/grpc-dotnet/tree/master/examples/Greeter). 
 
 You can download and check BloomRPC from GitHub: https://github.com/uw-labs/bloomrpc
 
