@@ -11,7 +11,7 @@ tags:
   - .NET Core
   - ASP.NET Core
 ---
-In [this post](/speed-up-your-net-microservice-with-grpc/) we introduced gRPC and their .NET implementations. In some cases, you'll need to use a gRPC client from a legacy Win32 process but, since the NuGet package of gRPC C# is based on the x64 C++ native library, it will not works well.
+In [this post](/speed-up-your-net-microservice-with-grpc/) we introduced gRPC and its .NET implementations. In some cases, you'll need to use a gRPC client from a legacy Win32 process but, since the NuGet package of gRPC C# is based on the x64 C++ native library, it will not work as expected.
 
 Luckly, a solution is really simple:
 * clone the [gRPC repository from github](https://github.com/grpc/grpc)
