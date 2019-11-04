@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Test your gRPC service
 date: 2019-11-04T08:30:00.000Z
 author: fabiocozzolino
