@@ -11,20 +11,16 @@ tags:
   - .NET Core
   - ASP.NET Core
 ---
-Today I'm suggesting you how to test gRPC. You can use BloomRPC
+One of the most critical issue in the developer work is the test phase. If you want to test a SOAP service, SoapUI is one of the most well known tools. If you want to test a REST service, you can build your requests by using Fiddler or Postman. But, if you want to test a gRPC service, what you can use?
 
+Currently, I've founded BloomRPC, inspired by Postman, as one of the most simpler tool for testing gRPC. The usage is really simple: add you `.proto` file to the project, set the endpoint, fill up your request and press play button.
 
-In [this post](/speed-up-your-net-microservice-with-grpc/) we introduced gRPC and their .NET implementations. In some cases, you'll need to use a gRPC client from a legacy Win32 process but, since the NuGet package of gRPC C# is based on the x64 C++ native library, it will not works well.
+<p align="center">
+  <img src="/assets/img/grpc-bloomrpc.png" alt="BloomRPC example">
+</p>
 
-Luckly, a solution is really simple:
-* clone the [gRPC repository from github](https://github.com/grpc/grpc)
-* open the Grpc.sln in `src/grpc-csharp` folder
-* create a new build configuration and set it to x86
+In this example I'm runing and testing the (Greeter server example)[https://github.com/grpc/grpc-dotnet/tree/master/examples/Greeter] from (gRPC-dotnet)[https://github.com/grpc/grpc-dotnet/tree/master/examples/Greeter]. 
 
-Before start to build, you need to build the C++ library. You can proceed in two ways:
-* follow the steps on [building page](https://github.com/grpc/grpc/blob/master/BUILDING.md)
-* be sure that you have the x86 version of `grpc_csharp_ext.dll` in `cmake\build\x86\Release` (or `Debug`) folder
-
-To get the libraries, create a new project and add a nuget reference to Grpc package. Then go to `packages\Grpc.Core.2.24.0\runtimes\win\native` and copy the `grpc_csharp_ext.x86.dll` library in the previously mentioned `cmake\build\x86\Release` folder. Finally, be sure to rename the library in `grpc_csharp_ext.dll`. Now you'll be able to build from Visual Studio 2019.
+You can download and check BloomRPC from GitHub: https://github.com/uw-labs/bloomrpc
 
 Enjoy!
