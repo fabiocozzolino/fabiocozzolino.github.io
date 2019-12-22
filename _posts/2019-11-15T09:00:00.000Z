@@ -1,0 +1,45 @@
+---
+published: false
+title: Embed dependencies in your Assembly
+date: 2019-11-10T08:30:00.000Z
+author: fabiocozzolino
+layout: post
+permalink: /embed-dependencies-in-your-assembly/
+tags:
+  - .NET
+  - .NET Core
+---
+Sometimes, when your assembly has many dependencies, you may have the need to simplify deployment. One useful approach is to embed dependent assembly into the main one. To proceed, you need to add the assembly as embedded resource into your project:
+
+<p align="center">
+  <img src="/assets/img/add_embedassembly.png" alt="Add Embed Assembly">
+</p>
+
+Then set the assembly as Embedded Resource:
+
+<p align="center">
+  <img src="/assets/img/add_embedassembly_2.png" alt="Set Embedded Resource">
+</p>
+
+Finally, the code is very simple. Subscribe to the AssemblyResolve event. That event is fired when the common language runtime is unable to locate and bind the requested assembly:
+
+``` csharp
+AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(CurrentDomain_AssemblyResolve);
+```
+
+Then, you must implement the event handler, read the assembly from resources and call the `Assembly.Load` method to load it:
+
+``` csharp
+public Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+{
+    Assembly currentAssembly = Assembly.GetExecutingAssembly();
+    using (var stream = currentAssembly.GetManifestResourceStream(embeddedResource))
+    {
+        var buffer = new byte[(int)stream.Length];
+        stream.Read(buffer, 0, (int)stream.Length);
+        return Assembly.Load(ba);
+    }
+}
+```
+
+Enjoy!
