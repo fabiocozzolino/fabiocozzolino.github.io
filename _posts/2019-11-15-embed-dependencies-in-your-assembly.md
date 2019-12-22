@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Embed dependencies in your Assembly
 date: 2019-11-10T08:30:00.000Z
 author: fabiocozzolino
