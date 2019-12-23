@@ -42,4 +42,13 @@ public Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs ar
 }
 ```
 
+Now, is the time to analyze the pros and cons of this approach:
+* Pros
+  * Reduced set of assemblies to deploy is the main reason that could suggest you to embed it in your assembly
+* Cons
+  * Dependent assemblies needs to be manually updated when new release are available
+
+## Conclusion
+This is a very simple way to read embedded assemblies. Be careful, use this approach only if it is really necessary.
+
 Enjoy!
