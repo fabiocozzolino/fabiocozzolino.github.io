@@ -32,12 +32,12 @@ Our first version of `BookshelfService` implements a simple method that allows t
 ``` csharp
 syntax = "proto3";
 
-option csharp_namespace = "Bookshelf";
+option csharp_namespace = "BookshelfService";
 
-package Bookshelf;
+package BookshelfService;
 
 // The bookshelf service definition.
-service BookshelfService {
+service BookService {
   // Save a Book
   rpc Save (NewBookRequest) returns (NewBookReply);
 }
@@ -54,11 +54,11 @@ message NewBookReply {
 }
 ```
 
-Now, we can open the `GreeterService.cs` and rename the class, and the file, into `BookshelfServiceImpl`. Something like this:
+Now, we can open the `GreeterService.cs` and rename the class, and the file, into `BookServiceImpl`. Something like this:
 ``` csharp
-namespace Bookshelf
+namespace BookshelfService
 {
-    public class BookshelfServiceImpl : BookshelfService.BookshelfServiceBase
+    public class BookServiceImpl : BookService.BookServiceBase
     {
         private readonly ILogger<BookshelfServiceImpl> _logger;
         public BookshelfServiceImpl(ILogger<BookshelfServiceImpl> logger)
@@ -79,12 +79,13 @@ namespace Bookshelf
 
 Finally, be sure to change the `MapGrpcService` into your `Startup.cs` with this line:
 ``` csharp
-endpoints.MapGrpcService<BookshelfServiceImpl>();
+endpoints.MapGrpcService<BookServiceImpl>();
 ``` 
 
 Now, you're ready to run your first gRPC service.
 
-## Wait, what happens?
-
+## Wait, what happens? Let's take a look under the hood
+As said in [that post](/speed-up-your-net-microservice-with-grpc/) the `.proto` file contains the service definition by using a meta-language. So, every time you change the `.proto` content, a language-specific tools will generate the related objects. In our case, a set of C# classes. 
+As you can see, we have defined two messages (`NewBookRequest` and `NewBookReply`) and a service (`BookService`). The Protocol Buffer tool will generate the messages as .NET types and the service as an abstract base class. To implements our service, we only needs to extend the `BookServiceBase` class, as you can see in the above code.
 
 Enjoy!
