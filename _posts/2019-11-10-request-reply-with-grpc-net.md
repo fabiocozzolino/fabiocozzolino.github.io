@@ -22,9 +22,9 @@ When finished, in Visual Studio Code the project will looks like this:
 </p>
 
 We need to check the project and take a look into this items:
-1. The `Startup.cs` file: register the gRPC service by calling the `MapGrpcService` method;
+1. The `Services\*.cs` files: contains the server-side implementation;
 2. The `Protos\*.proto` files: contains the Protocol Buffer file descriptors;
-3. The `Services\*.cs` files: contains the server-side implementation;
+3. The `Startup.cs` file: register the gRPC service by calling the `MapGrpcService` method;
 
 ## Build our BookshelfService
 Our first version of `BookshelfService` implements a simple method that allows to save a Book into our Bookshelf. To proceed, we need to change the default greet.proto by renaming to our brand new bookshelf.proto and changing its content with the following code:
@@ -32,9 +32,9 @@ Our first version of `BookshelfService` implements a simple method that allows t
 ``` csharp
 syntax = "proto3";
 
-option csharp_namespace = "BookshelfService";
+option csharp_namespace = "Bookshelf";
 
-package BookshelfService;
+package Bookshelf;
 
 // The bookshelf service definition.
 service BookshelfService {
@@ -53,5 +53,38 @@ message NewBookReply {
   string id = 1;
 }
 ```
+
+Now, we can open the `GreeterService.cs` and rename the class, and the file, into `BookshelfServiceImpl`. Something like this:
+``` csharp
+namespace Bookshelf
+{
+    public class BookshelfServiceImpl : BookshelfService.BookshelfServiceBase
+    {
+        private readonly ILogger<BookshelfServiceImpl> _logger;
+        public BookshelfServiceImpl(ILogger<BookshelfServiceImpl> logger)
+        {
+            _logger = logger;
+        }
+
+        public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
+        {
+            return Task.FromResult(new NewBookReply
+            {
+                Id = Guid.NewGuid().ToString()
+            });
+        }
+    }
+}
+```
+
+Finally, be sure to change the `MapGrpcService` into your `Startup.cs` with this line:
+``` csharp
+endpoints.MapGrpcService<BookshelfServiceImpl>();
+``` 
+
+Now, you're ready to run your first gRPC service.
+
+## Wait, what happens?
+
 
 Enjoy!
