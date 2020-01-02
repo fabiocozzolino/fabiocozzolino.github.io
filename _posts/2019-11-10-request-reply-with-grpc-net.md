@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Implementing request-reply service in gRPC for .NET
 date: 2019-11-10T08:30:00.000Z
 author: fabiocozzolino
@@ -28,7 +28,6 @@ We need to check the project and take a look into this items:
 
 ## Build our BookshelfService
 Our first version of `BookshelfService` implements a simple method that allows to save a Book into our Bookshelf. To proceed, we need to change the default greet.proto by renaming to our brand new bookshelf.proto and changing its content with the following code:
-
 ``` csharp
 syntax = "proto3";
 
@@ -68,10 +67,7 @@ namespace BookshelfService
 
         public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
         {
-            return Task.FromResult(new NewBookReply
-            {
-                Id = Guid.NewGuid().ToString()
-            });
+            // service implementation
         }
     }
 }
@@ -85,7 +81,23 @@ endpoints.MapGrpcService<BookServiceImpl>();
 Now, you're ready to run your first gRPC service.
 
 ## Wait, what happens? Let's take a look under the hood
-As said in [that post](/speed-up-your-net-microservice-with-grpc/) the `.proto` file contains the service definition by using a meta-language. So, every time you change the `.proto` content, a language-specific tools will generate the related objects. In our case, a set of C# classes. 
-As you can see, we have defined two messages (`NewBookRequest` and `NewBookReply`) and a service (`BookService`). The Protocol Buffer tool will generate the messages as .NET types and the service as an abstract base class. To implements our service, we only needs to extend the `BookServiceBase` class, as you can see in the above code.
+As previously said in [this post](/speed-up-your-net-microservice-with-grpc/) the `.proto` file is responsible for the service definition. So, every time you change the `.proto` content, a language-specific tools will generate the related objects. In our case, a set of C# classes. You can describe your service and the related messages by using a meta-language: the proto syntax.
+
+As you can see, we have defined two messages (`NewBookRequest` and `NewBookReply`) and a service (`BookService`). The Protocol Buffer tool will generate the messages as .NET types and the service as an abstract base class. You'll find the generated source file in the `obj` folder.
+
+Finally, to implements our service, we only needs to extend the `BookServiceBase` class and ovverrides the defined methods. For example:
+``` csharp
+public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
+{
+    var savedBook = BookshelfManager.SaveBook(request.Title, request.Description);
+    return Task.FromResult(new NewBookReply
+    {
+        Id = savedBook.BookId
+    });
+}
+```
+
+## Conclusion
+This is a small example of a simple request/reply service integrated in an ASP.NET Core 3 application. You can test it by using [BloomRPC](/test-your-net-grpc-service/) or by creating a .NET client. We will see the second option in the next post.
 
 Enjoy!
