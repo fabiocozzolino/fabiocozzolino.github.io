@@ -3,7 +3,6 @@ baseurl: ""
 url: "http://fabiocozzolino.eu"
 title: "Fabio Cozzolino {blog}"
 description: "A lap around .NET, Xamarin, Integration, WCF, Azure..."
-baseurl: "http://fabiocozzolino.eu"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
