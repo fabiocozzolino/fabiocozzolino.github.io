@@ -3,16 +3,10 @@
 {% if include.tags.size > 0 %}
     <footer>
         <div class="tag-list">
-        {% if include.tags.size == 1 %}
-          <div class="meta" style="float: left;">Tag: </div>
-        {% elsif include.tags.size > 1 %}
-          <div class="meta" style="float: left;">Tags: </div>
-        {% endif %}
-            
         {% for tag in tags %}
           <a class="button" href="{{site.baseurl}}/tags#{{tag}}" style="float: left;">
             <p><i class="fa fa-tag fa-fw"></i> {{ tag }}</p>
-          </a>
+          </a>&nbsp;
         {% endfor %}
         </div>
     </footer>
