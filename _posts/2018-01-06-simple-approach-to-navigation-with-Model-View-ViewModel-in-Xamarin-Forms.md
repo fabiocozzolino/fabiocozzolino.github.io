@@ -100,4 +100,4 @@ public class MyViewModel : ViewModelBase
 Cool!
 
 ## Conclusion
-Let me know what do you think about this approach. You like it or you hate it? Anyway, you'll find full code on my github page: https://github.com/fabiocozzolino/TitiusLabs.Xamarin
+Let me know what do you think about this approach. You like it or you hate it? Anyway, you'll find full code on [my github repository](https://github.com/fabiocozzolino/TitiusLabs.Xamarin).
