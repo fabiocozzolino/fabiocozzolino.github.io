@@ -10,12 +10,8 @@ dsq_thread_id:
 ---
 Fabio Cozzolino is Chief Software Architect in CompuGroup Medical Italia with a special involvement on the development of e-health platforms and
 
-<div style="width: 140px" class="wp-caption alignright">
+<div style="width: 140px" style="text-align:right">
   <a href="https://mvp.microsoft.com/it-it/mvp/Fabio%20Cozzolino-4028353"><img src="/assets/img/mvp-banner.png" alt="MVP" data-recalc-dims="1" /></a>
-  
-  <p class="wp-caption-text">
-    MVP
-  </p>
 </div>
 
 solutions. He frequently participates as speaker at events and user group meetings, typically focusing his talks on topics like WCF and Windows Azure; he is also active in the community as the leader of “DotNetSide”, an Italian .NET User Group.
