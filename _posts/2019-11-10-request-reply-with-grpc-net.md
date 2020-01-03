@@ -84,6 +84,9 @@ Now, you're ready to run your first gRPC service.
 As previously said in [this post](/speed-up-your-net-microservice-with-grpc/) the `.proto` file is responsible for the service definition. So, every time you change the `.proto` content, a language-specific tools will generate the related objects. In our case, a set of C# classes. You can describe your service and the related messages by using a meta-language: the proto syntax.
 
 As you can see, we have defined two messages (`NewBookRequest` and `NewBookReply`) and a service (`BookService`). The Protocol Buffer tool will generate the messages as .NET types and the service as an abstract base class. You'll find the generated source file in the `obj` folder.
+<p align="center">
+  <img src="/assets/img/grpc-obj-folder.png" alt="gRPC Obj Folder">
+</p>
 
 Finally, to implements our service, we only needs to extend the `BookServiceBase` class and ovverrides the defined methods. For example:
 ``` csharp
