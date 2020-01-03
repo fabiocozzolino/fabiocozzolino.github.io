@@ -4,7 +4,6 @@ title: Tags
 date: 2016-04-01T00:48:03+00:00
 author: fabiocozzolino
 layout: page
-permalink: /tags/
 guid: http://www.fabiocozzolino.eu/?page_id=2482
 ---
 {% capture site_tags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
