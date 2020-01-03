@@ -1,13 +1,13 @@
 # SITE CONFIGURATION
 baseurl: ""
 url: "http://fabiocozzolino.eu"
-title: "Fabio Cozzolino's blog"
+title: "Fabio Cozzolino {blog}"
 description: "A lap around .NET, Xamarin, Integration, WCF, Azure..."
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  title: Fabio Cozzolino's blog
+  title: Fabio Cozzolino blog
   avatar: assets/img/fabio.jpeg
   favicon: assets/favicon.ico
   gravatar: # Email MD5 hash
