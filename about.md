@@ -11,7 +11,7 @@ dsq_thread_id:
 Fabio Cozzolino is Chief Software Architect in CompuGroup Medical Italia with a special involvement on the development of e-health platforms and
 
 <div style="width: 140px" class="wp-caption alignright">
-  <a href="https://mvp.microsoft.com/it-it/mvp/Fabio%20Cozzolino-4028353"><img src="https://i1.wp.com/dotnetside.org/images/mvp_logo.png?resize=130%2C204" alt="MVP" data-recalc-dims="1" /></a>
+  <a href="https://mvp.microsoft.com/it-it/mvp/Fabio%20Cozzolino-4028353"><img src="/assets/img/mvp-banner.png" alt="MVP" data-recalc-dims="1" /></a>
   
   <p class="wp-caption-text">
     MVP
