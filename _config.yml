@@ -1,8 +1,8 @@
 # SITE CONFIGURATION
-url: http://fabiocozzolino.eu
+url: "http://fabiocozzolino.eu"
 title: "Fabio Cozzolino {blog}"
 description: "A lap around .NET, Xamarin, Integration, WCF, Azure..."
-baseurl: http://fabiocozzolino.eu
+baseurl: /
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
