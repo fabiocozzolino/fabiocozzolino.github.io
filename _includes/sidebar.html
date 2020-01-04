@@ -4,9 +4,6 @@
     <p align="center">
       <img src="/assets/img/fabio.jpeg" style="border-radius: 50%;width: 128px;" style="text-align: center;"/>
     </p>
-  </div>
-
-  <div class="container sidebar-sticky">
     <div class="sidebar-about">
       <h1>
         <a href="/">
@@ -15,6 +12,9 @@
       </h1>
       <p class="lead">{{ site.description }}</p>
     </div>
+  </div>
+
+  <div class="container sidebar-sticky">
 
     <nav class="sidebar-nav">
       <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="/">Home</a>
@@ -33,11 +33,10 @@
         {% endif %}
       {% endfor %}
 
-      <a class="sidebar-nav-item" href="https://github.com/fabiocozzolino" target="_blank">My GitHub Repository</a>
       <span class="sidebar-nav-item">Currently v2.0</span>
     </nav>
-    
-    <div style="text-align: center;">
+
+    <div style="text-align: center;clear: both;">
       <a href="https://www.facebook.com/fabio.cozzolino.10" target="_blank" style="float: left;">
         <img src="/assets/img/social/facebook.png" style="border: 0; width: 36px;" />
       </a>
