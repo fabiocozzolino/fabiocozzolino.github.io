@@ -23,7 +23,7 @@ First of all, what is server streaming? This is an except from the gRPC site:
 Tipically, server streaming may be useful when you have a set of data that needs to be continuosly send to the client while the server is still working on that. Let me explain with some example: imagine you need to send back a list of items. Instead of send a full list, with bad performance, you can send back a block of n items per message, allowing the client start their operations asynchronously. This is a very basic usage of server streaming.
 
 ## Ok, now we can start coding
-Based on the `BookshelfService` implemented in the [previous post](/request-reply-with-grpc-net) and available on [my github repository](https://github.com/fabiocozzolino/samples/BookshelfService), we must update the `bookshelf.proto` by adding a new service called `GetAllBooks` and the related `AllBooksRequest` and `AllBooksReply`. That service will returns the full list of books from our shelf:
+Based on the `BookshelfService` implemented in the [previous post](/request-reply-with-grpc-net) and available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService), we must update the `bookshelf.proto` by adding a new service called `GetAllBooks` and the related `AllBooksRequest` and `AllBooksReply`. That service will returns the full list of books from our shelf:
 ``` csharp
 // The bookshelf service definition.
 service BookService {
@@ -76,3 +76,5 @@ Finally, we can run the service with the `dotnet run` command and test it with [
 In the next post we'll see how to create the client for the server streaming service type.
 
 Enjoy!
+
+> check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
