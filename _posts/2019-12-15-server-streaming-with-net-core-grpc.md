@@ -25,18 +25,18 @@ Tipically, server streaming may be useful when you have a set of data that needs
 ## Ok, now we can start coding
 Based on the `BookshelfService` implemented in the [previous post](/request-reply-with-grpc-net) and available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService), we must update the `bookshelf.proto` by adding a new service called `GetAllBooks` and the related `AllBooksRequest` and `AllBooksReply`. That service will returns the full list of books from our shelf:
 ``` csharp
-// The bookshelf service definition.
+// The bookshelf service definition
 service BookService {
   // Get full list of books
   rpc GetAllBooks (AllBooksRequest) returns (stream AllBooksReply);
 }
 
-// The request message containing the book's title and description.
+// The Request message containing specific parameters
 message AllBooksRequest {
   int32 itemsPerPage = 1;
 }
 
-// The request message containing the book's title and description.
+// The Reply message containing the book list
 message AllBooksReply {
   repeated Book Books = 1;
 }
