@@ -7,9 +7,10 @@ layout: post
 permalink: /HTTP2-over-TLS-is-not-supported-on-macOS/
 tags:
   - gRPC
-  - .NET
   - .NET Core
   - ASP.NET Core
+  - Tls
+  - Security
 ---
 If you are working with .NET Core on MacOS, you'll probably get the following exception:
 ```
