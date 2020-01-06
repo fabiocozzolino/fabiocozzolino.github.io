@@ -65,7 +65,7 @@ namespace BookshelfService
             _logger = logger;
         }
 
-        public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
+        public override async Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
         {
             // service implementation
         }
