@@ -10,20 +10,20 @@ tags:
   - .NET Core
   - ASP.NET Core
 ---
-In [the first post of this .NET Core gRPC services](/request-reply-with-grpc-net) we have seen how to build a simple request-reply service by using .NET Core 3 and the brand new [grpc-dotnet](https://github.com/grpc/grpc-dotnet) library entirely written in C#.
+In [the first post of this .NET Core gRPC services](/request-reply-with-grpc-net), we have seen how to build a simple request-reply service by using .NET Core 3 and the brand new [grpc-dotnet](https://github.com/grpc/grpc-dotnet) library entirely written in C#.
 
-Now, it's the time to extend our scenario by exploring the next kind of service: server streaming. 
+Now, it's time to extend our scenario by exploring the next kind of service: server streaming. 
 
-> **_NOTE:_** Remember that gRPC offers four kind of service: request-reply, server streaming, client streaming and bidirectional streaming. We'll see the others in dedicated posts
+> **_NOTE:_** Remember that gRPC offers four kinds of service: request-reply, server streaming, client streaming, and bidirectional streaming. We'll see the others in dedicated posts
 
 ## Server Streaming Scenarios
-First of all, what is server streaming? This is an except from the gRPC site: 
+First of all, what is server streaming? This is an excerpt the gRPC site: 
 > Server streaming RPCs where the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages. gRPC guarantees message ordering within an individual RPC call.
 
-Tipically, server streaming may be useful when you have a set of data that needs to be continuosly send to the client while the server is still working on that. Let me explain with some example: imagine you need to send back a list of items. Instead of send a full list, with bad performance, you can send back a block of n items per message, allowing the client start their operations asynchronously. This is a very basic usage of server streaming.
+Typically, server streaming may be useful when you have a set of data that needs to be continuously send to the client while the server is still working on that. Let me explain with some example: imagine you need to send back a list of items. Instead of sending a full list, with bad performance, you can send back a block of n items per message, allowing the client to start their operations asynchronously. This is a very basic usage of server streaming.
 
 ## Ok, now we can start coding
-Based on the `BookshelfService` implemented in the [previous post](/request-reply-with-grpc-net) and available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService), we must update the `bookshelf.proto` by adding a new service called `GetAllBooks` and the related `AllBooksRequest` and `AllBooksReply`. That service will returns the full list of books from our shelf:
+Based on the `BookshelfService` implemented in the [previous post](/request-reply-with-grpc-net) and available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService), we must update the `bookshelf.proto` by adding a new service called `GetAllBooks` and the related `AllBooksRequest` and `AllBooksReply`. That service will return the full list of books from our shelf:
 ``` csharp
 // The bookshelf service definition
 service BookService {
@@ -41,7 +41,7 @@ message AllBooksReply {
   repeated Book Books = 1;
 }
 
-// The Book message represent a book instance
+// The Book message represents a book instance
 message Book {
   string title = 1;
   string description = 2;
