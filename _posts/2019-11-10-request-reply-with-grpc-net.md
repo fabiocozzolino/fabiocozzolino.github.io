@@ -27,7 +27,7 @@ We need to check the project and take a look into these items:
 3. The `Startup.cs` file: register the gRPC service by calling the `MapGrpcService` method;
 
 ## Build our BookshelfService
-Our first version of `BookshelfService` implements a simple method that allows to save a Book into our Bookshelf. To proceed, we need to change the default greet.proto by renaming to our brand new bookshelf.proto and changing its content with the following code:
+Our first version of `BookshelfService` implements a simple method that allows saving a Book into our Bookshelf. To proceed, we need to change the default greet.proto by renaming to our brand new bookshelf.proto and changing its content with the following code:
 ``` csharp
 syntax = "proto3";
 
@@ -81,14 +81,14 @@ endpoints.MapGrpcService<BookServiceImpl>();
 Now, you're ready to run your first gRPC service.
 
 ## Wait, what happens? Let's take a look under the hood
-As previously said in [this post](/speed-up-your-net-microservice-with-grpc/) the `.proto` file is responsible for the service definition. So, every time you change the `.proto` content, a language-specific tools will generate the related objects. In our case, a set of C# classes. You can describe your service and the related messages by using a meta-language: the proto syntax.
+As previously said in [this post](/speed-up-your-net-microservice-with-grpc/) the `.proto` file is responsible for the service definition. So, every time you change the `.proto` content, language-specific tools will generate the related objects. In our case, a set of C# classes. You can describe your service and the related messages by using a meta-language: the proto syntax.
 
 As you can see, we have defined two messages (`NewBookRequest` and `NewBookReply`) and a service (`BookService`). The Protocol Buffer tool will generate the messages as .NET types and the service as an abstract base class. You'll find the generated source file in the `obj` folder.
 <p align="center">
   <img src="/assets/img/grpc-obj-folder.png" alt="gRPC Obj Folder">
 </p>
 
-Finally, to implements our service, we only needs to extend the `BookServiceBase` class and ovverrides the defined methods. For example:
+Finally, to implements our service, we only need to extend the `BookServiceBase` class and overrides the defined methods. For example:
 ``` csharp
 public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
 {
@@ -101,6 +101,6 @@ public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContex
 ```
 
 ## Conclusion
-This is a small example of a simple request/reply service integrated in an ASP.NET Core 3 application. You can test it by using [BloomRPC](/test-your-net-grpc-service/) or by creating a .NET client. We will see the second option in the next post.
+This is a small example of a simple request/reply service integrated into an ASP.NET Core 3 application. You can test it by using [BloomRPC](/test-your-net-grpc-service/) or by creating a .NET client. We will see the second option in the next post.
 
 Enjoy!
