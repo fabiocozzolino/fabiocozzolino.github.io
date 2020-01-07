@@ -92,7 +92,7 @@ Finally, to implements our service, we only needs to extend the `BookServiceBase
 ``` csharp
 public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContext context)
 {
-    var savedBook = BookshelfManager.SaveBook(request.Title, request.Description);
+    var savedBook = BooksManager.SaveBook(request.Title, request.Description);
     return Task.FromResult(new NewBookReply
     {
         Id = savedBook.BookId
