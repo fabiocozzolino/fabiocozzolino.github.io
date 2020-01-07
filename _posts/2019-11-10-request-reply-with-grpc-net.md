@@ -11,17 +11,17 @@ tags:
   - .NET Core
   - ASP.NET Core
 ---
-With this post it's time to get into the first service build with gRPC. First, we'll use the dotnet command to create our solution:
+With this post it's time to get into the first service build with gRPC. First of all, we'll use the `dotnet` command to create our solution:
 <p align="center">
   <img src="/assets/img/grpc-createnew.png" alt="gRPC Create New">
 </p>
 
-When finished, in Visual Studio Code the project will looks like this:
+When finished, in Visual Studio Code the project will look like this:
 <p align="center">
   <img src="/assets/img/grpc-project.png" alt="gRPC Project">
 </p>
 
-We need to check the project and take a look into this items:
+We need to check the project and take a look into these items:
 1. The `Services\*.cs` files: contains the server-side implementation;
 2. The `Protos\*.proto` files: contains the Protocol Buffer file descriptors;
 3. The `Startup.cs` file: register the gRPC service by calling the `MapGrpcService` method;
