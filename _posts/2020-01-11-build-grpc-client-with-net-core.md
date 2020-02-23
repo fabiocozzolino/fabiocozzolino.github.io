@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Build gRPC Client with .NET Core
 date: 2020-01-11T08:30:00.000Z
 author: fabiocozzolino
@@ -9,18 +9,27 @@ tags:
   - gRPC
   - .NET Core
 ---
-We seen [how to build a simple gRPC request/reply service](/request-reply-with-grpc-net) by using .NET Core and the new [grpc-dotnet](https://github.com/grpc/grpc-dotnet) managed library entirely written in C#. In the next step, we'll see how to build a .NET gRPC client. And it is really easy to do.
+In this post series we have seen [how to build a simple gRPC request/reply service](/request-reply-with-grpc-net) and [a gRPC server streaming service](/server-streaming-with-net-core-grpc/) a by using .NET Core and the new [grpc-dotnet](https://github.com/grpc/grpc-dotnet), the managed library entirely written in C#. Now it's the time to create and build a .NET gRPC client. And it's really easy to do.
 
 ## Create and configure our client project
+First of all, we need to create a client project.  For the purpose of this article, a simple console project will be enough. So, you can open the terminal, go to your preferred folder and execute the following command:
+```
+dotnet new console -o GrpcClient
+```
 
+Then go to the folder just created and add the necessary reference with the following commands:
+```
+dotnet add package Google.Protobuf
+dotnet add package Grpc.Net.Client
+dotnet add package Grpc.Tools
+```
 
-## Let's start coding
-Based on the `BookshelfService` (full code available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService), we need to get the `bookshelf.proto` and add to our client project:
+Now, we can create the `bookshelf.proto` file (full code available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService):
 ``` csharp
 syntax = "proto3";
 
 option csharp_namespace = "BookshelfService";
-import "google/protobuf/any.proto";
+
 package BookshelfService;
 
 // The bookshelf service definition.
@@ -29,18 +38,6 @@ service BookService {
   rpc GetAllBooks (AllBooksRequest) returns (stream AllBooksReply);
   // Save a Book
   rpc Save (NewBookRequest) returns (NewBookReply);
-  //
-  rpc Send(SendRequest) returns (SendReply);
-}
-
-message SendRequest
-{
-  google.protobuf.Any Content = 1;
-}
-
-message SendReply
-{
-  google.protobuf.Any Content = 1;
 }
 
 // The request message containing the book's title and description.
@@ -70,32 +67,40 @@ message NewBookReply {
 }
 ```
 
-After changing the `.proto` file, now you'll be able to override the GetAllBooks method in the BookshelfService class to implement the server-side logic:
-``` csharp
-public override async Task GetAllBooks(AllBooksRequest request, IServerStreamWriter<AllBooksReply> responseStream, ServerCallContext context)
-{
-    var pageIndex = 0;
-    while (!context.CancellationToken.IsCancellationRequested)
-    {
-        var books = BooksManager.ReadAll(++pageIndex, request.ItemsPerPage);
-        if (!books.Any())
-        {
-            break;
-        }
+We can then add the just created file to the project by using dotnet-grpc CLI. If you haven't installed yet, execute the following command:
+```
+dotnet tool install -g dotnet-grpc
+```
 
-        var reply = new AllBooksReply();
-        reply.Books.AddRange(books);
-        await responseStream.WriteAsync(reply);
-    }
+then add the `bookshelf.proto` to the client project:
+```
+dotnet grpc add-file bookshelf.proto --services Client
+```
+
+Finally, be sure to set the right `GrpcService` value of the `Protobuf` element in your `.csproj` file:
+> You can set the GrpcService attribute to decide the kind of grpc generated code. The accepted values are: Both, Client, Default, None, Server. 
+
+``` xml
+<ItemGroup>
+  <Protobuf Include="..\Protos\bookshelf.proto" GrpcServices="Client" />
+</ItemGroup>
+```
+
+## Let's start coding
+Calling a Grpc Service is a very simple operation. Just create the channel, connect to the service endpoint, and then pass to the generated client as a constructor parameter. Now you can use the client instance to invoke the service methods:
+``` csharp
+using (var channel = GrpcChannel.ForAddress("http://localhost:5000"))
+{
+    var request = new NewBookRequest();
+    request.Title = "1984";
+    request.Description = "A George Orwell novel";
+
+    var client =  new BookService.BookServiceClient(channel);
+    client.Save(request);
 }
 ```
 
-Finally, we can run the service with the `dotnet run` command and test it with [BloomRPC](/test-your-net-grpc-service/):
-<p align="center">
-  <img src="/assets/video/grpc-server-streaming-test.png" alt="gRPC Server Streaming">
-</p>
-
-In the next post we'll see how to create the client for the server streaming service type.
+> NOTE: if you are on macOs, [HTTP/2 on TLS is still not supported](/HTTP2-over-TLS-is-not-supported-on-macOS/), so you need to deactivate it by using the following instruction before connect to the service: `AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);`
 
 Enjoy!
 
