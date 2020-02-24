@@ -104,3 +104,6 @@ public override Task<NewBookReply> Save(NewBookRequest request, ServerCallContex
 This is a small example of a simple request/reply service integrated into an ASP.NET Core 3 application. You can test it by using [BloomRPC](/test-your-net-grpc-service/) or by creating a .NET client. We will see the second option in the next post.
 
 Enjoy!
+
+--------
+check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
