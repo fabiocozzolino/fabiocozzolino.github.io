@@ -77,4 +77,5 @@ In the next post we'll see how to create the client for the server streaming ser
 
 Enjoy!
 
-> check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
+--------
+check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
