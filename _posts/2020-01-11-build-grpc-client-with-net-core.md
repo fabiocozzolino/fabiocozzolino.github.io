@@ -87,7 +87,7 @@ Finally, be sure to set the right `GrpcService` value of the `Protobuf` element 
 ```
 
 ## Let's start coding
-Calling a Grpc Service is a very simple operation. Just create the channel, connect to the service endpoint, and then pass to the generated client as a constructor parameter. Now you can use the client instance to invoke the service methods:
+Calling a Grpc Service is a very simple operation. Just create the channel, connect to the service endpoint, and then pass it to the generated client as a constructor parameter. Now you can use the client instance to invoke the service methods:
 ``` csharp
 using (var channel = GrpcChannel.ForAddress("http://localhost:5000"))
 {
