@@ -13,12 +13,12 @@ In the previous posts on the series about gRPC, we have seen [how to build a sim
 
 ## Create and configure our client project
 First of all, we need to create a client project.  For the purpose of this article, a simple console project will be enough. So, you can open the terminal, go to your preferred folder and execute the following command:
-```
+``` console
 dotnet new console -o GrpcClient
 ```
 
 Then go to the folder just created and add the necessary reference with the following commands:
-```
+``` console
 dotnet add package Google.Protobuf
 dotnet add package Grpc.Net.Client
 dotnet add package Grpc.Tools
@@ -68,12 +68,12 @@ message NewBookReply {
 ```
 
 We can then add the just created file to the project by using dotnet-grpc CLI. If you haven't installed yet, execute the following command:
-```
+``` console
 dotnet tool install -g dotnet-grpc
 ```
 
 then add the `bookshelf.proto` to the client project:
-```
+``` console
 dotnet grpc add-file bookshelf.proto --services Client
 ```
 
@@ -104,4 +104,5 @@ using (var channel = GrpcChannel.ForAddress("http://localhost:5000"))
 
 Enjoy!
 
-> check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
+--------
+check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
