@@ -1,6 +1,6 @@
 ---
 published: true
-title: gRPC: g stands for...
+title: gRPC, g stands for
 date: 2020-03-01T08:30:00.000Z
 author: fabiocozzolino
 layout: post
