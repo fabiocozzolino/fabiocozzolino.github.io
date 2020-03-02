@@ -1,0 +1,84 @@
+---
+published: false
+title: How to evolve your gRPC service - Part 1
+date: 2020-03-02T08:30:00.000Z
+author: fabiocozzolino
+layout: post
+permalink: /how-to-evolve-your-grpc-service-part-1/
+tags:
+  - gRPC
+  - .NET Core
+  - ASP.NET Core
+---
+Evolve is a necessary step to survive. A software architecture 
+
+
+In [the first post of this .NET Core gRPC services](/request-reply-with-grpc-net), we have seen how to build a simple request-reply service by using .NET Core 3 and the brand new [grpc-dotnet](https://github.com/grpc/grpc-dotnet) library entirely written in C#.
+
+Now, it's time to extend our scenario by exploring the next kind of service: server streaming. 
+
+> **_NOTE:_** Remember that gRPC offers four kinds of service: request-reply, server streaming, client streaming, and bidirectional streaming. We'll see the others in dedicated posts
+
+## Server Streaming Scenarios
+First of all, what is server streaming? This is an excerpt the gRPC site: 
+> Server streaming RPCs where the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages. gRPC guarantees message ordering within an individual RPC call.
+
+Typically, server streaming may be useful when you have a set of data that needs to be continuously send to the client while the server is still working on that. Let me explain with some example: imagine you need to send back a list of items. Instead of sending a full list, with bad performance, you can send back a block of n items per message, allowing the client start its operations asynchronously. This is a very basic usage of server streaming.
+
+## Ok, now we can start coding
+Based on the `BookshelfService` implemented in the [previous post](/request-reply-with-grpc-net) and available on [my github repository](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService), we must update the `bookshelf.proto` by adding a new service called `GetAllBooks` and the related `AllBooksRequest` and `AllBooksReply`. That service will return the full list of books from our shelf:
+``` csharp
+// The bookshelf service definition
+service BookService {
+  // Get full list of books
+  rpc GetAllBooks (AllBooksRequest) returns (stream AllBooksReply);
+}
+
+// The Request message containing specific parameters
+message AllBooksRequest {
+  int32 itemsPerPage = 1;
+}
+
+// The Reply message containing the book list
+message AllBooksReply {
+  repeated Book Books = 1;
+}
+
+// The Book message represents a book instance
+message Book {
+  string title = 1;
+  string description = 2;
+}
+```
+
+After changing the `.proto` file, now you'll be able to override the GetAllBooks method in the BookshelfService class to implement the server-side logic:
+``` csharp
+public override async Task GetAllBooks(AllBooksRequest request, IServerStreamWriter<AllBooksReply> responseStream, ServerCallContext context)
+{
+    var pageIndex = 0;
+    while (!context.CancellationToken.IsCancellationRequested)
+    {
+        var books = BooksManager.ReadAll(++pageIndex, request.ItemsPerPage);
+        if (!books.Any())
+        {
+            break;
+        }
+
+        var reply = new AllBooksReply();
+        reply.Books.AddRange(books);
+        await responseStream.WriteAsync(reply);
+    }
+}
+```
+
+Finally, we can run the service with the `dotnet run` command and test it with [BloomRPC](/test-your-net-grpc-service/):
+<p align="center">
+  <img src="/assets/video/grpc-server-streaming-test.png" alt="gRPC Server Streaming">
+</p>
+
+In the next post we'll see how to create the client for the server streaming service type.
+
+Enjoy!
+
+--------
+check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
