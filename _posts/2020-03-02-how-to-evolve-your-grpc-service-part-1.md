@@ -10,8 +10,32 @@ tags:
   - .NET Core
   - ASP.NET Core
 ---
-Evolve is a necessary step to survive. A software architecture 
+Evolve is a necessary step to survive and a software architecture is not an exception. Also designing a gRPC service means that something may change in the future. So, what happens if we change the ProtoBuf definition? 
+Evolving a contract definition means that we can add a new property, for example, or remove an existing one. Or we could introduce a new service and deprecate an existing one. And obviusly we'd like that the client sill works.
+Let's see what happens.
 
+# Break the ProtoBuf definition
+We can start with the previously seen `.proto` file:
+``` csharp
+// The bookshelf service definition
+service BookService {
+  // Get full list of books
+  rpc SaveBook (BookRequest) returns (BookReply);
+}
+
+// The Book message represents a book instance
+message BookRequest {
+  string title = 1;
+  string description = 2;
+}
+
+// The Book message represents a book instance
+message BookReply {
+  int32 bookId = 1;
+  string title = 2;
+  string description = 3;
+}
+```
 
 In [the first post of this .NET Core gRPC services](/request-reply-with-grpc-net), we have seen how to build a simple request-reply service by using .NET Core 3 and the brand new [grpc-dotnet](https://github.com/grpc/grpc-dotnet) library entirely written in C#.
 
