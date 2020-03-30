@@ -10,8 +10,8 @@ tags:
   - .NET Core
   - ASP.NET Core
 ---
-Evolve is a necessary step to survive and a software architecture is not an exception. Also designing a gRPC service means that something may change in the future. So, what happens if we change the ProtoBuf definition? 
-Evolving a contract definition means that we can add a new field, for example, or remove an existing one. Or we could introduce a new service and deprecate an existing one. And obviusly we'd like that the client still continue to works.
+Evolving is a necessary step to survive and the software architecture is not an exception. Also designing a gRPC service means that something may change in the future. So, what happen if we change the ProtoBuf definition? 
+Evolving a contract definition means that we can add a new field, for example, or remove an existing one. Or we could introduce a new service and deprecate an existing one. And obviusly we'd like that the client still continue to work.
 Let's see what happens.
 
 # Break the ProtoBuf definition
@@ -55,7 +55,7 @@ message Author {
 }
 ```
 
-Adding new fields will not break the contract, so all the previusly generated clients will still works fine! The new fields will simply have its default value. Note that fields are optional by default, but you can declare as mandatory by using the keyword `required`.
+Adding new fields will not break the contract, so all the previusly generated clients will still work fine! The new fields will simply have their default value. Note that fields are optional by default, but you can declare them mandatory by using the keyword `required`.
 **The most important thing is not the field name, but only the field number**. Preserve it, don't change the field types, and your contract will not be broken.
 
 > **_NOTE:_** The message fields name or its order is not important. Each field in the message definition has a unique field number, used to identify your fields in the message binary format. Don't change it in production, will break the contract!
