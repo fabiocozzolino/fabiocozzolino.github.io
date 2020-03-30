@@ -61,8 +61,9 @@ Adding new fields will not break the contract, so all the previusly generated cl
 > **_NOTE:_** The message fields name or their order are not important. Each field in the message definition has a unique field number, used to identify your field in the message binary format. Don't change it in live environment, it ill break the contract!
 
 # Remove a field
-We can remove a field from a message? Short answer: NO! 
-Long answer: obviusly you can do it, but any not updated client will not works anymore. You need to establish a plan to softly replace the property with the new one:
+We can remove a field from a message? Obviusly we can do it, but all the old clients still continue to send unnecessary data. Note that if a client send an unexpected field, the server will ignore it without throwing exception.
+
+You need to establish a plan to softly replace the property with the new one:
 1. Introduce the new field int the message contract and leave the old field
 2. In the next release, introduce a warning when old client still doesn't send new field
 3. Finaly, two release after new field introduction, remove the old field and accept value only from the new field
