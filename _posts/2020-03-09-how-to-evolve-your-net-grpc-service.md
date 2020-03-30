@@ -58,7 +58,7 @@ message Author {
 Adding new fields will not break the contract, so all the previusly generated clients will still work fine! The new fields will simply have their default value. Note that fields are optional by default, but you can declare them mandatory by using the keyword `required`.
 **The most important thing is not the field name, but only the field number**. Preserve it, don't change the field types, and your contract will not be broken.
 
-> **_NOTE:_** The message fields name or its order is not important. Each field in the message definition has a unique field number, used to identify your fields in the message binary format. Don't change it in production, will break the contract!
+> **_NOTE:_** The message fields name or their order are not important. Each field in the message definition has a unique field number, used to identify your field in the message binary format. Don't change it in live environment, it ill break the contract!
 
 # Remove a field
 We can remove a field from a message? Short answer: NO! 
