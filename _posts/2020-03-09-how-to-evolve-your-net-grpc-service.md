@@ -1,10 +1,10 @@
 ---
 published: true
-title: How to evolve your gRPC service
+title: How to evolve your .NET gRPC service
 date: 2020-03-09T08:30:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /how-to-evolve-your-grpc-service/
+permalink: /how-to-evolve-your-net-grpc-service/
 tags:
   - gRPC
   - .NET Core
