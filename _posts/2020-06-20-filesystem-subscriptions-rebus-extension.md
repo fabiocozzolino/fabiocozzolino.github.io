@@ -9,9 +9,22 @@ tags:
   - .NET
   - Architecture
 ---
-Today I would like to talk about Rebus, a simple and lean message bus implementation for .NET. Originally developed by Mogens Heller Grabe and supported by the community, Rebus is really simple to use and configure, but its strength is extensibility. With this in mind, Rebus offers many ways to customize things like transport, persistence, subscription, logging, and so on. If you want to reead the basics of Rebus, please check the [official documentation wiki](https://github.com/rebus-org/Rebus/wiki).
+Today I would like to talk about Rebus, a simple and lean message bus implementation for .NET. Originally developed by Mogens Heller Grabe and supported by the community, Rebus is robust and works well with a minimum level of configuration, but its main strength is extensibility. With this in mind, Rebus offers many ways to customize things like:
 
-# Break the ProtoBuf definition
+* transport
+* subscriptions
+* logging
+* serialization
+* encryption
+* and more... 
+
+If you want to reead the basics of Rebus, please check the [official documentation wiki](https://github.com/rebus-org/Rebus/wiki).
+The main thing in Rebus is the concept of **Transport**. Basically, the transport is the mechanism used to transfer your messages. You can choose from a great list of transport already developed, like InMemory, RabbitMQ or Azure Service Bus, or you can develop your own transport. It depends from you architectural model.
+Another main point, necessary in some context like Publish and Subscribe implementation, is the **Subscription Storage**. Every time that a subscription is added to a specific topic, Rebus needs to keep track of it and finally use that storage to get the list of subscribers and dispatch them the published messages.
+In this post, we'll see how to implement a simple Subscription Storage to store subscriptions on *FileSystem*.
+
+# Extending Rebus
+
 We can start with the previously seen `.proto` file:
 ``` csharp
 internal class FileSystemSubscriptionStorage : ISubscriptionStorage
