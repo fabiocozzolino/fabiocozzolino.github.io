@@ -14,24 +14,72 @@ Today I would like to talk about Rebus, a simple and lean message bus implementa
 # Break the ProtoBuf definition
 We can start with the previously seen `.proto` file:
 ``` csharp
-// The bookshelf service definition
-service BookService {
-  // Get full list of books
-  rpc SaveBook (BookRequest) returns (BookReply);
-}
+internal class FileSystemSubscriptionStorage : ISubscriptionStorage
+    {
+        private readonly string folderPath;
 
-// The Book message represents a book instance
-message BookRequest {
-  string title = 1;
-  string description = 2;
-}
+        public bool IsCentralized => true;
 
-// The Book message represents a book instance
-message BookReply {
-  int32 bookId = 1;
-  string title = 2;
-  string description = 3;
-}
+        public FileSystemSubscriptionStorage(string folderPath)
+        {
+            this.folderPath = folderPath;
+        }
+
+        public Task<string[]> GetSubscriberAddresses(string topic)
+        {
+            return Task.Run(() =>
+            {
+                var topicPath = Path.Combine(folderPath, Hash(topic));
+                if (!Directory.Exists(topicPath))
+                {
+                    return new string[0];
+                }
+
+                return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();
+            });
+        }
+
+        public Task RegisterSubscriber(string topic, string subscriberAddress)
+        {
+            return Task.Run(() =>
+            {
+                var topicPath = Path.Combine(folderPath, Hash(topic));
+                if (!Directory.Exists(topicPath))
+                {
+                    Directory.CreateDirectory(topicPath);
+                }
+
+                var subscriberAddressFile = Path.Combine(topicPath, Hash(subscriberAddress) + ".subscriber");
+                if (!File.Exists(subscriberAddressFile))
+                {
+                    File.WriteAllText(subscriberAddressFile, subscriberAddress);
+                }
+            });
+        }
+
+        public Task UnregisterSubscriber(string topic, string subscriberAddress)
+        {
+            return Task.Run(() =>
+            {
+                var topicPath = Path.Combine(folderPath, Hash(topic));
+                if (!Directory.Exists(topicPath))
+                {
+                    Directory.CreateDirectory(topicPath);
+                }
+
+                var subscriberAddressFile = Path.Combine(topicPath, Hash(subscriberAddress) + ".subscriber");
+                if (File.Exists(subscriberAddressFile))
+                {
+                    File.Delete(subscriberAddressFile);
+                }
+            });
+        }
+
+        private string Hash(string text)
+        {
+            return text.GetHashCode().ToString();
+        }
+    }
 ```
 
 what will happens if we change the message? Let me explore the different ways we can break the contract!
