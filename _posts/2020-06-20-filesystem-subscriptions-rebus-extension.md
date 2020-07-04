@@ -1,16 +1,15 @@
 ---
 published: false
-title: Develop your first Rebus extension
+title: A FileSystem subscriptions manager, your first Rebus extension
 date: 2020-06-20T08:30:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /develop-your-first-rebus-extension/
+permalink: /filesystem-subscriptions-rebus-extension/
 tags:
   - .NET
   - Architecture
 ---
-Today I would like to talk about Rebus, a simple and lean message bus implementation for .NET. Originally developed by Mogens Heller Grabe and supported by the community, Rebus is really simple to use and configure, but its strength is extensibility. Rebus, in fact, is designed with extensibility in mind. 
-
+Today I would like to talk about Rebus, a simple and lean message bus implementation for .NET. Originally developed by Mogens Heller Grabe and supported by the community, Rebus is really simple to use and configure, but its strength is extensibility. With this in mind, Rebus offers many ways to customize things like transport, persistence, subscription, logging, and so on. If you want to reead the basics of Rebus, please check the [official documentation wiki](https://github.com/rebus-org/Rebus/wiki).
 
 # Break the ProtoBuf definition
 We can start with the previously seen `.proto` file:
