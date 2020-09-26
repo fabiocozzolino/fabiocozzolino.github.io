@@ -24,8 +24,7 @@ Another main point, necessary in some context like Publish and Subscribe impleme
 In this post, we'll see how to implement a simple Subscription Storage to store subscriptions on *FileSystem*.
 
 # Extending Rebus: Implements ISubscriptionStorage interface
-The first step needed is implement the `ISubscriptionStorage` interface: 
-
+The first thing we need to do is implement the `ISubscriptionStorage` interface: 
 ``` csharp
 public interface ISubscriptionStorage
 {
@@ -55,75 +54,45 @@ public interface ISubscriptionStorage
 }
 ``` 
 
-
+So, now we proceed by creating the `FileSystemSubscriptionStorage` that implements the `ISubscriptionStorage`:
 ``` csharp
 internal class FileSystemSubscriptionStorage : ISubscriptionStorage
 {
     private readonly string folderPath;
 
-        public bool IsCentralized => true;
-
-        public FileSystemSubscriptionStorage(string folderPath)
-        {
-            this.folderPath = folderPath;
-        }
-
-        public Task<string[]> GetSubscriberAddresses(string topic)
-        {
-            return Task.Run(() =>
-            {
-                var topicPath = Path.Combine(folderPath, Hash(topic));
-                if (!Directory.Exists(topicPath))
-                {
-                    return new string[0];
-                }
-
-                return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();
-            });
-        }
-
-        public Task RegisterSubscriber(string topic, string subscriberAddress)
-        {
-            return Task.Run(() =>
-            {
-                var topicPath = Path.Combine(folderPath, Hash(topic));
-                if (!Directory.Exists(topicPath))
-                {
-                    Directory.CreateDirectory(topicPath);
-                }
-
-                var subscriberAddressFile = Path.Combine(topicPath, Hash(subscriberAddress) + ".subscriber");
-                if (!File.Exists(subscriberAddressFile))
-                {
-                    File.WriteAllText(subscriberAddressFile, subscriberAddress);
-                }
-            });
-        }
-
-        public Task UnregisterSubscriber(string topic, string subscriberAddress)
-        {
-            return Task.Run(() =>
-            {
-                var topicPath = Path.Combine(folderPath, Hash(topic));
-                if (!Directory.Exists(topicPath))
-                {
-                    Directory.CreateDirectory(topicPath);
-                }
-
-                var subscriberAddressFile = Path.Combine(topicPath, Hash(subscriberAddress) + ".subscriber");
-                if (File.Exists(subscriberAddressFile))
-                {
-                    File.Delete(subscriberAddressFile);
-                }
-            });
-        }
-
-        private string Hash(string text)
-        {
-            return text.GetHashCode().ToString();
-        }
+    public FileSystemSubscriptionStorage(string folderPath)
+    {
+        this.folderPath = folderPath;
     }
+    ...
+}
 ```
+
+We need to know the root folder where subscribers will be stored, so the constructor accept the full path as parameter. Now, the first method will go to implement is `RegisterSubscriber`:
+``` csharp
+public Task RegisterSubscriber(string topic, string subscriberAddress)
+{
+    return Task.Run(() =>
+    {
+        var topicPath = Path.Combine(folderPath, Hash(topic));
+        if (!Directory.Exists(topicPath))
+        {
+            Directory.CreateDirectory(topicPath);
+        }
+
+        var subscriberAddressFile = Path.Combine(topicPath, Hash(subscriberAddress) + ".subscriber");
+        if (!File.Exists(subscriberAddressFile))
+        {
+            File.WriteAllText(subscriberAddressFile, subscriberAddress);
+        }
+    });
+}
+```
+
+In this method, first of all we check if the directory correctly exists, otherwise we'll create it. 
+
+
+
 
 what will happens if we change the message? Let me explore the different ways we can break the contract!
 
