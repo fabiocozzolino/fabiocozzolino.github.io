@@ -23,13 +23,43 @@ The main thing in Rebus is the concept of **Transport**. Basically, the transpor
 Another main point, necessary in some context like Publish and Subscribe implementation, is the **Subscription Storage**. Every time that a subscription is added to a specific topic, Rebus needs to keep track of it and finally use that storage to get the list of subscribers and dispatch them the published messages.
 In this post, we'll see how to implement a simple Subscription Storage to store subscriptions on *FileSystem*.
 
-# Extending Rebus
+# Extending Rebus: Implements ISubscriptionStorage interface
+The first step needed is implement the `ISubscriptionStorage` interface: 
 
-We can start with the previously seen `.proto` file:
+``` csharp
+public interface ISubscriptionStorage
+{
+    /// <summary>
+    /// Gets all destination addresses for the given topic
+    /// </summary>
+    Task<string[]> GetSubscriberAddresses(string topic);
+
+    /// <summary>
+    /// Registers the given <paramref name="subscriberAddress"/> as a subscriber of the given topic
+    /// </summary>
+    Task RegisterSubscriber(string topic, string subscriberAddress);
+
+    /// <summary>
+    /// Unregisters the given <paramref name="subscriberAddress"/> as a subscriber of the given topic
+    /// </summary>
+    Task UnregisterSubscriber(string topic, string subscriberAddress);
+
+    /// <summary>
+    /// Gets whether the subscription storage is centralized and thus supports bypassing the usual subscription request
+    /// (in a fully distributed architecture, a subscription is established by sending a <see cref="SubscribeRequest"/>
+    /// to the owner of a given topic, who then remembers the subscriber somehow - if the subscription storage is
+    /// centralized, the message exchange can be bypassed, and the subscription can be established directly by
+    /// having the subscriber register itself)
+    /// </summary>
+    bool IsCentralized { get; }
+}
+``` 
+
+
 ``` csharp
 internal class FileSystemSubscriptionStorage : ISubscriptionStorage
-    {
-        private readonly string folderPath;
+{
+    private readonly string folderPath;
 
         public bool IsCentralized => true;
 
