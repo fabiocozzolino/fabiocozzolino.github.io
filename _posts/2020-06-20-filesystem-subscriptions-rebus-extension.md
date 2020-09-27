@@ -89,8 +89,22 @@ public Task RegisterSubscriber(string topic, string subscriberAddress)
 }
 ```
 
-In this method, first of all we check if the directory correctly exists, otherwise we'll create it. 
+The `RegisterSubscriber` method accept two parameters: `topic` and `subscriberAddress`. In our implementation, we are going to create a folder for each topic and then a file for each subscriber. Both will be created by using a simple hash, so we can easily get a correct path name avoiding wrong chars. 
+The file will be a simple text file with the clear `subscriberAddress`.
 
+
+public Task<string[]> GetSubscriberAddresses(string topic)
+        {	        {
+            return Task.Run(() =>	            return Task.Run(() =>
+            {	            {
+                var topicPath = Path.Combine(folderPath, Hash(topic));	                var topicPath = Path.Combine(folderPath, Hash(topic));
+                if (!Directory.Exists(topicPath))	                if (!Directory.Exists(topicPath))
+                {	                {
+                    return new string[0];	                    return new string[0];
+                }	                }
+                return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();	                return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();
+            });	            });
+        }	        }
 
 
 
