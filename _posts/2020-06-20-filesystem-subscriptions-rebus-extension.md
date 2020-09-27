@@ -130,7 +130,28 @@ public Task UnregisterSubscriber(string topic, string subscriberAddress)
 ```
 
 # Using the FileSystemSubscriptionStorage
+Following the Configuration API patterns, we'll develop an extensions method to configure the `FileSystemSubscriptionStorage`:
+``` csharp
+public static class FileSystemSubscriptionStorageConfigurationExtensions
+{
+    public static void UseFileSystem(this StandardConfigurer<ISubscriptionStorage> configurer, string folderPath)
+    {
+        configurer.Register(context =>
+        {
+            return new FileSystemSubscriptionStorage(folderPath);
+        });
+    }
+}
+```
 
+Then, in the configuration section, we'll use it in this way:
+``` csharp
+adapter = new BuiltinHandlerActivator();
+
+Configure.With(adapter)
+    .Subscriptions(s => s.UseFileSystem(subscriptionsPath))
+    .Start();
+```
 
 # Conclusion
 As we have seen, Rebus, like others service bus, offers many different extensible ways. 
