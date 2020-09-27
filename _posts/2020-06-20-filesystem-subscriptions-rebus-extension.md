@@ -92,60 +92,47 @@ public Task RegisterSubscriber(string topic, string subscriberAddress)
 The `RegisterSubscriber` method accept two parameters: `topic` and `subscriberAddress`. In our implementation, we are going to create a folder for each topic and then a file for each subscriber. Both will be created by using a simple hash, so we can easily get a correct path name avoiding wrong chars. 
 The file will be a simple text file with the clear `subscriberAddress`.
 
-
+The `GetSubscriberAddresses` method, instead, retrieve the list of subscribers based on input topic. So, we could simply read all files in a folder to get the full list:
+``` csharp
 public Task<string[]> GetSubscriberAddresses(string topic)
-        {	        {
-            return Task.Run(() =>	            return Task.Run(() =>
-            {	            {
-                var topicPath = Path.Combine(folderPath, Hash(topic));	                var topicPath = Path.Combine(folderPath, Hash(topic));
-                if (!Directory.Exists(topicPath))	                if (!Directory.Exists(topicPath))
-                {	                {
-                    return new string[0];	                    return new string[0];
-                }	                }
-                return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();	                return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();
-            });	            });
-        }	        }
-
-
-
-what will happens if we change the message? Let me explore the different ways we can break the contract!
-
-# Adding new fields
-In the brand new version of our service we need to carry on author information in the BookRequest message. To do that, we add a new message called Author and a new author field:
-
-```
-message BookRequest {
-  string title = 1;
-  string description = 2;
-  Author author = 3;
-}
-
-message Author {
-  string firstName = 1;
-  string lastName = 2;
+{
+    return Task.Run(() =>
+    {
+        var topicPath = Path.Combine(folderPath, Hash(topic));
+        if (!Directory.Exists(topicPath))
+        {
+            return new string[0];
+        }
+        return Directory.GetFiles(topicPath, "*.subscriber").Select(f => File.ReadAllText(f)).ToArray();
+    });
 }
 ```
 
-Adding new fields will not break the contract, so all the previusly generated clients will still work fine! The new fields will simply have their default value. Note that fields are optional by default, but you can declare them mandatory by using the keyword `required`.
-**The most important thing is not the field name, but only the field number**. Preserve it, don't change the field types, and your contract will not be broken.
+last, but not least, the `UnregisterSubscriber` will delete the required `subscriberAddress` from the input `topic`:
+``` csharp
+public Task UnregisterSubscriber(string topic, string subscriberAddress)
+{
+    return Task.Run(() =>
+    {
+        var topicPath = Path.Combine(folderPath, Hash(topic));
+        if (!Directory.Exists(topicPath))
+        {
+            Directory.CreateDirectory(topicPath);
+        }
+        
+        var subscriberAddressFile = Path.Combine(topicPath, Hash(subscriberAddress) + ".subscriber");
+        if (File.Exists(subscriberAddressFile))
+        {
+            File.Delete(subscriberAddressFile);
+        }
+    });
+}
+```
 
-> **_NOTE:_** The message fields name or their order are not important. Each field in the message definition has a unique field number, used to identify your field in the message binary format. Don't change it in live environment, it ill break the contract!
+# Using the FileSystemSubscriptionStorage
 
-# Remove a field
-We can remove a field from a message? Obviusly we can do it, but all the old clients still continue to send unnecessary data. Note that if a client send an unexpected field, the server will ignore it without throwing exception.
-
-You need to establish a plan to softly replace the property with the new one:
-1. Introduce the new field int the message contract and leave the old field
-2. In the next release, introduce a warning when old client still doesn't send new field
-3. Finaly, two release after new field introduction, remove the old field and accept value only from the new field
-
-Obviously you could adapt the plan as you wish!
-Note that if you want to use a new field name without change its type or order, do it, no one will notice.
 
 # Conclusion
-Things can change and your gRPC service must evolve. Don't worry, do it carefully.
+As we have seen, Rebus, like others service bus, offers many different extensible ways. 
 
 Enjoy!
-
---------
-check full code on [github](https://github.com/fabiocozzolino/samples/tree/master/BookshelfService)
