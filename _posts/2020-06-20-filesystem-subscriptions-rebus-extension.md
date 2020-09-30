@@ -154,6 +154,6 @@ Configure.With(adapter)
 ```
 
 # Conclusion
-As we have seen, Rebus, like others service bus, offers many different extensible ways. 
+In this post we have explored one way to extend Rebus. Today, a framework with extensibility built in mind is a great starting point. You can use it as is, or you can join the wonderful community and extend it.
 
 Enjoy!
