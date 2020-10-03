@@ -1,7 +1,7 @@
 ---
 published: false
 title: Using OAuth2 to authenticate your microservice
-date: 2020-06-20T08:30:00.000Z
+date: 2020-10-03T08:30:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /filesystem-subscriptions-rebus-extension/
