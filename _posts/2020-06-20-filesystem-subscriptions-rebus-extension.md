@@ -8,6 +8,7 @@ permalink: /filesystem-subscriptions-rebus-extension/
 tags:
   - .NET
   - Architecture
+  - Bus
 ---
 Today I would like to talk about Rebus, a simple and lean message bus implementation for .NET. Originally developed by Mogens Heller Grabe and supported by the community, Rebus is robust and works well with a minimum level of configuration, but its main strength is extensibility. With this in mind, Rebus offers many ways to customize things like:
 
