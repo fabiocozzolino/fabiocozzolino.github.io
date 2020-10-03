@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: A FileSystem subscriptions manager, your first Rebus extension
 date: 2020-06-20T08:30:00.000Z
 author: fabiocozzolino
