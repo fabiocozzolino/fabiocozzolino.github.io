@@ -12,6 +12,10 @@ tags:
 ---
 JWT token is slightly becoming the new standard for security. One of the most used scenario is with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants, defined in [RFC 7523](https://tools.ietf.org/html/rfc7523).
 
+# Introduction to Polly
+Polly is a free library that helps in case of retry scenarios. If you needs to 
+
+
 
 As you know, security is a first-class citizen. You must think about it in the first phase of your architecture design. 
 
