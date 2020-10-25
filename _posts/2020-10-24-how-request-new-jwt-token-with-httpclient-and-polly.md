@@ -13,7 +13,15 @@ tags:
 JWT token is slightly becoming the new standard for security. One of the most used scenario is with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants, defined in [RFC 7523](https://tools.ietf.org/html/rfc7523).
 
 # Introduction to Polly
-Polly is a free library that helps in case of retry scenarios. If you needs to 
+Polly, as declared in the official repository, is a .NET resilience and transient-fault-handling library that allows developers to express policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback in a fluent and thread-safe manner. This means that you can define your own policy to retrieve a token
+
+``` csharp
+var client = new HttpClient()
+await client.GetAsync("http://sampleuri.com/").RetryAsync(5);
+``` 
+
+The `RetryAsync` method 
+
 
 
 
