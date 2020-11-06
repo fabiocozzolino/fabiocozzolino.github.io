@@ -13,7 +13,7 @@ Model-View-ViewModel is a widely used architectural pattern that helps you to se
 The following schema show how the View, the ViewModel and the Model interact in the MVVM architecture:
 
 <p align="center">
-  <img src="https://i-msdn.sec.s-msft.com/dynimg/IC564167.png"><br/>
+  <img src="/assets/img/mvvm.png"><br/>
   <b>source: </b>https://msdn.microsoft.com/en-us/library/hh848246.aspx<br>
 </p>
 In this post, we'll see how the MVVM starts the navigation in a straightforward approach, based on the assumption that navigation from ViewModel is a "request of navigation". The "request of navigation" is sent to the View, the real executor, by using a set of specific delegates.
