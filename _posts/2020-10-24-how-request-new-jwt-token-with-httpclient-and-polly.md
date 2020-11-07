@@ -15,7 +15,7 @@ JWT token is slightly becoming the new standard for security. One of the most us
 # How to use Polly
 Polly, as declared in the official repository, is a .NET resilience and transient-fault-handling library that allows developers to express policies such as Retry, Circuit Breaker, Timeout, Bulkhead Isolation, and Fallback in a fluent and thread-safe manner. This means that you can define your own policy to invoke a service.
 
-In our scenario, we are going to use Polly to handle the 401 Unauthorized error and request a new token. When you make a HTTP request versus a protected REST API, 
+In our scenario, the idea is to use Polly to handle the 401 Unauthorized error and request a new token. First of all, we'll create a new Policy
 
 ``` csharp
 var client = new HttpClient()
