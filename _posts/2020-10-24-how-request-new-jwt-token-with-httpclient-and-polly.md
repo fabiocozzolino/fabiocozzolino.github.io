@@ -33,8 +33,9 @@ private AsyncRetryPolicy<HttpResponseMessage> CreateTokenRetrieverPolicy () {
 }
 ``` 
 
-The `TokenRetriever` class code is omitted for brevity.
+We'll pass a method delegate as parameter of the `HandleResult` to define the rules useful to fire the `RetryAsync` action. Here, we'll define the delegate method that is responsible to request the token every times it is needed. 
 
+The `TokenRetriever` class code is omitted for brevity. 
 Now, we can use the policy fot a GET call in this way:
 
 ``` csharp
