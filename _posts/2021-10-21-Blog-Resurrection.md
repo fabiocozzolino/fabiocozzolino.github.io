@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Blog Resurrection and priorities
 date: 2021-12-21T21:30:00.000Z
 author: fabiocozzolino
