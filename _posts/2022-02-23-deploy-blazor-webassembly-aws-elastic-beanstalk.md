@@ -13,7 +13,10 @@ tags:
 ---
 This post is the first of a new series dedicated to .NET on AWS. Maybe not everyone knows that .NET is a first-class citizen on AWS. Just after the Java SDK, the .NET SDK was released in early 2010.
 
-In this post, we are going to explore one of the alternatives ways to deploy a .NET web application in AWS: Blazor WebAssembly on Elastic Beanstalk.
+In this post, we are going to explore one of the alternatives ways to deploy a Blazor WebAssembly application on AWS Elastic Beanstalk. And we are going to do that by using GitHub as repository and AWS Pipeline to retrieve source, build the project, create the necessary artifacts, and then deploy it to the Beanstalk project. 
+
+# Create the AWS Elastic Beanstalk 
+First of all, we'll create the Beanstalk project that will be the application hosting. 
 
 
 It's been a really long time from my [last post](https://www.fabiocozzolino.eu/filesystem-subscriptions-rebus-extension/). Many things are changed in my personal life: my son was born on march (WOW!).
