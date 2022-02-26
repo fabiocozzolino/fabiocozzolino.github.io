@@ -97,6 +97,12 @@ Be sure that in the _Buildspec_ section, the _Use a buildspec file_ option is al
   <img src="/assets/img/blazoraws_pipeline_9.png" alt="Create a new environment">
 </p>
 
+To finalize the pipeline, create the deploy stage:
+
+<p align="center">
+  <img src="/assets/img/blazoraws_pipeline_10.png" alt="Create a new environment">
+</p>
+
 
 # Configure the Blazor project
 
