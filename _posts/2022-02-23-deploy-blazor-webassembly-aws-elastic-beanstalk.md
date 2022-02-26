@@ -73,6 +73,30 @@ Click on _Install a new app_ to install _AWS Connector for GitHub_ on your GitHu
   <img src="/assets/img/blazoraws_pipeline_5.png" alt="Create a new environment">
 </p>
 
+Now you can complete the GitHub source configuration by selecting the Repository and the Branch name and clicking to _Next_:
+
+<p align="center">
+  <img src="/assets/img/blazoraws_pipeline_6.png" alt="Create a new environment">
+</p>
+
+In the build stage, select _AWS CodeBuild_, set your preferred region, and create a new build project by clicking on _Create project_:
+
+<p align="center">
+  <img src="/assets/img/blazoraws_pipeline_7.png" alt="Create a new environment">
+</p>
+
+Here, after setting the _Project name_, go to the _Environment_ section and choose your preferred operating _Windows Server 2019_ as operating system, as you can see in the image below:
+
+<p align="center">
+  <img src="/assets/img/blazoraws_pipeline_8.png" alt="Create a new environment">
+</p>
+
+Be sure that in the _Buildspec_ section, the _Use a buildspec file_ option is already selected. This file will be useful to configure the build stage in the Blazor project:
+
+<p align="center">
+  <img src="/assets/img/blazoraws_pipeline_9.png" alt="Create a new environment">
+</p>
+
 
 # Configure the Blazor project
 
