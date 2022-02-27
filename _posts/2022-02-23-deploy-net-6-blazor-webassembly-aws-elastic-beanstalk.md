@@ -127,17 +127,17 @@ phases:
     build:
         commands:
             - dotnet build -c Release ./BlazorOnAWS.csproj
-            - dotnet publish -o deployfolder
+            - dotnet publish -o dist
             
 artifacts:
     files:
-        - deployfolder/**/*
+        - dist/**/*
         - aws-windows-deployment-manifest.json
 ```
 
 The above file consists of two main parts: the phase definition and the artifact output. In the phase definition, we first need to be sure that the latest .NET versions is already installed. Unfortunately, the images used in AWS CodeBuild don't currently support .NET 6. Therefore, we need to use the `dotnet-install.sh` command to install it just before the build commands. For more information about the script, see [this page](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script).
-After the installation phase is complete, the build phase runs the 'dotnet build' and the `dotnet publish` commands and copies the output to the `deployfolder`, the custom output folder.
-The final step is to create a package with the output from the `deployfolder/**/*` directory and the `aws-windows-deployment-manifest.json` file, which the Elastic Beanstalk Windows container reads to determine how to deploy the application. Here's the content of the file I used in my example:
+After the installation phase is complete, the build phase runs the `dotnet build` and the `dotnet publish` commands and copies the output to the `dist`, the custom output folder.
+The final step is to create a package with the output from the `dist/**/*` directory and the `aws-windows-deployment-manifest.json` file, which the Elastic Beanstalk Windows container reads to determine how to deploy the application. Here's the content of the file I used in my example:
 
 ``` json
 {
@@ -147,7 +147,7 @@ The final step is to create a package with the output from the `deployfolder/**/
         {
             "name": "test-dotnet-core",
             "parameters": {
-                "appBundle": "deployfolder",
+                "appBundle": "dist",
                 "iisPath": "/",
                 "iisWebSite": "Default Web Site"
             }
@@ -158,6 +158,8 @@ The final step is to create a package with the output from the `deployfolder/**/
 ```
 
 More info about the file specification are available [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-beanstalk-custom-netcore.html).
+
+The generated artifact is a zip file that's stored in your S3 Bucket. When you try to open it, you'll find the file 'aws-windows-deployment-manifest.json' and the folder 'dist'. As you can see in the 'aws-windows-deployment-manifest.json' file, the 'appBundle' property is configured for the 'dist' folder.
 
 # Run the app
 Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
