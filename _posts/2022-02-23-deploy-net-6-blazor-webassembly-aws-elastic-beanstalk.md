@@ -135,7 +135,8 @@ artifacts:
         - aws-windows-deployment-manifest.json
 ```
 
-The above file is composed into two main parts: phases definition and artifacts output. In the phase definition, first we needs to install the latest .NET versions. Unfortunately, at the moment, the images used in the AWS CodeBuild doesn't still support .NET 6, so we needs to use the `dotnet-install.sh`. Then, we can proceed with the `dotnet build` and the `dotnet publish` commands and copy the output to the `deployfolder`.
+The above file is composed into two main parts: phases definition and artifacts output. In the phase definition, first we needs to install the latest .NET versions. Unfortunately, at the moment, the images used in the AWS CodeBuild doesn't still support .NET 6, so we needs to use the `dotnet-install.sh` command to install it just before the build commands. You can find more info about the script on [this page](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script).
+After the install phase was completed, the build phase execute the `dotnet build` and the `dotnet publish` commands, and copy the output to the `deployfolder`, the custom declared output folder.
 Then, the final step, requires to create a packages with the output, taken from the directory `deployfolder/**/*` and the `aws-windows-deployment-manifest.json`, which the Elastic Beanstalk Windows container reads to determine how to deploy the application. Here the file content that I have used in my sample:
 
 ``` json
