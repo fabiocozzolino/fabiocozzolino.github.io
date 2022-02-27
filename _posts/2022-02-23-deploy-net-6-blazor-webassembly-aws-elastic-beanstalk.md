@@ -157,9 +157,7 @@ The final step is to create a package with the output from the `dist/**/*` direc
 }
 ```
 
-More info about the file specification are available [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-beanstalk-custom-netcore.html).
-
-The generated artifact is a zip file that's stored in your S3 Bucket. When you try to open it, you'll find the file 'aws-windows-deployment-manifest.json' and the folder 'dist'. As you can see in the 'aws-windows-deployment-manifest.json' file, the 'appBundle' property is configured for the 'dist' folder.
+The manifest file, stored in the generated artifact as a zip file, indicate the `dist` folder as `appBundle`, giving instruction on AWS Elastic Beanstalk on how to deploy the application. More info about the file specification are available [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-beanstalk-custom-netcore.html).
 
 # Run the app
 Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
