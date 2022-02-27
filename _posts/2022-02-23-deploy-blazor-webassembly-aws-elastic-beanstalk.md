@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Deploy Blazor WebAssembly on AWS Elastic Beanstalk
 date: 2022-02-23T21:30:00.000Z
 author: fabiocozzolino
