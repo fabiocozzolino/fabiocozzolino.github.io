@@ -13,9 +13,9 @@ tags:
 ---
 > This post is the first of a new series dedicated to .NET on AWS. Maybe not everyone knows that .NET is a first-class citizen on AWS. Just after the Java SDK, the .NET SDK was one of the first SDKs released in early 2010.
 
-In this post, we are going to explore one of the alternatives ways to deploy a Blazor WebAssembly application on AWS Elastic Beanstalk. We'll use GitHub as repository and AWS CodePipeline to retrieve source, build the project, create the necessary artifacts, and then deploy it to the AWS Elastic Beanstalk instance. And project target framework is .NET 6.
+In this post, we are going to explore one of the alternative ways to deploy a Blazor WebAssembly application on AWS Elastic Beanstalk. We'll use GitHub as a repository and AWS CodePipeline to retrieve the source code, build the project, create the necessary artifacts, and then deploy it to the AWS Elastic Beanstalk instance. And project target framework is .NET 6.
 
-Before going in the different steps, just few words about the AWS services we are going to use:
+Before going into the different steps, just a few words about the AWS services we are going to use:
 * AWS Elastic Beanstalk: an easy-to-use service for deploying and scaling web applications and services. This means that we can simply work on our code and the engine automatically handles the environment stuff needed to successfully execute the application, like deployment, capacity, load balancing, auto-scaling, and things like that. If you prefer, you can also modify all the environment settings to better fit your needs. More info at the [official page](https://aws.amazon.com/elasticbeanstalk/?nc1=h_ls).
 * AWS CodePipeline: a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service. More info at the [official page](https://aws.amazon.com/codepipeline/?nc1=h_ls).
 
@@ -26,7 +26,7 @@ First of all, we'll create the Beanstalk project that will be the application ho
   <img src="/assets/img/blazoraws1.png" alt="Select the AWS Elastic Beanstalk">
 </p>
 
-On Elastic Beanstalk section, to run our Blazor application on AWS, we need to create a new environment based on Windows. So, first click on _Create a new environment_:
+In the Elastic Beanstalk section, to run our Blazor application on AWS, we need to create a new environment based on Windows. In order to do that, click on _Create a new environment_:
 
 <p align="center">
   <img src="/assets/img/blazoraws2.png" alt="Create a new environment">
@@ -44,10 +44,10 @@ and finally, after setting the name, we need to set the _.NET on Windows Server_
   <img src="/assets/img/blazoraws5.png" alt="Select the environment platform">
 </p>
 
-Be sure to keep selected _Sample application_ on _Application code_, this will be a good starting point to have a preconfigured environment, and then click on _Create environment_ button at the bottom of the page. After few minutes, the environment is ready and we can go with the next step: build the pipeline.
+Be sure to keep selected _Sample application_ on _Application code_, this will be a good starting point to have a preconfigured environment and then click on _Create environment_ button at the bottom of the page. After a few minutes, the environment is ready and we can go with the next step: build the pipeline.
 
 # Build with AWS CodePipeline
-With _CodePipeline_ you can create your own build pipeline on AWS, getting the source from GitHub and deploy all the artifacts to Elastic Beanstalk. So, now go to the CodePipeline and click on _Create pipeline_ button.
+With _CodePipeline_ you can create your build pipeline on AWS, get the source from GitHub, and deploy all the artifacts to _Elastic Beanstalk_. So, now go to the _CodePipeline_ and click on _Create pipeline_ button:
 
 <p align="center">
   <img src="/assets/img/blazoraws_pipeline_1.png" alt="Create the pipeline">
@@ -66,7 +66,7 @@ Select _GitHub (Version 2)_ as _Source provider_. Then create a new GitHub conne
 </p>
 
 ## Configure the GitHub connection
-To use GitHub as a source, we first needs to create a connection to our account. So, in this page, define a name for the new connection and click on _Connect to GitHub_
+To use GitHub as a source, we first need to create a connection to our account. So, in this page, define a name for the new connection and click on _Connect to GitHub_
 
 <p align="center">
   <img src="/assets/img/blazoraws_pipeline_4.png" alt="Set the connection name">
@@ -91,7 +91,7 @@ After the source repository definition, we need to create the build stage. In ou
   <img src="/assets/img/blazoraws_pipeline_7.png" alt="Use a buildspec file">
 </p>
 
-Here, after setting the _Project name_, go to the _Environment_ section and choose _Ubuntu_ as operating system, as you can see in the image below:
+Here, after setting the _Project name_, go to the _Environment_ section and choose _Ubuntu_ as the operating system, as you can see in the image below:
 
 <p align="center">
   <img src="/assets/img/blazoraws_pipeline_8.png" alt="Create the deploy stage">
