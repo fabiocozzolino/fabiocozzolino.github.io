@@ -44,7 +44,7 @@ and finally, after setting the name, we need to set the _.NET on Windows Server_
   <img src="/assets/img/blazoraws5.png" alt="Select the environment platform">
 </p>
 
-Be sure to keep selected _Sample application_ on _Application code_, this will be a good starting point to have a preconfigured environment and then click on _Create environment_ button at the bottom of the page. After a few minutes, the environment is ready and we can go with the next step: build the pipeline.
+Be sure to keep selected _Sample application_ on _Application code_, this will be a good starting point to have a pre-configured environment, and then click on _Create environment_ button at the bottom of the page. After a few minutes, the environment is ready and we can go with the next step: build the pipeline.
 
 # Build with AWS CodePipeline
 With _CodePipeline_ you can create your build pipeline on AWS, get the source from GitHub, and deploy all the artifacts to _Elastic Beanstalk_. So, now go to the _CodePipeline_ and click on _Create pipeline_ button:
@@ -81,33 +81,33 @@ Click on _Install a new app_ to install _AWS Connector for GitHub_ on your GitHu
 Now you can complete the GitHub source configuration by selecting the Repository and the Branch name and clicking to _Next_:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_pipeline_6.png" alt="Select the operating system for build">
+  <img src="/assets/img/blazoraws_pipeline_6.png" alt="Configure GitHub repository and branch">
 </p>
 
 ## Setting up the build stage
 After the source repository definition, we need to create the build stage. In our project, we choose to select _AWS CodeBuild_ as the engine to use for the build. Set your preferred region and create a new build project by clicking on _Create project_:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_pipeline_7.png" alt="Use a buildspec file">
+  <img src="/assets/img/blazoraws_pipeline_7.png" alt="Create the build project">
 </p>
 
 Here, after setting the _Project name_, go to the _Environment_ section and choose _Ubuntu_ as the operating system, as you can see in the image below:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_pipeline_8.png" alt="Create the deploy stage">
+  <img src="/assets/img/blazoraws_pipeline_8.png" alt="Select the operating system for build">
 </p>
 
 Be sure that in the _Buildspec_ section, the _Use a buildspec file_ option is already selected. This file will be useful to configure the build stage in the Blazor project. We'll talk later about the `buildspec.yml`:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_pipeline_9.png" alt="Create a new environment">
+  <img src="/assets/img/blazoraws_pipeline_9.png" alt="Use a buildspec file">
 </p>
 
 ## Define the Deploy stage
 At the end of the pipeline, all the artifact needs to be deployed in our environment. So, configure the deploy stage to AWS Elastic Beanstalk as you can see in the image below:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_pipeline_10.png" alt="Create a new environment">
+  <img src="/assets/img/blazoraws_pipeline_10.png" alt="Create the deploy stage">
 </p>
 
 
@@ -135,9 +135,9 @@ artifacts:
         - aws-windows-deployment-manifest.json
 ```
 
-The above file is composed into two main parts: phases definition and artifacts output. In the phase definition, first we needs to install the latest .NET versions. Unfortunately, at the moment, the images used in the AWS CodeBuild doesn't still support .NET 6, so we needs to use the `dotnet-install.sh` command to install it just before the build commands. You can find more info about the script on [this page](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script).
+The above file is composed of two main parts: phases definition and artifacts output. In the phase definition, first, we need to install the latest .NET versions. Unfortunately, at the moment, the images used in the AWS CodeBuild don't still support .NET 6, so we need to use the `dotnet-install.sh` command to install it just before the build commands. You can find more info about the script on [this page](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script).
 After the install phase was completed, the build phase execute the `dotnet build` and the `dotnet publish` commands, and copy the output to the `deployfolder`, the custom declared output folder.
-Then, the final step, requires to create a packages with the output, taken from the directory `deployfolder/**/*` and the `aws-windows-deployment-manifest.json`, which the Elastic Beanstalk Windows container reads to determine how to deploy the application. Here the file content that I have used in my sample:
+Then, the final step requires creating a package with the output, taken from the directory `deployfolder/**/*` and the `aws-windows-deployment-manifest.json`, which the Elastic Beanstalk Windows container reads to determine how to deploy the application. Here is the file content that I have used in my sample:
 
 ``` json
 {
@@ -163,7 +163,7 @@ More info about the file specification are available [here](https://docs.aws.ama
 Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_result_1.png" alt="Create a new environment">
+  <img src="/assets/img/blazoraws_result_1.png" alt="Blazor app running on AWS">
 </p>
 
 As always, feedback are welcome!
