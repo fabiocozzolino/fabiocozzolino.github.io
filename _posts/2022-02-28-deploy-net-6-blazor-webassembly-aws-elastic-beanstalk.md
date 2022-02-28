@@ -1,7 +1,7 @@
 ---
 published: true
 title: Deploy .NET 6 Blazor WebAssembly on AWS Elastic Beanstalk
-date: 2022-02-23T21:30:00.000Z
+date: 2022-02-28T08:00:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/
