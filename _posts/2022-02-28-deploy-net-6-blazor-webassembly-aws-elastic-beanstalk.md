@@ -9,7 +9,7 @@ tags:
   - Blazor
   - WebAssembly
   - AWS
-  - Beanstalk
+  - Elastic Beanstalk
 ---
 This post is the first in a new series looking at .NET on AWS. Why AWS? The answer is ... why not! Perhaps not everyone knows that .NET is a first class citizen on AWS. Right after the Java SDK, .NET SDK was one of the first SDKs released in early 2010.
 
