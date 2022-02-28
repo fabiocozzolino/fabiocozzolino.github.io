@@ -166,4 +166,4 @@ Now all the things are ready. Based on our configuration, the pipeline runs afte
   <img src="/assets/img/blazoraws_result_1.png" alt="Blazor app running on AWS">
 </p>
 
-As always, feedback are welcome!
+As always, any feedback is welcome!
