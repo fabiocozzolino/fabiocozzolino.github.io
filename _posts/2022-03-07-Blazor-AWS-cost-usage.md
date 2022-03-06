@@ -11,7 +11,7 @@ tags:
   - AWS
   - Elastic Beanstalk
 ---
-In the [latest post](/blazor-aws-elastic-beanstalk-cost-usage/) we explore a possibile way to deploy a Blazor WebAssembly. Now, I would like to check how much will cost the solution.
+In the [latest post](/blazor-aws-elastic-beanstalk-cost-usage/) we explore a possibile way to deploy a Blazor WebAssembly. Now, I would like to check how much will cost the solution and look at the AWS services.
 
 The solution, requires usage of different services:
 - CodeBuild
@@ -23,7 +23,7 @@ The solution, requires usage of different services:
 With AWS Cost Management we can explore the costs and analyze it.
 
 # CodeBuild costs
-The CodeBuild cost for a Linux build machine is calculated in 0,01 euro cents per minute of execution. So if your run 3 release pipeline in a day, and each pipeline requires 4 minutes to complete, you'll have a cost of 0,12 cents per day. An average of 2,14 in a month (considering 20 working days).
+The CodeBuild cost for a Linux build machine is calculated in 0,01 euro cents per minute of execution. So if your run 3 release pipeline in a day, and each pipeline requires 4 minutes to complete, you'll have a cost of 0,12 cents per day. An average of 2,14 in a month (considering 20 working days). Not bad.
 
 # Elastic Beanstalk
 Each Elastic Beanstalk environment is based on EC2 instances and Elastic Load Balancing. The consumption is based on execution time and volume usage.
