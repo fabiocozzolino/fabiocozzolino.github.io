@@ -17,10 +17,23 @@ The solution, requires usage of different services:
 - CodeBuild
 - Elastic Beanstalk
   - EC2 Instance
-  - EC2 Elastic Load Balancer
-  - EC Others, which is composed by a cost applyed by Volume Usage
+  - Elastic Load Balancer
+  - EC2 Others, composed by Volume Usage
 
 With AWS Cost Management we can explore the costs and analyze it.
+
+# CodeBuild costs
+The CodeBuild cost for a Linux build machine is calculated in 0,01 euro cents per minute of execution. So if your run 3 release pipeline in a day, and each pipeline requires 4 minutes to complete, you'll have a cost of 0,12 cents per day. An average of 2,14 in a month (considering 20 working days).
+
+# Elastic Beanstalk
+Each Elastic Beanstalk environment is based on EC2 instances and Elastic Load Balancing. The consumption is based on execution time and volume usage.
+Each Elastic Beanstalk instance costs:
+- Cloud Compute Running: $0.064 per On Demand Windows t3.medium Instance Hour - 58.855 Hrs [$3.77]
+- EBS: $0.11 per GB-month of General Purpose SSD (gp2) provisioned storage - EU (Ireland) - 2.629 GB-Mo [0,29]
+
+Each Elastic Load Balancing
+- $0.008 per used Application load balancer capacity unit-hour (or partial hour) - 0.026 LCU-Hrs
+- $0.0252 per Application LoadBalancer-hour (or partial hour) - 59.000 Hrs
 
 
 <p align="center">
