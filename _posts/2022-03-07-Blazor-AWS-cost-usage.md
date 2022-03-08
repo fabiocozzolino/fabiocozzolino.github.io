@@ -1,6 +1,6 @@
 ---
 published: true
-title: Blazor on AWS Elastic Beanstalk: Cost usage
+title: Cost usage of Blazor on AWS Elastic Beanstalk
 date: 2022-03-07T08:00:00.000Z
 author: fabiocozzolino
 layout: post
