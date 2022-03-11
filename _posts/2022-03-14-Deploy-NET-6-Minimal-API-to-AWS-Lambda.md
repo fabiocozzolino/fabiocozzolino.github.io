@@ -1,7 +1,7 @@
 ---
 published: true
 title: Deploy .NET 6 Minimal API to AWS Lambda via GitHub
-date: 2022-03-14T08:00:00.000Z
+date: 2022-03-11T08:00:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /deploy-net-6-minimal-api-to-aws-lambda/
