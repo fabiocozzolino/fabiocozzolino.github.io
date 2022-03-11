@@ -9,16 +9,22 @@ tags:
   - .NET 6
   - Serverless
   - AWS
+  - Lambda
   - GitHub
   - DevOps
 ---
-This post is the first in a new series looking at .NET on AWS. Why AWS? The answer is ... why not! Perhaps not everyone knows that .NET is a first class citizen on AWS. Right after the Java SDK, .NET SDK was one of the first SDKs released in early 2010.
+Serverless is currently one of the most used word. Period. But, what does it means? Wikipedia say that serverless "is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers". It's important to underline that serverless don't mean "without server" because server is still used to host our applications, but in that case we don't care things like resources management, load balancing, and scalability.
 
-In this post, we will explore one of the alternative ways to deploy a Blazor WebAssembly application on AWS Elastic Beanstalk. We will use GitHub as the repository and AWS CodePipeline to retrieve the source code, build the project, generate the required artifacts, and then deploy it to the AWS Elastic Beanstalk instance. And the target framework for the project is .NET 6.
+In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
+# Toolbox
 Before we get into the steps, a few words about the AWS services we will be using:
-* AWS Elastic Beanstalk: an easy-to-use service for deploying and scaling web applications and services. This means that we can simply work on our code and the engine automatically handles the environment stuff needed to successfully execute the application, like deployment, capacity, load balancing, auto-scaling, and things like that. If you prefer, you can also modify all the environment settings to better fit your needs. More info at the [official page](https://aws.amazon.com/elasticbeanstalk/?nc1=h_ls).
-* AWS CodePipeline: a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service. More info at the [official page](https://aws.amazon.com/codepipeline/?nc1=h_ls).
+* AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers. You can trigger Lambda from over 200 AWS services and software as a service (SaaS) applications, and only pay for what you use_. More info at the [official page](https://aws.amazon.com/lambda/).
+* AWS API Gateway: _the "front door" for applications to access data, business logic, or functionality from your backend services_. Go to the [official page](https://aws.amazon.com/api-gateway/) to get more info.
+* AWS CodePipeline: _a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service_. More info at the [official page](https://aws.amazon.com/codepipeline/).
+* AWS .NET Core CLI: a set of command to create and deploy .NET-based Lambda applications. More info [here](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html).
+* GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
+* Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
 # Create the AWS Elastic Beanstalk instance
 First, we create the Beanstalk project that will host the application. In the AWS console, we can search for _Beanstalk_ and select the appropriate scope:
