@@ -1,10 +1,12 @@
 ---
-published: false
+published: true
 title: Deploy .NET 6 Minimal API to AWS Lambda via GitHub
 date: 2022-02-28T08:00:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /deploy-net-6-minimal-api-to-aws-lambda/
+header_feature_image: /assets/img/headline/Dotnet-on-AWS-1024x652.png
+header_feature_image_responsive: false
 tags:
   - .NET 6
   - Serverless
