@@ -27,7 +27,7 @@ Before we get into the steps, a few words about the AWS services we will be usin
 * GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
-# Create the AWS Elastic Beanstalk instance
+# Create the project on local machine
 First, we create the Beanstalk project that will host the application. In the AWS console, we can search for _Beanstalk_ and select the appropriate scope:
 
 <p align="center">
