@@ -28,31 +28,30 @@ Before we get into the steps, a few words about the AWS services we will be usin
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
 # Create the project on local machine
-First, we create the Beanstalk project that will host the application. In the AWS console, we can search for _Beanstalk_ and select the appropriate scope:
+To create the project on your local machine, you can use the AWS .NET Core CLI. So we first needs to install the required templates:
 
-<p align="center">
-  <img src="/assets/img/blazoraws1.png" alt="Select the AWS Elastic Beanstalk">
-</p>
+``` 
+dotnet new -i Amazon.Lambda.Templates
+``` 
 
-To run our Blazor application on AWS, we need to create a new Windows environment in the Elastic Beanstalk section. To do this, click on _Create a new environment_:
+after installing was completed, we can proceed with creating the project:
 
-<p align="center">
-  <img src="/assets/img/blazoraws2.png" alt="Create a new environment">
-</p>
+``` 
+dotnet new serverless.AspNetCoreMinimalAPI
+``` 
 
-then select _Web server environment_:
+
+
+
 
 <p align="center">
   <img src="/assets/img/blazoraws3.png" alt="Select environment tier">
 </p>
 
-and finally, after setting the name, we need to set the _.NET on Windows Server_ platform:
 
-<p align="center">
-  <img src="/assets/img/blazoraws5.png" alt="Select the environment platform">
-</p>
 
-Be sure to leave _Sample Application_ selected on _Application Code_, this is a good starting point to have a preconfigured environment, and then click the _Create environment_ button at the bottom of the page. After a few minutes the environment is ready and we can start the next step: building the pipeline.
+
+
 
 # Build with AWS CodePipeline
 With _CodePipeline_, you can create your build pipeline on AWS, pull source code from GitHub, and deploy all artifacts to _Elastic Beanstalk_. Now go to _CodePipeline_ and click the _Create Pipeline_ button:
