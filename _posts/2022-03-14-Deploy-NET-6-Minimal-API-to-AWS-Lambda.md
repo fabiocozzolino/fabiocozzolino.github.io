@@ -27,18 +27,19 @@ Before we get into the steps, a few words about the AWS services we will be usin
 * GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
-# Create the project on local machine
-To create the project on your local machine, you can use the AWS .NET Core CLI. So we first needs to install the required templates:
+# Create the .NET Lambda serverless project
+To create the .NET Lambda project, you can use the AWS .NET Core CLI. So we first needs to install the required templates:
 
 ``` 
 dotnet new -i Amazon.Lambda.Templates
 ``` 
 
-after installing was completed, we can proceed with creating the project:
+after installing was completed, we can proceed with creating the project. So, position your command line on base directory of your repository and then, by using the `serverless.AspNetCoreMinimalAPI`:
 
 ``` 
 dotnet new serverless.AspNetCoreMinimalAPI
 ``` 
+
 
 
 
