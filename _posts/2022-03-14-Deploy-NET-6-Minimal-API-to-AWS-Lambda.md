@@ -34,15 +34,17 @@ To create the .NET Lambda project, you can use the AWS .NET Core CLI. So we firs
 dotnet new -i Amazon.Lambda.Templates
 ``` 
 
-after installing was completed, we can proceed with creating the project. So, position your command line on base directory of your repository and then, by using the `serverless.AspNetCoreMinimalAPI`:
+after installing was completed, we can proceed with creating the project. So, open your command line program and go on the base directory of your repository and then, by using the `serverless.AspNetCoreMinimalAPI` and the `dotnet new` command:
 
 ``` 
 dotnet new serverless.AspNetCoreMinimalAPI
 ``` 
 
+the project is now ready. In the `Program.cs` you can change the code and implement the API that you need. The serverless template creates two specific files:
+- aws-lambda-tools-defaults.json
+- serverless.template
 
-
-
+the `aws-lambda-tools.default.json` contains all the deployment info that you can use in command line. The `serverless.template`, instead, is the CloudFormation json template to create the serverless service.
 
 
 <p align="center">
