@@ -41,10 +41,44 @@ dotnet new serverless.AspNetCoreMinimalAPI
 ``` 
 
 the project is now ready. In the `Program.cs` you can change the code and implement the API that you need. The serverless template creates two specific files:
-- aws-lambda-tools-defaults.json
-- serverless.template
+- `aws-lambda-tools-defaults.json`
+- `serverless.template`
 
-the `aws-lambda-tools.default.json` contains all the deployment info that you can use in command line. The `serverless.template`, instead, is the CloudFormation json template to create the serverless service.
+the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in command line. The `serverless.template`, instead, is the json template that allow the creation of the serverless service by using AWS CloudFormation. However, in this article we are going to use only the AWS .NET Core CLI.
+
+As seen in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we need to use the `buildspec.yml` file to build our solution by using AWS CodePipeline. Before we can proceed with the build and deploy command, we need to be sure that all the CLI are correctly installed on build machine. To do that, we first need to install the latest dotnet version, and then install, or update, the `Amazon.Lambda.Tools` by using the `dotnet tool update` command, as you can see in the following file `buildspec.yml` file:
+
+``` yaml
+version: 0.2
+
+phases:
+    install:
+        commands:
+            - /usr/local/bin/dotnet-install.sh --channel LTS
+            - dotnet tool update -g Amazon.Lambda.Tools
+            
+    build:
+        commands:
+            - dotnet lambda deploy-function mAPIonLambda --project-location ./src/mAPIonLambda/ --function-role MAPIonLAMBDA-role-v11pax7j --region eu-west-1 --function-runtime dotnet6 --config-file aws-lambda-tools-defaults.json
+```
+
+The `dotnet lambda deploy-function` is the command you can call to build, package, and deploy your AWS Lambda function written in .NET. As written above, all the options specified here can be set in the `aws-lambda-tools-defaults-json` file. Here is an example:
+
+``` json
+{
+  "profile":"default",                                                            
+  "region" : "eu-west-1",                                                           
+  "configuration" : "Release",                                                      
+  "function-runtime":"6",                                               
+  "function-memory-size" : 256,                                                     
+  "function-timeout" : 30,                                                          
+  "function-handler" : "mAPIonLambda", 
+  "s3-prefix": "mAPIonLambda/"
+}
+```
+
+
+
 
 
 <p align="center">
