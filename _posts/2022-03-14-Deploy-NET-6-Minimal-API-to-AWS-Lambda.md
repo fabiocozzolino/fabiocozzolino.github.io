@@ -80,6 +80,11 @@ The `dotnet lambda deploy-function` is the command you can call to build, packag
 Now we can push our first repository version and then start configuring our `AWS CodePipeline`.
 
 # Configuring and building the AWS CodePipeline
+In a way very similar to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), 
+
+
+
+
 With _CodePipeline_, you can create your build pipeline on AWS, pull source code from GitHub, and deploy all artifacts to _Elastic Beanstalk_. Now go to _CodePipeline_ and click the _Create Pipeline_ button:
 
 <p align="center">
