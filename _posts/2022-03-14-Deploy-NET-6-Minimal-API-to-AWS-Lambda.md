@@ -142,7 +142,25 @@ Make sure that the _Use a buildspec file_ option is already selected in the _Bui
 Since the deployment is made by the build server, we doesn't need to set the _Deploy_ stage, so we can skip this step.
 
 # Run the pipeline
-We are ready. Now we can push our code on the remote repository and start the pipeline. After some minutes, you can go on AWS Lambda console section and test your running code.
+We are ready. Now we can push our code on the remote repository and start the pipeline. At this time, you could encounter into this error message:
+
+```
+Error creating Lambda function: User: arn:aws:sts::979194342604:assumed-role/codebuild-build-service-role/AWSCodeBuild-f8262c3b-bb72-4ed2-aee4-52d6384de60d is not authorized to perform: iam:PassRole on resource: arn:aws:iam::979194342604:role/myAwesomeLambdaRole because no identity-based policy allows the iam:PassRole action
+```
+
+To solve the issue, we need to assign the `iam:PassRole` permission to the running role of codebuild. So, go to IAM > Roles, select the role created for the AWS CodeBuild service, then create a specific policy by clicking on _Add permission_ > _Create inline policy_:
+
+<p align="center">
+  <img src="/assets/img/lambda_net_addpermission.png" alt="Blazor app running on AWS">
+</p>
+
+and then select the rules as in the following image (be sure to have the target Lambda service role ARN):
+
+<p align="center">
+  <img src="/assets/img/lambda_net_inlinepolicy.png" alt="Blazor app running on AWS">
+</p>
+
+After some minutes, you can go on AWS Lambda console section and test your running code.
 
 Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
 
