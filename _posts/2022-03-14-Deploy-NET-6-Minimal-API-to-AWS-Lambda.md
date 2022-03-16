@@ -37,14 +37,16 @@ dotnet new -i Amazon.Lambda.Templates
 after installing was completed, we can proceed with creating the project. So, open your command line program and go on the base directory of your repository and then, by using the `serverless.AspNetCoreMinimalAPI` and the `dotnet new` command:
 
 ``` 
-dotnet new serverless.AspNetCoreMinimalAPI
+dotnet new serverless.AspNetCoreMinimalAPI -n myAwesomeLambda
 ``` 
 
-the project is now ready. In the `Program.cs` you can change the code and implement the API that you need. The serverless template creates two specific files:
+the project is now ready. Under the folder `src/myAwesomeLambda`, in the `Program.cs`, you'll find all the useful code to run your _Minimal API_. Obviuously, you can change the code and implement the API that you need. 
+For the purpose of this post, it is useful to look at these two specific files created by the serverless template:
+
 - `aws-lambda-tools-defaults.json`
 - `serverless.template`
 
-the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in command line. The `serverless.template`, instead, is the json template that allow the creation of the serverless service by using AWS CloudFormation. However, in this article we are going to use only the AWS .NET Core CLI.
+the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in command line to deploy the lambda function. We'll see the command line istruction later. The `serverless.template`, instead, is the json template that allows the creation of the serverless service by using AWS CloudFormation. However, in this article we are going to use only the AWS .NET Core CLI.
 
 As seen in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we need to use the `buildspec.yml` file to build our solution by using AWS CodePipeline. Before we can proceed with the build and deploy command, we need to be sure that all the CLI are correctly installed on build machine. To do that, we first need to install the latest dotnet version, and then install, or update, the `Amazon.Lambda.Tools` by using the `dotnet tool update` command, as you can see in the following file `buildspec.yml` file:
 
@@ -59,7 +61,7 @@ phases:
             
     build:
         commands:
-            - dotnet lambda deploy-function mAPIonLambda --project-location ./src/mAPIonLambda/ --function-role MAPIonLAMBDA-role-v11pax7j --region eu-west-1 --function-runtime dotnet6 --config-file aws-lambda-tools-defaults.json
+            - dotnet lambda deploy-function myAwesomeLambda --project-location ./src/myAwesomeLambda/ --function-role myAwesomeLambdaRole --region eu-west-1 --function-runtime dotnet6 --config-file aws-lambda-tools-defaults.json
 ```
 
 The `dotnet lambda deploy-function` is the command you can call to build, package, and deploy your AWS Lambda function written in .NET. As written above, all the options specified here can be set in the `aws-lambda-tools-defaults-json` file. Here is an example:
@@ -72,8 +74,8 @@ The `dotnet lambda deploy-function` is the command you can call to build, packag
   "function-runtime":"6",                                               
   "function-memory-size" : 256,                                                     
   "function-timeout" : 30,                                                          
-  "function-handler" : "mAPIonLambda", 
-  "s3-prefix": "mAPIonLambda/"
+  "function-handler" : "myAwesomeLambda", 
+  "s3-prefix": "myAwesomeLambda/"
 }
 ```
 
@@ -140,6 +142,8 @@ Make sure that the _Use a buildspec file_ option is already selected in the _Bui
 Since the deployment is made by the build server, we doesn't need to set the _Deploy_ stage, so we can skip this step.
 
 # Run the pipeline
+We are ready. Now we can push our code on the remote repository and start the pipeline. After some minutes, you can go on AWS Lambda console section and test your running code.
+
 Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
 
 <p align="center">
