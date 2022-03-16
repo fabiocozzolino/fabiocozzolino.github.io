@@ -80,12 +80,7 @@ The `dotnet lambda deploy-function` is the command you can call to build, packag
 Now we can push our first repository version and then start configuring our `AWS CodePipeline`.
 
 # Configuring and building the AWS CodePipeline
-In a way very similar to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), 
-
-
-
-
-With _CodePipeline_, you can create your build pipeline on AWS, pull source code from GitHub, and deploy all artifacts to _Elastic Beanstalk_. Now go to _CodePipeline_ and click the _Create Pipeline_ button:
+In a very similar way to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we are going to create our _AWS CodePipeline_ to build and publish the .NET AWS Lambda function and publish. The _AWS CodePipeline_ will pull the source code from GitHub and pass the artifact to the build server. So, first of all, we need to go to _CodePipeline_ and click the _Create Pipeline_ button:
 
 <p align="center">
   <img src="/assets/img/blazoraws_pipeline_1.png" alt="Create the pipeline">
@@ -135,69 +130,16 @@ Here, after setting the _Project name_, go to the _Environment_ section and choo
   <img src="/assets/img/blazoraws_pipeline_8.png" alt="Select the operating system for build">
 </p>
 
-Make sure that the _Use a buildspec file_ option is already selected in the _Buildspec_ section. This file is needed for configuring the build phase in the Blazor project. We'll talk about the `buildspec.yml` file later:
+Make sure that the _Use a buildspec file_ option is already selected in the _Buildspec_ section. As above specified, we are going to use the `buildspec.yml`:
 
 <p align="center">
   <img src="/assets/img/blazoraws_pipeline_9.png" alt="Use a buildspec file">
 </p>
 
 ## Define the Deploy stage
-At the end of the pipeline, all artifacts in our environment must be deployed. So, configure the deployment phase for AWS Elastic Beanstalk, as you can see in the figure below:
+Since the deployment is made by the build server, we doesn't need to set the _Deploy_ stage, so we can skip this step.
 
-<p align="center">
-  <img src="/assets/img/blazoraws_pipeline_10.png" alt="Create the deploy stage">
-</p>
-
-
-# Configure the Blazor project
-The final step is project configuration. AWS CodeBuild, which is used by AWS CodePipeline, requires a set of specific instructions to build your project. All of these instructions must be written in the `buildspec.yml`, a build specification file. This file must be located in the root directory of your source code. For more information about this file, see the [following page](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html).
-
-To build a Blazor project, I found the following 'buildspec.yml' very useful and simple:
-
-``` yaml
-version: 0.2
-
-phases:
-    install:
-        commands:
-            - /usr/local/bin/dotnet-install.sh --channel LTS
-            
-    build:
-        commands:
-            - dotnet build -c Release ./BlazorOnAWS.csproj
-            - dotnet publish -o dist
-            
-artifacts:
-    files:
-        - dist/**/*
-        - aws-windows-deployment-manifest.json
-```
-
-The above file consists of two main parts: the phase definition and the artifact output. In the phase definition, we first need to be sure that the latest .NET versions is already installed. Unfortunately, the images used in AWS CodeBuild don't currently support .NET 6. Therefore, we need to use the `dotnet-install.sh` command to install it just before the build commands. For more information about the script, see [this page](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-install-script).
-After the installation phase is complete, the build phase runs the `dotnet build` and the `dotnet publish` commands and copies the output to the `dist`, the custom output folder.
-The final step is to create a package with the output from the `dist/**/*` directory and the `aws-windows-deployment-manifest.json` file, which the Elastic Beanstalk Windows container reads to determine how to deploy the application. Here's the content of the file I used in my example:
-
-``` json
-{
-    "manifestVersion": 1,
-    "deployments": {
-        "aspNetCoreWeb": [
-        {
-            "name": "test-dotnet-core",
-            "parameters": {
-                "appBundle": "dist",
-                "iisPath": "/",
-                "iisWebSite": "Default Web Site"
-            }
-        }
-        ]
-    }
-}
-```
-
-The manifest file, stored in the generated artifact as a zip file, indicate the `dist` folder as `appBundle`, giving instruction on AWS Elastic Beanstalk on how to deploy the application. More info about the file specification are available [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-beanstalk-custom-netcore.html).
-
-# Run the app
+# Run the pipeline
 Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
 
 <p align="center">
