@@ -14,7 +14,7 @@ tags:
   - GitHub
   - DevOps
 ---
-Serverless is currently one of the most used word. Period. But, what does it means? Wikipedia say that serverless "is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers". It's important to underline that serverless don't mean "without server" because server is still used to host our applications, but in that case we don't care things like resources management, load balancing, and scalability.
+Serverless currently is one of the most used word. Period. But, what does it means? Wikipedia say that serverless "is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers". It's important to underline that serverless don't mean "without server" because server is still used to host our applications, but in that case we don't care things like resources management, load balancing, and scalability.
 
 In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
@@ -162,10 +162,23 @@ and then select the rules as in the following image (be sure to have the target 
 
 After some minutes, you can go on AWS Lambda console section and test your running code.
 
-Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Elastic Beanstalk instance, click on the instance urls, and enjoy your Blazor WASM app:
+# Test your Lambda function
+Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to your Lambda function instance and check if it is running fine.
+In AWS console, you can also test your Lambda function. Simply click on Test tab and select your preferred template from the list:
 
 <p align="center">
-  <img src="/assets/img/blazoraws_result_1.png" alt="Blazor app running on AWS">
+  <img src="/assets/img/lambda_net_testtemplate.png" alt="Blazor app running on AWS">
 </p>
+
+The most simpler way to test the Lambda function is by using the _API Gateway AWS Proxy_. Our Lambda function is built to reply to HTTP requests. You can do it internally, or by calling from an API Gateway. To test the call, we must use a JSON document and set all the attributes useful to execute the request. This is a sample document we can use to test invoking the HTTP GET method:
+
+``` json
+{
+  "body": "",
+  "resource": "/{proxy+}",
+  "path": "/",
+  "httpMethod": "GET"
+}
+```
 
 As always, any feedback is welcome!
