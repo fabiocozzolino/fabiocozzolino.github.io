@@ -14,18 +14,19 @@ tags:
   - GitHub
   - DevOps
 ---
-Serverless currently is one of the most used word. Period. But, what does it means? Wikipedia say that serverless "is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers". It's important to underline that serverless don't mean "without server" because server is still used to host our applications, but in that case we don't care things like resources management, load balancing, and scalability.
+Serverless currently is one of the most used word. Period. But, what does it means? Wikipedia say that serverless "is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers". It's important to underline that serverless doesn't mean "without server" because server is still used to host our applications, but in that case we don't care things like resources management, load balancing, and scalability.
 
 In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
 # Toolbox
-Before we get into the steps, a few words about the AWS services we will be using:
-* AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers. You can trigger Lambda from over 200 AWS services and software as a service (SaaS) applications, and only pay for what you use_. More info at the [official page](https://aws.amazon.com/lambda/).
-* AWS API Gateway: _the "front door" for applications to access data, business logic, or functionality from your backend services_. Go to the [official page](https://aws.amazon.com/api-gateway/) to get more info.
+Before we get into the steps, a few words about the AWS services and tools we are going to use:
+* AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers_. One of the most important point is that you _only pay for what you use_, and in that case means that you only pay for the execution time. More info at the [official page](https://aws.amazon.com/lambda/).
 * AWS CodePipeline: _a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service_. More info at the [official page](https://aws.amazon.com/codepipeline/).
 * AWS .NET Core CLI: a set of command to create and deploy .NET-based Lambda applications. More info [here](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html).
 * GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
+
+So, now let's start and see what happens.
 
 # Create the .NET Lambda serverless project
 To create the .NET Lambda project, you can use the AWS .NET Core CLI. So we first needs to install the required templates:
