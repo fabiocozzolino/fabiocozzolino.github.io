@@ -1,7 +1,7 @@
 ---
-published: false
+published: true
 title: Deploy .NET 6 Minimal API to AWS Lambda via GitHub
-date: 2022-03-14T08:00:00.000Z
+date: 2022-03-21T08:00:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /deploy-net-6-minimal-api-to-aws-lambda/
@@ -151,13 +151,13 @@ Error creating Lambda function: User: arn:aws:sts::979194342604:assumed-role/cod
 To solve the issue, we need to assign the `iam:PassRole` permission to the running role of codebuild. So, go to IAM > Roles, select the role created for the AWS CodeBuild service, then create a specific policy by clicking on _Add permission_ > _Create inline policy_:
 
 <p align="center">
-  <img src="/assets/img/lambda_net_addpermission.png" alt="Blazor app running on AWS">
+  <img src="/assets/img/lambda_net_addpermission.png" alt="Add permission">
 </p>
 
 and then select the rules as in the following image (be sure to have the target Lambda service role ARN):
 
 <p align="center">
-  <img src="/assets/img/lambda_net_inlinepolicy.png" alt="Blazor app running on AWS">
+  <img src="/assets/img/lambda_net_inlinepolicy.png" alt=".NET on Lambda inline policy">
 </p>
 
 After some minutes, you can go on AWS Lambda console section and test your running code.
@@ -167,7 +167,7 @@ Now all the things are ready. Based on our configuration, the pipeline runs afte
 In AWS console, you can also test your Lambda function. Simply click on Test tab and select your preferred template from the list:
 
 <p align="center">
-  <img src="/assets/img/lambda_net_testtemplate.png" alt="Blazor app running on AWS">
+  <img src="/assets/img/lambdanet_testtemplate.png" alt="Lambda test template selection">
 </p>
 
 The most simpler way to test the Lambda function is by using the _API Gateway AWS Proxy_. Our Lambda function is built to reply to HTTP requests. You can do it internally, or by calling from an API Gateway. To test the call, we must use a JSON document and set all the attributes useful to execute the request. This is a sample document we can use to test invoking the HTTP GET method:
@@ -180,5 +180,11 @@ The most simpler way to test the Lambda function is by using the _API Gateway AW
   "httpMethod": "GET"
 }
 ```
+
+Now you can push the _Test_ button on upper right corner and see the result:
+
+<p align="center">
+  <img src="/assets/img/lambdanet_testresult.png" alt="Lambda test result">
+</p>
 
 As always, any feedback is welcome!
