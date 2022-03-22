@@ -14,7 +14,7 @@ tags:
   - GitHub
   - DevOps
 ---
-Serverless currently is one of the most used word. Period. But, what does it means? Wikipedia say that serverless "is a cloud computing execution model in which the cloud provider allocates machine resources on demand, taking care of the servers on behalf of their customers". It's important to underline that serverless doesn't mean "without server" because server is still used to host our applications, but in that case we don't care things like resources management, load balancing, and scalability.
+Serverless currently is one of the most used word. But, what does it means? This is the definition that I mostly like "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). Basically, servers are still there, right? Obviously *Yes*, it's important to underline that serverless doesn't mean "without server", but it is more related to ownership and management of things like resources, load balancing, scalability, and so on. So they are abstracted away from app development.
 
 In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
