@@ -14,9 +14,9 @@ tags:
   - GitHub
   - DevOps
 ---
-Serverless currently is one of the most used word. But, what does it means? This is the definition that I mostly like "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). Basically, servers are still there, right? Obviously *Yes*, it's important to underline that serverless doesn't mean "without server", but it is more related to ownership and management of things like resources, load balancing, scalability, and so on. So they are abstracted away from app development.
+Serverless currently is one of the most used word. But, what does it means? This is the definition that I mostly like "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). So, this means that servers are still there. Serverless doesn't mean "without server", but it is more related to ownership and management of things like resources, load balancing, scalability, and so on. Basically, servers technologies are abstracted away from development.
 
-In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
+AWS have a lot of services to implement serverless applications. One of the most well know is AWS Lambda. An AWS Lambda is composed in two part: a function, the code and runtime that process events, and a trigger, the AWS service or application that invokes the function. In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
 # Toolbox
 Before we get into the steps, a few words about the AWS services and tools we are going to use:
