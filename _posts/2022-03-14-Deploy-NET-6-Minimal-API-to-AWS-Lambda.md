@@ -29,7 +29,7 @@ Before we get into the steps, a few words about the AWS services and tools we ar
 So, now let's start and see what happens.
 
 # Create the .NET Lambda serverless project
-To create the .NET Lambda project, you can use the AWS .NET Core CLI. So we first needs to install the required templates:
+To create the .NET Lambda project, you can use the AWS .NET Core CLI. So we first needs to install the required templates. Open your command line tool, or terminal on MacOS, and use the `dotnet new -i` command to install the Lambda Project Templates:
 
 ``` 
 dotnet new -i Amazon.Lambda.Templates
