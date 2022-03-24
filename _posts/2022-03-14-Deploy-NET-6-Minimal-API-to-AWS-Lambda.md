@@ -18,15 +18,15 @@ tags:
   <img src="/assets/img/headline/Dotnet-on-AWS-1024x652.png" alt="Create the pipeline">
 </p>
 
-Serverless currently is one of the most used word. But, what does it means? This is the definition that I mostly like "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). So, this means that servers are still there. Serverless doesn't mean "without server", but it is more related to ownership and management of things like resources, load balancing, scalability, and so on. Basically, servers technologies are abstracted away from development.
+Serverless currently is for sure one of the most popular word of the last few years, at least in Cloud Computing world. But, what does it means? This is the one of the most simple definition I found: "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). So, this means that servers are still there. Serverless doesn't mean "without server", but it is more related to ownership of resources, load balancing, scalability, and the other server things that a developer doesn't need to manage. Basically, servers technologies are abstracted away from development.
 
-AWS have a lot of services to implement serverless applications. One of the most well know is AWS Lambda. An AWS Lambda is composed in two part: a function, the code and runtime that process events, and a trigger, the AWS service or application that invokes the function. In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
+AWS currently have a lot of services useful to implement serverless applications. One of the most well know is AWS Lambda. An AWS Lambda is composed in two part: a function, the code and runtime that process events, and a trigger, the AWS service or application that cause the function execution. In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
 # Toolbox
 Before we get into the steps, a few words about the AWS services and tools we are going to use:
 * AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers_. One of the most important point is that you _only pay for what you use_, and in that case means that you only pay for the execution time. More info at the [official page](https://aws.amazon.com/lambda/).
-* AWS CodePipeline: _a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service_. More info at the [official page](https://aws.amazon.com/codepipeline/).
-* AWS .NET Core CLI: a set of command to create and deploy .NET-based Lambda applications. More info [here](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html).
+* AWS CodePipeline: _a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service_. Check the [official page](https://aws.amazon.com/codepipeline/).
+* AWS .NET Core CLI: a set of command to create and deploy .NET-based Lambda applications. See [here](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html) for more info.
 * GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
