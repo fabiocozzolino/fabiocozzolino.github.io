@@ -26,7 +26,7 @@ AWS currently have a lot of services useful to implement serverless applications
 Before we get into the steps, a few words about the AWS services and tools we are going to use:
 * AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers_. One of the most important point is that you _only pay for what you use_, and in that case means that you only pay for the execution time. More info at the [official page](https://aws.amazon.com/lambda/).
 * AWS CodePipeline: _a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service_. Check the [official page](https://aws.amazon.com/codepipeline/).
-* AWS .NET Core CLI: a set of command to create and deploy .NET-based Lambda applications. See [here](https://docs.aws.amazon.com/lambda/latest/dg/csharp-package-cli.html) for more info.
+* AWS Lambda Tools for .NET Core: a set of command to create and deploy .NET-based Lambda applications. See [here](https://github.com/aws/aws-lambda-dotnet) for more info.
 * GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
@@ -53,7 +53,7 @@ For the purpose of this post, it is useful to look at these two specific files c
 - `aws-lambda-tools-defaults.json`
 - `serverless.template`
 
-the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in command line to deploy the lambda function. We'll see the command line istruction later. The `serverless.template`, instead, is the json template that allows the creation of the serverless service by using AWS CloudFormation. However, in this article we are going to use only the AWS .NET Core CLI.
+the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in command line to deploy the lambda function. We'll see the command line istruction later. The `serverless.template`, instead, is the json template that allows the creation of the serverless service by using _AWS CloudFormation_. you can find more info [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/lambda-cli-publish.html). In this article we are going to use only the AWS Lambda Tools for .NET Core.
 
 As seen in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we need to use the `buildspec.yml` file to build our solution by using AWS CodePipeline. Before we can proceed with the build and deploy command, we need to be sure that all the CLI are correctly installed on build machine. To do that, we first need to install the latest dotnet version, and then install, or update, the `Amazon.Lambda.Tools` by using the `dotnet tool update` command, as you can see in the following file `buildspec.yml` file:
 
