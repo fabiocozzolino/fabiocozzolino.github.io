@@ -9,6 +9,7 @@ tags:
   - ASP.NET
   - Blazor
   - Visual Studio Code for Mac
+  - GitHub
 ---
 In my [previous post](http://www.fabiocozzolino.eu/develop-blazor-project-visual-studio-code-mac/), I've introduced Blazor and how you can create a new project by using Visual Studio Code on MacOS. Now we'll see how to publish our Blazor app to GitHub Pages. This is possible since Blazor is a frontend framework and you can deploy it on any static web server host, just like GitHub Pages. 
 
