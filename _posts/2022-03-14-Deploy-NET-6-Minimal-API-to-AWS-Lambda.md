@@ -33,19 +33,21 @@ Before we get into the steps, a few words about the AWS services and tools we ar
 So, now let's start and see what happens.
 
 # Create the .NET Lambda serverless project
-To create the .NET Lambda project, you can use the AWS .NET Core CLI. So we first needs to install the required templates. Open your command line tool, or terminal on MacOS, and use the `dotnet new -i` command to install the Lambda Project Templates:
+The .NET Core CLI is the most easy way to create a .NET Lambda project. As always, you need to use the predefined AWS Lambda .NET Project templates with the `dotnet new` command. First, if you need to install the templates, open your command line tool, or terminal on MacOS, and use the `dotnet new -i` command to install the Lambda Project Templates:
 
 ``` 
 dotnet new -i Amazon.Lambda.Templates
 ``` 
 
-after installing was completed, we can proceed with creating the project. So, open your command line program and go on the base directory of your repository and then, by using the `serverless.AspNetCoreMinimalAPI` and the `dotnet new` command:
+after installing was completed, you can proceed with creating the project. So, in your command line program, go on the base directory of your repository and use the `serverless.AspNetCoreMinimalAPI` as shown here:
 
 ``` 
 dotnet new serverless.AspNetCoreMinimalAPI -n myAwesomeLambda
 ``` 
 
-the project is now ready. Under the folder `src/myAwesomeLambda`, in the `Program.cs`, you'll find all the useful code to run your _Minimal API_. Obviuously, you can change the code and implement the API that you need. 
+the project is now ready. Under the folder `src/myAwesomeLambda`, in the `Program.cs`, you'll find all the useful code to run your _Minimal API_. Obviuously, you can change the code and implement the APIs based on your needs. 
+
+# Setup your project for AWS CodePipeline
 For the purpose of this post, it is useful to look at these two specific files created by the serverless template:
 
 - `aws-lambda-tools-defaults.json`
