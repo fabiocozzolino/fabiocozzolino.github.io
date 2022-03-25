@@ -198,3 +198,5 @@ Now you can push the _Test_ button on upper right corner and see the result:
 </p>
 
 As always, any feedback is welcome!
+
+Enjoy!
