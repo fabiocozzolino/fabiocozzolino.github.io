@@ -68,20 +68,20 @@ phases:
             
     build:
         commands:
-            - dotnet lambda deploy-function myAwesomeLambda --project-location ./src/myAwesomeLambda/ --function-role myAwesomeLambdaRole --region eu-west-1 --function-runtime dotnet6 --config-file aws-lambda-tools-defaults.json
+            - dotnet lambda deploy-function myAwesomeLambda --project-location ./src/myAwesomeLambda/ --function-role myAwesomeLambdaRole --config-file aws-lambda-tools-defaults.json
 ```
 
-The `dotnet lambda deploy-function` is the command you can call to build, package, and deploy your AWS Lambda function written in .NET. As written above, all the options specified here can be set in the `aws-lambda-tools-defaults-json` file. Here is an example:
+The `dotnet lambda deploy-function` is the command you can call to build, package, and deploy your AWS Lambda function written in .NET. As written above, all the options specified here can be set also in the `aws-lambda-tools-defaults-json` file. Here is an example:
 
 ``` json
 {
-  "profile":"default",                                                            
-  "region" : "eu-west-1",                                                           
-  "configuration" : "Release",                                                      
-  "function-runtime":"6",                                               
-  "function-memory-size" : 256,                                                     
-  "function-timeout" : 30,                                                          
-  "function-handler" : "myAwesomeLambda", 
+  "profile": "default",                                                            
+  "region": "eu-west-1",                                                           
+  "configuration": "Release",                                                      
+  "function-runtime": "dotnet6",                                               
+  "function-memory-size": 256,                                                     
+  "function-timeout": 30,                                                          
+  "function-handler": "myAwesomeLambda", 
   "s3-prefix": "myAwesomeLambda/"
 }
 ```
@@ -89,7 +89,9 @@ The `dotnet lambda deploy-function` is the command you can call to build, packag
 Now we can push our first repository version and then start configuring our `AWS CodePipeline`.
 
 # Configuring and building the AWS CodePipeline
-In a very similar way to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we are going to create our _AWS CodePipeline_ to build and publish the .NET AWS Lambda function and publish. The _AWS CodePipeline_ will pull the source code from GitHub and pass the artifact to the build server. So, first of all, we need to go to _CodePipeline_ and click the _Create Pipeline_ button:
+In a very similar way to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we are going to create our _AWS CodePipeline_ to build and publish the .NET AWS Lambda function and publish. The _AWS CodePipeline_ will pull the source code from GitHub and pass the artifact to the build server. 
+
+So, first of all, we need to go to _CodePipeline_ section on our _AWS Console_, and click the _Create Pipeline_ button:
 
 <p align="center">
   <img src="/assets/img/blazoraws_pipeline_1.png" alt="Create the pipeline">
@@ -152,7 +154,7 @@ Since the deployment is made by the build server, we doesn't need to set the _De
 We are ready. Now we can push our code on the remote repository and start the pipeline. At this time, you could encounter into this error message:
 
 ```
-Error creating Lambda function: User: arn:aws:sts::979194342604:assumed-role/codebuild-build-service-role/AWSCodeBuild-f8262c3b-bb72-4ed2-aee4-52d6384de60d is not authorized to perform: iam:PassRole on resource: arn:aws:iam::979194342604:role/myAwesomeLambdaRole because no identity-based policy allows the iam:PassRole action
+Error creating Lambda function: User: arn:aws:sts::assumed-role/build-role/AWSCodeBuild-xxx is not authorized to perform: iam:PassRole on resource: arn:aws:iam::xxx:role/myAwesomeLambdaRole because no identity-based policy allows the iam:PassRole action
 ```
 
 To solve the issue, we need to assign the `iam:PassRole` permission to the running role of codebuild. So, go to IAM > Roles, select the role created for the AWS CodeBuild service, then create a specific policy by clicking on _Add permission_ > _Create inline policy_:
@@ -167,17 +169,18 @@ and then select the rules as in the following image (be sure to have the target 
   <img src="/assets/img/lambda_net_inlinepolicy.png" alt=".NET on Lambda inline policy">
 </p>
 
-After some minutes, you can go on AWS Lambda console section and test your running code.
+After few minutes, you can go on AWS Lambda console section and test your running code.
 
 # Test your Lambda function
-Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to your Lambda function instance and check if it is running fine.
+Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Lambda section, select your Lambda function instance and check if it is running fine.
 In AWS console, you can also test your Lambda function. Simply click on Test tab and select your preferred template from the list:
 
 <p align="center">
   <img src="/assets/img/lambdanet_testtemplate.png" alt="Lambda test template selection">
 </p>
 
-The most simpler way to test the Lambda function is by using the _API Gateway AWS Proxy_. Our Lambda function is built to reply to HTTP requests. You can do it internally, or by calling from an API Gateway. To test the call, we must use a JSON document and set all the attributes useful to execute the request. This is a sample document we can use to test invoking the HTTP GET method:
+The most simpler way to test the Lambda function is by using the _API Gateway AWS Proxy_ template. Our Lambda function is built to reply to HTTP requests. An http request can be made internally in your private network, or could come from an external client, through an API Gateway. We'll see this alternative way in the next post. 
+For the sake of this post, to test the call, we can use a the following JSON document and set all the attributes useful to execute the request invoking the HTTP GET method:
 
 ``` json
 {
