@@ -18,7 +18,7 @@ tags:
   <img src="/assets/img/headline/Dotnet-on-AWS-1024x652.png" alt="Create the pipeline">
 </p>
 
-Serverless currently is for sure one of the most popular word of the last few years, at least in Cloud Computing world. But, what does it means? This is the one of the most simple definition I found: "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). So, this means that servers are still there (fiuuu...). 
+Serverless currently is for sure one of the most popular word of the last few years, at least in Cloud Computing world. But, what does it mean? This is the one of the most simple definition I found: "Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers" ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). So, this means that servers are still there (fiuuu...). 
 
 In fact, Serverless doesn't mean "without server", but it is more related to ownership of resources, load balancing, scalability, and the other server things that a developer doesn't need to manage. Basically, servers technologies are abstracted away from development.
 
