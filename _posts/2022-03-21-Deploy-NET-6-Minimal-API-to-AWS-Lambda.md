@@ -5,7 +5,7 @@ date: 2022-03-21T08:00:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /deploy-net-6-minimal-api-to-aws-lambda/
-image: /assets/img/headline/Dotnet-on-AWS-1024x652.png
+image: assets/img/headline/Dotnet-on-AWS-1024x652.png
 tags:
   - .NET 6
   - Serverless
