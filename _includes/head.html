@@ -44,6 +44,9 @@
   <meta content="{{ tag }}" property="article:tag">
   {% endfor %}
 {% endif %}
+{% if page.author %}
+  <meta name="author" content="{{ page.author }}">
+{% endif %}
   
   <title>
     {% if page.title == "Home" %}
