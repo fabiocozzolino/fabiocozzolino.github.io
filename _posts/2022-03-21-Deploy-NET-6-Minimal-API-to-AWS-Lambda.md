@@ -18,50 +18,50 @@ tags:
   <img src="/assets/img/headline/Dotnet-on-AWS-1024x652.png" alt="Create the pipeline">
 </p>
 
-Serverless currently is for sure one of the most popular word of the last few years, at least in Cloud Computing world. But, what does it mean? This is the one of the most simple definition I found: 
+Serverless currently is for sure one of the most popular words of the last few years, at least in the Cloud Computing world. But, what does it mean? This is one of the most simple definitions I found: 
 > Serverless is a cloud-native development model that allows developers to build and run applications without having to manage servers 
 > ([RedHat](https://www.redhat.com/en/topics/cloud-native-apps/what-is-serverless)). 
 
 So, this means that servers are still there (fiuuu...). 
 
-In fact, Serverless doesn't mean "without server", but it is more related to ownership of resources, load balancing, scalability, and the other server things that a developer doesn't need to manage. Basically, servers technologies are abstracted away from development.
+Serverless doesn't mean "without server", but it is more related to ownership of resources, load balancing, scalability, and the other server things that a developer doesn't need to manage. Servers technologies are abstracted away from development.
 
-AWS currently have a lot of services useful to implement serverless applications. One of the most well know is AWS Lambda. An AWS Lambda is composed in two part: a function, the code and runtime that process events, and a trigger, the AWS service or application that cause the function execution. In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
+AWS currently has a lot of services useful to implement serverless applications. One of the most well knows is AWS Lambda. An AWS Lambda is composed of two-part: a function, the code and runtime that process events, and a trigger, the AWS service or application that causes the function execution. In this post we are going to see out to deploy an AWS Lambda function developed with the new .NET 6 Minimal API, using GitHub as a source repository.
 
 # Toolbox
 Before we get into the steps, a few words about the AWS services and tools we are going to use:
-* AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers_. One of the most important point is that you _only pay for what you use_, and in that case means that you only pay for the execution time. More info at the [official page](https://aws.amazon.com/lambda/).
-* AWS CodePipeline: _a fully managed continuos delivery service. With CodePipeline you can automate the build and deploy service_. Check the [official page](https://aws.amazon.com/codepipeline/).
-* AWS Lambda Tools for .NET Core: a set of command to create and deploy .NET-based Lambda applications. See [here](https://github.com/aws/aws-lambda-dotnet) for more info.
+* AWS Lambda: _a serverless, event-driven compute service that lets you run code for virtually any type of application or backend service without provisioning or managing servers_. One of the most important points is that you _only pay for what you use_, which in that case means that you only pay for the execution time. More info at the [official page](https://aws.amazon.com/lambda/).
+* AWS CodePipeline: _a fully managed continuous delivery service. With CodePipeline you can automate the build and deploy service_. Check the [official page](https://aws.amazon.com/codepipeline/).
+* AWS Lambda Tools for .NET Core: a set of commands to create and deploy .NET-based Lambda applications. See [here](https://github.com/aws/aws-lambda-dotnet) for more info.
 * GitHub: the git repository that we are going to use for our source code. You can use what you prefer, like Bitbucket.
 * Visual Studio Code: the cross-platform editor to write our .NET AWS Lambda application.
 
 So, now let's start and see what happens.
 
 # Create the .NET Lambda serverless project
-The .NET Core CLI is the most easy way to create a .NET Lambda project. As always, you need to use the predefined AWS Lambda .NET Project templates with the `dotnet new` command. First, if you need to install the templates, open your command line tool, or terminal on MacOS, and use the `dotnet new -i` command to install the Lambda Project Templates:
+The .NET Core CLI is the easiest way to create a .NET Lambda project. As always, you need to use the predefined AWS Lambda .NET Project templates with the `dotnet new` command. First, if you need to install the templates, open your command line tool, or terminal on macOS, and use the `dotnet new -i` command to install the Lambda Project Templates:
 
 ``` 
 dotnet new -i Amazon.Lambda.Templates
 ``` 
 
-after installing was completed, you can proceed with creating the project. So, in your command line program, go on the base directory of your repository and use the `serverless.AspNetCoreMinimalAPI` as shown here:
+after the installation was completed, you can proceed with creating the project. So, in your command line program, go to the base directory of your repository and use the `serverless.AspNetCoreMinimalAPI` as shown here:
 
 ``` 
 dotnet new serverless.AspNetCoreMinimalAPI -n myAwesomeLambda
 ``` 
 
-the project is now ready. Under the folder `src/myAwesomeLambda`, in the `Program.cs`, you'll find all the useful code to run your _Minimal API_. Obviuously, you can change the code and implement the APIs based on your needs. 
+the project is now ready. Under the folder `src/myAwesomeLambda`, in the `Program.cs`, you'll find all the useful code to run your _Minimal API_. You can change the code and implement the APIs based on your needs. 
 
 # Setup your project for AWS CodePipeline
-For the purpose of this post, it is useful to look at these two specific files created by the serverless template:
+For this post, it is useful to look at these two specific files created by the serverless template:
 
 - `aws-lambda-tools-defaults.json`
 - `serverless.template`
 
-the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in command line to deploy the lambda function. We'll see the command line istruction later. The `serverless.template`, instead, is the json template that allows the creation of the serverless service by using _AWS CloudFormation_. you can find more info [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/lambda-cli-publish.html). In this article we are going to use only the AWS Lambda Tools for .NET Core.
+the `aws-lambda-tools-defaults.json` contains all the deployment info that you can use in the command line to deploy the lambda function. We'll see the command line instruction later. The `serverless.template`, instead, is the JSON template that allows the creation of the serverless service by using _AWS CloudFormation_. you can find more info [here](https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/lambda-cli-publish.html). In this article we are going to use only the AWS Lambda Tools for .NET Core.
 
-As seen in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we need to use the `buildspec.yml` file to build our solution by using AWS CodePipeline. Before we can proceed with the build and deploy command, we need to be sure that all the CLI are correctly installed on build machine. To do that, we first need to install the latest dotnet version, and then install, or update, the `Amazon.Lambda.Tools` by using the `dotnet tool update` command, as you can see in the following file `buildspec.yml` file:
+As seen in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we need to use the `buildspec.yml` file to build our solution by using AWS CodePipeline. Before we can proceed with the build and deploy command, we need to be sure that all the CLI are correctly installed on the build machine. To do that, we first need to install the latest dotnet version and then install, or update, the `Amazon.Lambda.Tools` by using the `dotnet tool update` command, as you can see in the following file `buildspec.yml` file:
 
 ``` yaml
 version: 0.2
@@ -154,10 +154,10 @@ Make sure that the _Use a buildspec file_ option is already selected in the _Bui
 </p>
 
 ## Define the Deploy stage
-Since the deployment is made by the build server, we doesn't need to set the _Deploy_ stage, so we can skip this step.
+Since the deployment is made by the build server, we don't need to set the _Deploy_ stage, so we can skip this step.
 
 # Run the pipeline
-We are ready. Now we can push our code on the remote repository and start the pipeline. At this time, you could encounter into this error message:
+We are ready. Now we can push our code to the remote repository and start the pipeline. At this time, you could encounter this error message:
 
 ```
 Error creating Lambda function: User: arn:aws:sts::assumed-role/build-role/AWSCodeBuild-xxx is not authorized to perform: iam:PassRole on resource: arn:aws:iam::xxx:role/myAwesomeLambdaRole because no identity-based policy allows the iam:PassRole action
@@ -175,18 +175,18 @@ and then select the rules as in the following image (be sure to have the target 
   <img src="/assets/img/lambda_net_inlinepolicy.png" alt=".NET on Lambda inline policy">
 </p>
 
-After few minutes, you can go on AWS Lambda console section and test your running code.
+After a few minutes, you can go to the AWS Lambda console section and test your running code.
 
 # Test your Lambda function
-Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. At the end, you can go to the Lambda section, select your Lambda function instance and check if it is running fine.
+Now all the things are ready. Based on our configuration, the pipeline runs after each change in the GitHub source repository. In the end, you can go to the Lambda section, select your Lambda function instance and check if it is running fine.
 In AWS console, you can also test your Lambda function. Simply click on Test tab and select your preferred template from the list:
 
 <p align="center">
   <img src="/assets/img/lambdanet_testtemplate.png" alt="Lambda test template selection">
 </p>
 
-The most simpler way to test the Lambda function is by using the _API Gateway AWS Proxy_ template. Our Lambda function is built to reply to HTTP requests. An http request can be made internally in your private network, or could come from an external client, through an API Gateway. We'll see this alternative way in the next post. 
-For the sake of this post, to test the call, we can use a the following JSON document and set all the attributes useful to execute the request invoking the HTTP GET method:
+The simpler way to test the Lambda function is by using the _API Gateway AWS Proxy_ template. Our Lambda function is built to reply to HTTP requests. An HTTP request can be made internally in your private network or could come from an external client, through an API Gateway. We'll see this alternative way in the next post. 
+For the sake of this post, to test the call, we can use the following JSON document and set all the attributes useful to execute the request by invoking the HTTP GET method:
 
 ``` json
 {
