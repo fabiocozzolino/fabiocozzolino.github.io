@@ -77,7 +77,8 @@ phases:
             - dotnet lambda deploy-function myAwesomeLambda --project-location ./src/myAwesomeLambda/ --function-role myAwesomeLambdaRole --config-file aws-lambda-tools-defaults.json
 ```
 
-The `dotnet lambda deploy-function` is the command you can call to build, package, and deploy your AWS Lambda function written in .NET. As written above, all the options specified here can be set also in the `aws-lambda-tools-defaults-json` file. Here is an example:
+The `dotnet lambda deploy-function` is the command you can call to build, package, and deploy your AWS Lambda function written in .NET. As written above, all the options specified here can be set also in the `aws-lambda-tools-defaults-json` file. 
+Here is an example:
 
 ``` json
 {
