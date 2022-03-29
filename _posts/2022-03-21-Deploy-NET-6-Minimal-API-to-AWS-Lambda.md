@@ -96,7 +96,7 @@ Here is an example:
 Now we can push our first repository version and then start configuring our `AWS CodePipeline`.
 
 # Configuring and building the AWS CodePipeline
-In a very similar way to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we are going to create our _AWS CodePipeline_ to build and publish the .NET AWS Lambda function and publish. The _AWS CodePipeline_ will pull the source code from GitHub and pass the artifact to the build server. 
+In a very similar way to what we have done in the [previous post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/), we are going to create our _AWS CodePipeline_ to build and publish the .NET AWS Lambda function. The _AWS CodePipeline_ will pull the source code from GitHub and pass the artifact to the build server. 
 
 So, first of all, we need to go to _CodePipeline_ section on our _AWS Console_, and click the _Create Pipeline_ button:
 
