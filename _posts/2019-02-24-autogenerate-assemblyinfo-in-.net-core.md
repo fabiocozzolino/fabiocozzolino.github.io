@@ -17,7 +17,7 @@ To auto generate the ```AssemblyInfo.cs```, simply put the following ```Property
 ```xml
 <PropertyGroup>
   <Company>TitiusLabs</Company>
-  <Authors>Fabio Cozzolinon</Authors>
+  <Authors>Fabio Cozzolino</Authors>
   <PackageId>TitiusLabs.Core</PackageId>
   <Version>1.0.0</Version>
   <AssemblyVersion>1.0.0.0</AssemblyVersion>
