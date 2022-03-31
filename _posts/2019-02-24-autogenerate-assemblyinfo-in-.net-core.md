@@ -25,7 +25,7 @@ To auto generate the ```AssemblyInfo.cs```, simply put the following ```Property
 </PropertyGroup>
 ```
 
-To avoid the ```Duplicate 'System.Reflection.AssemblyCompanyAttribute' attribute (CS0579)```, be sure the remove the ```AssemblyInfo.cs``` and set to ```true``` the ```GenerateAssemblyInfo``` in ```.csproj```:
+To avoid the ```Duplicate 'System.Reflection.AssemblyCompanyAttribute' attribute (CS0579)``` remove the ```AssemblyInfo.cs``` and set to ```true``` the ```GenerateAssemblyInfo``` in ```.csproj```:
 
 ```xml
 <PropertyGroup>
