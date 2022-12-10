@@ -9,6 +9,10 @@ image: /assets/img/headline/chatgpt.png
 tags:
   - Architectures
 ---
+<p align="center">
+  <img src="/assets/img/headline/chatgpt.png" alt="Conversation with ChatGPT">
+</p>
+
 > Disclaimer! This post is generated from a conversation with [ChatGPT](https://openai.com/blog/chatgpt/). I asked a couple of things and wait for an answer. Let's see what happened!
 
 # Question 1: What is the better way to create a realtime distributed software architecture?
