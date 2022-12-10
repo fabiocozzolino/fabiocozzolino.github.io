@@ -9,7 +9,7 @@ image: /assets/img/headline/chatgpt.png
 tags:
   - Architectures
 ---
-> Disclaimer! This post is generated from a conversation with [ChatGPT](https://openai.com/blog/chatgpt/). I asked a couple of things and wait for an answer. Let's what happens!
+> Disclaimer! This post is generated from a conversation with [ChatGPT](https://openai.com/blog/chatgpt/). I asked a couple of things and wait for an answer. Let's see what happened!
 
 # Question 1: What is the better way to create a realtime distributed software architecture?
 There are many different ways to create a real-time distributed software architecture, and the "best" way will depend on your specific requirements and use case. Some common approaches to creating real-time distributed systems include using message brokers, event-driven architectures, and distributed databases.
@@ -109,4 +109,4 @@ To learn more about how to use the ```Producer``` and ```Consumer``` classes in 
 # Conclusion
 Really, really awesome.
 
-Enjoy it at https://chat.openai.com/chat
+Enjoy it at [https://chat.openai.com/chat](https://chat.openai.com/chat)
