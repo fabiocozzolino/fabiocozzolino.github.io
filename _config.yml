@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
 baseurl: ""
-url: "http://fabiocozzolino.eu"
+url: "https://www.fabiocozzolino.eu"
 title: "Fabio Cozzolino {blog}"
 description: "A lap around .NET, Xamarin, Integration, WCF, Azure..."
 
