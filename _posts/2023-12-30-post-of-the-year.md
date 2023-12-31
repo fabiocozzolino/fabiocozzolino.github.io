@@ -13,7 +13,7 @@ Sono riuscito comunque a ritagliarmi piccoli spazi e partecipare all'Agile O'Day
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/aYWEvBgjtnM?si=AvELlNYEed5-wbXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-In entrambi i casi, l'occasione di parlare di un argomento che mi sta molto a cuore: la Software Architecture.
+In entrambi i casi, l'opportunità di parlare di un argomento che mi sta molto a cuore: la Software Architecture nei contesti Agili.
 
 Il prossimo anno sarà ancora più intenso e pieno di nuove occasioni per migliorare, crescere e sperimentare, con la promessa di riprendere a scrivere nel mio blog, o anche in altre sedi, e proseguire il lavoro fatto negli ultimi anni nelle community con rinnovato impegno e dedizione.
 
