@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Il tuo Secondo Cervello - Tiago Forte
 date: 2024-02-15T08:00:00.000Z
 author: fabiocozzolino
