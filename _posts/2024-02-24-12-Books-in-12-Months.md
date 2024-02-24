@@ -10,7 +10,7 @@ tags:
   - books
 ---
 <p align="center">
-  <img src="/assets/img/headline/ancient-bookshelf.jpeg" alt="Create the pipeline">
+  <img src="/assets/img/headline/ancient-bookshelf.jpeg" alt="Books">
 </p>
 Leggere mi ha sempre appassionato. Purtroppo nell'ultimo periodo sono stato molto discontinuo e per questo ho deciso di avviare una challenge personale e leggere "almeno" **12 libri in 12 mesi**. L'obiettivo è anche quello di condividere poi una breve recensioni dei libri letti. 
 Di seguito la roadmap del progetto (si, si tratta proprio di un progetto, con le sue scadenze):
