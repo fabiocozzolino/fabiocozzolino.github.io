@@ -37,4 +37,4 @@ Bonus books (ovvero, altro che vorrei leggere):
 E la lista potrebbe anche essere più lunga.
 Ovviamente, come ogni roadmap che si rispetti, potrebbe subire variazioni in corso d'opera.
 
-Let's read it!
+Let's start reading them!
