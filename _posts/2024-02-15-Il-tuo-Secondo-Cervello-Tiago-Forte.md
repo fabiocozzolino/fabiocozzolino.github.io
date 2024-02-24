@@ -10,7 +10,7 @@ tags:
   - books
 ---
 <p align="center">
-  <img src="/assets/img/headline/secondo-cervello.jpeg" alt="Il tuo Secondo Cervello">
+  <img src="/assets/img/headline/secondo-cervello.jpeg" alt="Il tuo Secondo Cervello" width="250">
 </p>
 Primo libro, prima recensione. O meglio, le mie sincere impressioni. Innanzitutto ho scelto la versione italiana del libro per avere una lettura più semplice ed agevole, senza il sovraccarico cognitivo derivante dalla necessaria "traduzione contestuale". Scelta personale, ovviamente, e per me più che centrata. Dispiace che la versione italiana, al contrario delle altre traduzioni internazionali, abbia optato per un cambio totale di copertina, con una scelta secondo me discutibile. Ad ogni modo, a noi interessano i contenuti.
 
