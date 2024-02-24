@@ -1,7 +1,7 @@
 ---
 published: true
 title: 12 Books in 12 Months
-date: 2024-02-24T08:00:00.000Z
+date: 2024-01-10T08:00:00.000Z
 author: fabiocozzolino
 layout: post
 permalink: /12-books-in-12-months/
