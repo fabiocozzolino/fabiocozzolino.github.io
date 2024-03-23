@@ -13,9 +13,6 @@ tags:
   - GitHub
   - DevOps
 ---
-
-# CQRS with .NET and AWS
-
 Among the most discussed and appreciated patterns of recent years is undoubtedly CQRS: Command-Query Responsibility Segregation. Its potential is contrasted by an implementation complexity that is too often underestimated in the design phase. Moreover, too often we approach the pattern without any real need for it, behind the promise of potential scalability but underestimating its implementation and maintenance cost.
 
 But let's take a step back and first understand what scenario CQRS proposes to solve and why we decided to talk about it today.
@@ -293,7 +290,7 @@ When a read operation is performed on a replica, the load is distributed between
 
 The Amazon Aurora read replicas are synchronized continuously with the primary database to ensure that the data is always up to date. This ensures that, in the event of a loss, one of the read replicas can be promoted to the primary database to ensure continuity of service.
 
-## Configuring Amazon Aurora and the read replicas.
+## Configuring Amazon Aurora and the read replicas
 
 The replication capability of Amazon Aurora can thus be an additional weapon to enable highly scalable and performant services.
 
@@ -311,10 +308,14 @@ If not already done, add a *reader* node by clicking on *Actions* and then on *A
 
 We assign it a name, check all the creation parameters, and confirm the creation. With this action we can create several read replicas and increase the scalability of our solution. In addition, we can also take advantage of the auto scaling capability by configuring, again from the *Actions* menu, auto scaling for read nodes based on CPU utilization or number of connections, also setting the minimum and maximum nodes to be used.
 
-# Conclusions.
+# Conclusion
 
 In this first article, we have seen how we can manage two different storage to support an architecture based on the CQRS model, with the ability to replicate and adapt the data appropriately based on the different needs of the read and write models.
 
 AWS offers important solutions that can be leveraged to achieve the desired performance and scalability. Of course, it is always a good idea to keep a close eye on the costs arising from each and every choice we place in our architectural solutions.
 
 In the next articles we will see how to improve the solution for which we have just laid the foundation.
+
+As always, any feedback is welcome!
+
+Enjoy!
