@@ -12,7 +12,7 @@ tags:
   - Aurora
   - CQRS
 ---
-One of the most talked about and appreciated patterns in recent years is undoubtedly CQRS: Command-Query Responsibility Segregation. Its potential is offset by an implementation complexity that is too often underestimated in the design phase. Moreover, we too often approach the pattern without a real need, lured by the promise of potential scalability but underestimating its implementation and maintenance costs.
+One of the most talked about and appreciated patterns in recent years is undoubtedly CQRS: Command-Query Responsibility Segregation. Its potential is offset by implementation complexity, which is too often underestimated in the design phase. Moreover, we too often approach the pattern without a real need, lured by the promise of potential scalability but underestimating its implementation and maintenance costs.
 
 But let's take a step back and first understand what scenario CQRS proposes to solve and why we decided to talk about it today.
 
