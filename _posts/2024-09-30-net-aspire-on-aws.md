@@ -15,7 +15,41 @@ tags:
 # Introduction
 
 # What is .NET Aspire
-.NET Aspire is not a new framework or a technology, it is a set of pillars that enable cloud-ready application development. It is delivered through a collection of NuGet packages that han
+.NET Aspire is not a new framework or a technology, it is a set of pillars that enable cloud-ready application development. It is delivered through a collection of NuGet packages that make it easier to develop, deploy, and manage distributed applications, which are made up of many small, interconnected services.
+
+**Key features of .NET Aspire:**
+
+* **Orchestration:** .NET Aspire provides tools for running and connecting multiple projects and their dependencies, making it easier to manage complex applications.
+* **Integrations:** .NET Aspire includes NuGet packages for popular services like Redis and Postgres, with standardized interfaces for consistent and seamless connection.
+* **Tooling:** .NET Aspire comes with project templates and tooling for Visual Studio and the .NET CLI, simplifying the creation and interaction with .NET Aspire projects.
+
+**Benefits of using .NET Aspire:**
+
+* **Simplified development:** .NET Aspire makes it easier to build and manage complex distributed applications.
+* **Improved productivity:** .NET Aspire provides tools and templates that help you get started quickly and easily.
+* **Increased reliability:** .NET Aspire helps you build more reliable applications by providing tools for managing dependencies and connections.
+
+If you're interested in learning more about .NET Aspire check this overview [https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview).
+
+In this article, will see how to create a .NET Aspire project and use it in a AWS environment by using Visual Studio Code and AWS .NET SDK.
+
+# Build your .NET Aspire project
+First of all, we'll proceed by creating a .NET Aspire project. We can open the terminal, go to our designed project folder, and write the following command:
+
+```console
+dotnet new Aspire
+```
+
+The above command, will create a .NET solution with basically two projects:
+- a .NET AppHost project: this .NET project serves as the blueprint, defining all the individual parts of your distributed application and their interconnections.
+- a .NET service defaults project: acts as a central hub for defining default settings
+
+
+```console
+dotnet add package Aspire.Hosting.AWS
+```
+
+A .NET Aspire project's core component is the AppHost project.  In thi
 
 
 
@@ -47,7 +81,7 @@ Just to provide you a more complete idea of the possibilities available with thi
 
 In the previous post we have seen how to connect a Lambda function to the DynamoDB Stream. By using the same approach, we can configure a SNS as destination of the Lambda function. So, we can go to our Lambda  and update it according to the following code (full code on previous post):
 
-```csharp
+```
 Product product = new Product
 {
     ProductId = Convert.ToInt32(newImage["ProductId"].N),
