@@ -13,6 +13,7 @@ tags:
   - CQRS
 ---
 # Introduction
+In this article, we will explore how .NET Aspire will help develop cloud-native applications using .NET and hosting in the AWS environment.
 
 # What is .NET Aspire
 .NET Aspire is not a new framework or a technology, it is a set of pillars that enable cloud-ready application development. It is delivered through a collection of NuGet packages that make it easier to develop, deploy, and manage distributed applications, which are made up of many small, interconnected services.
@@ -31,7 +32,13 @@ tags:
 
 If you're interested in learning more about .NET Aspire check this overview [https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview).
 
-In this article, will see how to create a .NET Aspire project and use it in a AWS environment by using Visual Studio Code and AWS .NET SDK.
+# Set up your environment
+To be able to work with .NET Aspire and AWS, and follow all the info described in this article, you need to have:
+
+- .NET 8.0 or .NET 9.0.
+- An OCI compliant container runtime, such as: Docker Desktop or Podman. For more information, see Container runtime.
+- Visual Studio Code with C# Dev Kit: Extension
+- AWS .NET SDK
 
 # Build your .NET Aspire project
 First of all, we'll proceed by creating a .NET Aspire project. We can open the terminal, go to our designed project folder, and write the following command:
@@ -40,7 +47,7 @@ First of all, we'll proceed by creating a .NET Aspire project. We can open the t
 dotnet new Aspire
 ```
 
-The above command, will create a .NET solution with basically two projects:
+The above command will create a .NET solution with basically two projects:
 - a .NET AppHost project: this .NET project serves as the blueprint, defining all the individual parts of your distributed application and their interconnections.
 - a .NET service defaults project: acts as a central hub for defining default settings
 
@@ -49,8 +56,34 @@ The above command, will create a .NET solution with basically two projects:
 dotnet add package Aspire.Hosting.AWS
 ```
 
-A .NET Aspire project's core component is the AppHost project.  In thi
+A .NET Aspire project's core component is the AppHost project. In this project, we are going to define all the components that will run in our application environment. For example, if we need a Web API, a PostgreSQL database, and a Redis cache, we will write the following code into the `Program.cs` file:
 
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+
+var cache = builder.AddRedis("cache");
+
+var apiService = builder.AddProject<Projects.AspireOnAWS_ApiService>("api");
+
+builder.AddProject<Projects.FirstApp_Web>("webfrontend")
+    .WithExternalHttpEndpoints()
+    .WithReference(cache)
+    .WaitFor(cache)
+    .WithReference(apiService)
+    .WaitFor(apiService);
+
+builder.Build().Run();
+```
+```console
+dotnet new webapi -o AspireOnAWS.ApiService -n AspireOnAWS.MyApiService
+dotnet sln add AspireOnAWS.ApiService/AspireOnAWS.ApiService.csproj
+```
+
+make sure that you are updated with latest versions. Install .NET 9, update workload and update .NET Aspire templates
+```console
+dotnet workload update
+dotnet new install Aspire.ProjectTemplates
+```
 
 
 
