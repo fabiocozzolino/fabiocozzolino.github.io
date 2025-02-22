@@ -13,7 +13,9 @@ tags:
   - CQRS
 ---
 # Introduction
-In this article, we will explore how .NET Aspire will help develop cloud-native applications using .NET and hosting in the AWS environment.
+Today, many applications are currently requiring the usage of different kinds of services to run properly. This is becoming more true if you are building a distributed application. For example, if you need to use a cache, Redis could be a good choice, or if you need to monitor your environment, you could think of using OpenTelemetry. And what about the database? Postgre or MongoDB?
+Furthermore, collecting and deploying all these services could be challenging using a cloud platform like AWS or Azure. To mitigate this challenge, Microsoft released .NET Aspire.
+In this article, we will learn about .NET Aspire and how it helps developers develop cloud-native applications using .NET and hosting in the AWS environment.
 
 # What is .NET Aspire
 .NET Aspire is not a new framework or a technology, it is a set of pillars that enable cloud-ready application development. It is delivered through a collection of NuGet packages that make it easier to develop, deploy, and manage distributed applications, which are made up of many small, interconnected services.
