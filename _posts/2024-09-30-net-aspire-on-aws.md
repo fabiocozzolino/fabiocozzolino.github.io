@@ -15,7 +15,8 @@ tags:
 # Introduction
 Today, many applications are currently requiring the usage of different kinds of services to run properly. This is becoming more true if you are building a distributed application. For example, if you need to use a cache, Redis could be a good choice, or if you need to monitor your environment, you could think of using OpenTelemetry. And what about the database? Postgre or MongoDB?
 Furthermore, collecting and deploying all these services could be challenging using a cloud platform like AWS or Azure. To mitigate this challenge, Microsoft released .NET Aspire.
-In this article, we will learn about .NET Aspire and how it helps developers develop cloud-native applications using .NET and hosting in the AWS environment.
+In this article, we will learn about .NET Aspire and how it helps developers develop cloud-native applications using .NET and hosting in the AWS environment. 
+We will use Visual Studio Code, but you can also use any other development environment like Visual Studio or JetBrains.
 
 # What is .NET Aspire
 .NET Aspire is not a new framework or a technology, it is a set of pillars that enable cloud-ready application development. It is delivered through a collection of NuGet packages that make it easier to develop, deploy, and manage distributed applications, which are made up of many small, interconnected services.
@@ -37,13 +38,25 @@ If you're interested in learning more about .NET Aspire check this overview [htt
 # Set up your environment
 To be able to work with .NET Aspire and AWS, and follow all the info described in this article, you need to have:
 
-- .NET 8.0 or .NET 9.0.
-- An OCI compliant container runtime, such as: Docker Desktop or Podman. For more information, see Container runtime.
+- .NET 8.0 or .NET 9.0
+- An OCI-compliant container runtime, such as Docker Desktop or Podman
 - Visual Studio Code with C# Dev Kit: Extension
 - AWS .NET SDK
 
 # Build your .NET Aspire project
-First of all, we'll proceed by creating a .NET Aspire project. We can open the terminal, go to our designed project folder, and write the following command:
+First of all, we'll proceed by creating a .NET Aspire project. Before that, we should make sure that we have the latest versions of .NET workloads. We can now open the terminal and write:
+
+```console
+dotnet workload update
+```
+
+then we can check if we have the latest Aspire project templates installed:
+
+```console
+dotnet new install Aspire.ProjectTemplates
+```
+
+Now, we can go to our designed project folder, and write the following command to create our first Aspire solution:
 
 ```console
 dotnet new Aspire
@@ -53,39 +66,62 @@ The above command will create a .NET solution with basically two projects:
 - a .NET AppHost project: this .NET project serves as the blueprint, defining all the individual parts of your distributed application and their interconnections.
 - a .NET service defaults project: acts as a central hub for defining default settings
 
+A .NET Aspire project's core component is the AppHost project. In this project, we are going to define all the components that will run in our application environment. For example, if we need a Redis cache, we will write the following code into the `Program.cs` file:
 
-```console
-dotnet add package Aspire.Hosting.AWS
+```csharp
+var builder = DistributedApplication.CreateBuilder(args);
+builder.AddRedis("cache");
+builder.Build().Run();
 ```
 
-A .NET Aspire project's core component is the AppHost project. In this project, we are going to define all the components that will run in our application environment. For example, if we need a Web API, a PostgreSQL database, and a Redis cache, we will write the following code into the `Program.cs` file:
+This is the center of your application. You can instruct of your application network should work and the connection between every services inside the AppHost project. It follows the basis of IaC (Infrastructure as Code) principle.
+Now, we can proceed by adding to the project the services that we want to run. For example, if we need to add a WebAPI, we should first create a project, and then add to the solution:
+
+```console
+dotnet new webapi -o AspireOnAWS.ApiService -n AspireOnAWS.MyApiService
+dotnet sln add AspireOnAWS.ApiService/AspireOnAWS.ApiService.csproj
+```
+
+Nothing new? That's right. But, if we want to add the project to the AppHost, we should add it as Project Reference:
+
+```console
+dotnet add AspireOnAWS.AppHost/AspireOnAWS.AppHost.csproj reference AspireOnAWS.ApiService/AspireOnAWS.ApiService.csproj
+```
+
+Now we can use the project in the `Program.cs`:
 
 ```csharp
 var builder = DistributedApplication.CreateBuilder(args);
 
 var cache = builder.AddRedis("cache");
 
-var apiService = builder.AddProject<Projects.AspireOnAWS_ApiService>("api");
-
-builder.AddProject<Projects.FirstApp_Web>("webfrontend")
+builder.AddProject<Projects.AspireOnAWS_ApiService>("api")
     .WithExternalHttpEndpoints()
     .WithReference(cache)
-    .WaitFor(cache)
-    .WithReference(apiService)
-    .WaitFor(apiService);
+    .WaitFor(cache);
 
 builder.Build().Run();
 ```
+
+The above code adds two projects to the AppHost: the Redis cache and the ApiService. Since the ApiService project requires the Redis cache to run properly, we need to declare a reference by using the `WithReference` method, and a run dependency by using `WaitFor`. The latter means that we need to wait that the Redis cache service is ready before start the ApiService.
+
+# Run your .NET Aspire project
+By simply executing `dotnet run`, we can now see the results:
+
+<p align="center">
+  <img src="/assets/img/AspireOnAWS_Dashboard.png" alt="">
+</p>
+
+What happens in the middle? .NET Aspire requests execution of a container based on Redis image. If this is not available locally, it tries to download from the registry (!). When the image is available, a container instance is built and run. Easy.
+
+# Run your .NET Aspire application on AWS
+
+
 ```console
-dotnet new webapi -o AspireOnAWS.ApiService -n AspireOnAWS.MyApiService
-dotnet sln add AspireOnAWS.ApiService/AspireOnAWS.ApiService.csproj
+dotnet add package Aspire.Hosting.AWS
 ```
 
-make sure that you are updated with latest versions. Install .NET 9, update workload and update .NET Aspire templates
-```console
-dotnet workload update
-dotnet new install Aspire.ProjectTemplates
-```
+
 
 
 
