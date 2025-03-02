@@ -114,12 +114,30 @@ By simply executing `dotnet run`, we can now see the results:
 
 What happens in the middle? .NET Aspire requests execution of a container based on Redis image. If this is not available locally, it tries to download from the registry (!). When the image is available, a container instance is built and run. Easy.
 
-# Run your .NET Aspire application on AWS
-
+# Ready for AWS
+We had just seen how to create a .NET Aspire solution and connect it with a pre-built service. Now, we are ready to see how we can interact and use AWS to run our solution. 
+Following the IaC rule, with .NET 9, AWS introduces the possibility of using the AWS Cloud Development Kit (CDK) in a .NET Aspire project. A big improvement that allows building applications by defining your AWS resources directly in code. CDK is a coding abstraction built on top of CloudFormation. You can define your infrastructure using your preferred language, and CDK will automatically generate a CloudFormation template.
+First of all, we should add the `Aspire.Hosting.AWS` package to our AppHost project:
 
 ```console
 dotnet add package Aspire.Hosting.AWS
 ```
+
+Now we can start using AWS CDK to configure the services that we would like to use. For example, if we want to use a S3 Bucket, we can add it in our AppHost by using the following code
+
+```console
+var builder = DistributedApplication.CreateBuilder(args);
+
+var stack = builder.AddAWSCDKStack("Stack");
+var bucket = stack.AddS3Bucket("Bucket");
+
+builder.AddProject<Projects.AspireOnAWS_ApiService>("api")
+    .WithExternalHttpEndpoints()
+    .WithReference(bucket)
+    .WaitFor(bucket);
+```
+
+Resources created with these methods can be directly referenced by project resources and common properties like resource names, ARNs or URLs will be made available as configuration environment variables. The default config section will be `AWS:Resources`.
 
 
 
