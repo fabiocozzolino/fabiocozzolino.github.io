@@ -160,7 +160,6 @@ app.MapGet("/weatherforecast", async ([FromServices] IAmazonS3 s3client, IConfig
 
 Executing that code will show the following dashboard:
 
-
 <p align="center">
-  <img src="/assets/img/CQRS_AWS_SNS_1.png" alt="">
+  <img src="/assets/img/netaspire-dashboard-withS3.png" alt="">
 </p>
