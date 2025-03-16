@@ -1,16 +1,14 @@
  ---
-published: false
-title: Deploy a .NET Aspire application on AWS
-date: 2024-09-30T08:00:00.000Z
+published: true
+title: Modern development with .NET Aspire and AWS
+date: 2024-11-20T08:00:00.000Z
 author: fabiocozzolino
 layout: post
-permalink: /Deploy-NET-Aspire-AWS/
+permalink: /Modern-development-NET-Aspire-AWS/
 tags:
-  - Serverless
   - AWS
-  - Lambda
   - CDK
-  - Aspire
+  - .NET Aspire
 ---
 # Introduction
 Modern distributed applications rely on a complex ecosystem of services to function effectively. From Redis for caching to OpenTelemetry for monitoring, and database options like PostgreSQL or MongoDB, managing these components presents significant challenges, especially when deploying to cloud platforms like AWS or Azure. To face
@@ -19,17 +17,12 @@ This article explores how .NET Aspire empowers developers to build and deploy cl
 # What is .NET Aspire
 .NET Aspire is not a new framework or a technology, it is a set of pillars that enable cloud-ready application development. It is delivered through a collection of NuGet packages that make it easier to develop, integrate, and orchestrate distributed applications comprising many small, interconnected services.
 
-**Key features of .NET Aspire:**
+Aspire is based on the following three main pillars:
+* **Orchestration:** Tools for running and linking multiple projects and their dependencies, make it easy to manage complex applications.
+* **Integrations:** NuGet packages for popular services such as Redis and Postgres, with standardised interfaces for consistent and seamless connectivity.
+* **Tooling:** Project templates and tools for Visual Studio and the .NET CLI, making it easy to create and interact with .NET Aspire projects.
 
-* **Orchestration:** .NET Aspire provides tools for running and connecting multiple projects and their dependencies, making it easier to manage complex applications.
-* **Integrations:** .NET Aspire includes NuGet packages for popular services like Redis and Postgres, with standardized interfaces for consistent and seamless connection.
-* **Tooling:** .NET Aspire comes with project templates and tooling for Visual Studio and the .NET CLI, simplifying the creation and interaction with .NET Aspire projects.
-
-**Benefits of using .NET Aspire:**
-
-* **Simplified development:** .NET Aspire makes it easier to build and manage complex distributed applications.
-* **Improved productivity:** .NET Aspire provides tools and templates that help you get started quickly and easily.
-* **Increased reliability:** .NET Aspire helps you build more reliable applications by providing tools for managing dependencies and connections.
+These three pillars of Aspire provide a simplified and enhanced productivity environment for building, orchestrating and managing complex distributed applications.
 
 If you're interested in learning more about .NET Aspire check this overview [https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview](https://learn.microsoft.com/en-us/dotnet/aspire/get-started/aspire-overview).
 
@@ -42,7 +35,7 @@ To be able to work with .NET Aspire and AWS, and follow all the info described i
 - AWS .NET SDK
 
 # Build your .NET Aspire project
-First of all, we'll proceed by creating a .NET Aspire project. Before that, we should make sure that we have the latest versions of .NET workloads. We can now open the terminal and write:
+First of all, we'll proceed by creating a .NET Aspire project. Before that, we should make sure that we have the latest versions of .NET workloads. To do that, we can open the terminal and write:
 
 ```console
 dotnet workload update
@@ -107,7 +100,7 @@ The above code adds two projects to the AppHost: the Redis cache, as showed befo
 By simply executing `dotnet run`, we can now see the results:
 
 <p align="center">
-  <img src="/assets/img/AspireOnAWS_Dashboard.png" alt="">
+  <img src="/assets/img/netaspire-dashboard.png" alt="">
 </p>
 
 What happens in the middle? .NET Aspire requests execution of a container based on Redis image. If this is not available locally, it tries to download from the registry (!). When the image is available, a container instance is built and run. Easy.
@@ -121,21 +114,27 @@ First of all, we should add the `Aspire.Hosting.AWS` package to our AppHost proj
 dotnet add package Aspire.Hosting.AWS
 ```
 
-Now we can start using AWS CDK to configure the services that we would like to use. For example, if we want to use a S3 Bucket, we can add it in our AppHost by using the following code
+Now we can start using AWS CDK to configure the services that we would like to use. For example, if we want to use a S3 Bucket, we can add it in our AppHost by using the following code:
 
 ```csharp
 var builder = DistributedApplication.CreateBuilder(args);
+
+var cache = builder.AddRedis("cache");
 
 var stack = builder.AddAWSCDKStack("MyAWSStack");
 var bucket = stack.AddS3Bucket("MyAspireBucket");
 
 builder.AddProject<Projects.AspireOnAWS_ApiService>("api")
     .WithExternalHttpEndpoints()
+    .WithReference(cache)
+    .WaitFor(cache)
     .WithReference(bucket)
     .WaitFor(bucket);
+
+builder.Build().Run();
 ```
 
-By using `WithReference` we are declaring that the `ApiService` project should be able to see and use the S3 bucket. Futhermore, the `WaitFor` indicates that `ApiService` can be executed only when the S3 bucket service will be ready.
+As seen before, also in this case by using `WithReference` we are declaring that the `ApiService` project should be able to see and use the S3 bucket. Futhermore, the `WaitFor` indicates that `ApiService` can be executed only when the S3 bucket service will be ready.
 Resources created with these methods can be directly referenced by project resources and common properties like resource names, ARNs or URLs will be made available as configuration environment variables. The default config section will be `AWS:Resources`, this means that we can access to our bucket by using `configuration["AWS:Resources:MyAspireBucket:BucketName"]`. For example, in our `ApiService`, we can write the following code to retrieve the bucket name and comunicate with S3:
 
 ```csharp
@@ -161,3 +160,23 @@ Executing that code will show the following dashboard:
 <p align="center">
   <img src="/assets/img/netaspire-dashboard-withS3.png" alt="">
 </p>
+
+# Test your code
+We can now execute the Swagger UI and test the service by executing the GET /weatherservice. As we can see after execution, now the result of the API will be written in a S3 Bucket. If we open the AWS console, in Cloud Formation section we can now see the related, and just created, AWS CloudFormation Stack:
+
+<p align="center">
+  <img src="/assets/img/netaspire-aws-console-cfstack.png" alt="">
+</p>
+
+By selecting the MyAWSStack and navigating into the Resources, we can see the MyAspireBucket resource:
+
+<p align="center">
+  <img src="/assets/img/netaspire-aws-console-cfstack-resources.png" alt="">
+</p>
+
+How is this possible? Well, the Aspire.Hosting.AWS also includes and runs the CDK code under the hood. So when you run your application, even locally, the package will create the required AWS infrastructure for you. And that's a great thing!
+
+# Conclusion
+In this first post we have seen what .NET Aspire is and how we can use it in combination with AWS resources by using the AWS CDK. In the next few posts, we will look at additional ways to use the AWS .NET Aspire integration in our solutions.
+
+Enjoy!
