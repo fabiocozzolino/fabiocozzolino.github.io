@@ -1,4 +1,4 @@
- ---
+---
 published: true
 title: Modern development with .NET Aspire and AWS
 date: 2024-11-20T08:00:00.000Z
