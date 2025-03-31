@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: Using DynamoDB local with .NET Aspire and AWS
 date: 2025-02-08T08:00:00.000Z
 author: fabiocozzolino
