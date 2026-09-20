@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, speakingEngagements } from '../data/site';
+---
+<BaseLayout title={`Speaking | ${profile.name}`} description="Speaking engagements by Fabio Cozzolino about architecture, cloud, and practical engineering.">
+  <section class="article shell profile-page"><header class="article-header"><a class="back-link" href="/">← Home</a><span class="section-kicker">Speaking and community</span><h1>Ideas are better<br /><em>when shared.</em></h1><p class="article-lead">I enjoy making complex engineering topics concrete, especially where architecture, cloud platforms, and team decisions meet.</p></header><div class="feature-list profile-list">{speakingEngagements.map((talk) => <a class="feature-row" href={talk.href} target="_blank" rel="noreferrer"><span>{talk.year}</span><div><strong>{talk.title}</strong><small>{talk.event} · {talk.role}</small></div><b aria-hidden="true">↗</b></a>)}</div></section>
+</BaseLayout>

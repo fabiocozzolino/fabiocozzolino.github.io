@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, publications } from '../data/site';
+---
+<BaseLayout title={`Publications | ${profile.name}`} description="Books and technical publications by Fabio Cozzolino.">
+  <section class="article shell profile-page"><header class="article-header"><a class="back-link" href="/">← Home</a><span class="section-kicker">Books and publications</span><h1>Long-form work<br /><em>with a point of view.</em></h1><p class="article-lead">A selection of technical books written with other practitioners, covering cloud computing, service-oriented architecture, and distributed systems.</p></header><div class="publication-grid profile-list">{publications.map((book) => <a class="publication-card" href={book.href} target="_blank" rel="noreferrer"><span class="publication-label">{book.publisher}</span><h3>{book.title}</h3><p>{book.description}</p><b aria-hidden="true">Read publication ↗</b></a>)}</div></section>
+</BaseLayout>

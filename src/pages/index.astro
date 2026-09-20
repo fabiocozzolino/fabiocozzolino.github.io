@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { profile } from '../data/site';
+import { profile, publications, speakingEngagements } from '../data/site';
 
 const posts = (await getCollection('blog', ({ data }) => data.published))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -9,9 +9,13 @@ const posts = (await getCollection('blog', ({ data }) => data.published))
 <BaseLayout title={`${profile.name} | Blog`} description={profile.bio}>
   <section class="hero shell">
     <div class="eyebrow"><i></i> Engineering notes · {profile.location}</div>
-    <h1>Ideas, experiments,<br /><em>and lessons.</em></h1>
+    <h1>Engineering decisions<br /><em>with context.</em></h1>
     <p class="hero-summary">{profile.bio}</p>
-    <a class="button" href="#writing">Read the latest <span>↓</span></a>
+    <div class="hero-actions"><a class="button" href="#writing">Read the latest <span>↓</span></a><a class="button button-light" href="/speaking/">Speaking <span>↗</span></a></div>
+  </section>
+
+  <section class="proof-strip" aria-label="Professional experience">
+    <div class="shell proof-grid"><div><strong>20+</strong><span>years in software</span></div><div><strong>3</strong><span>technical books</span></div><div><strong>9+</strong><span>public speaking engagements</span></div><div><strong>75</strong><span>published articles</span></div></div>
   </section>
 
   <section class="section shell" id="writing" aria-labelledby="writing-title">
@@ -25,5 +29,15 @@ const posts = (await getCollection('blog', ({ data }) => data.published))
         </article>
       ))}
     </div>
+  </section>
+
+  <section class="section split-section shell" aria-labelledby="speaking-title">
+    <div class="section-intro"><div><span class="section-kicker">02 / Speaking</span><h2 id="speaking-title">Sharing the<br /><em>hard-won lessons.</em></h2></div><p>Talks and meetups about architecture, cloud platforms, distributed systems, and practical engineering.</p></div>
+    <div class="feature-list">{speakingEngagements.slice(0, 3).map((talk) => <a class="feature-row" href={talk.href} target="_blank" rel="noreferrer"><span>{talk.year}</span><div><strong>{talk.title}</strong><small>{talk.event} · {talk.role}</small></div><b aria-hidden="true">↗</b></a>)}</div>
+    <a class="text-link" href="/speaking/">View all speaking engagements ↗</a>
+  </section>
+
+  <section class="section publications-section" aria-labelledby="publications-title">
+    <div class="shell"><div class="section-intro"><div><span class="section-kicker">03 / Publications</span><h2 id="publications-title">Writing beyond<br /><em>the blog.</em></h2></div><p>Books and long-form technical work shaped by years of building connected systems.</p></div><div class="publication-grid">{publications.map((book) => <a class="publication-card" href={book.href} target="_blank" rel="noreferrer"><span class="publication-label">{book.publisher}</span><h3>{book.title}</h3><p>{book.description}</p><b aria-hidden="true">Read publication ↗</b></a>)}</div><a class="text-link" href="/publications/">See all publications ↗</a></div>
   </section>
 </BaseLayout>
