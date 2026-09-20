@@ -1,15 +1,9 @@
 ---
 title: A little and simple Bindable (Horizontal) Scroll View &#8211; Handling item tap gesture
-date: '2016-12-04T21:05:31.000Z'
-permalink: /little-simple-bindable-horizontal-scroll-view-handling-item-tap-gesture/
+pubDatetime: '2016-12-04T21:05:31.000Z'
 tags: []
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4151
+draft: false
+permalink: /little-simple-bindable-horizontal-scroll-view-handling-item-tap-gesture/
 ---
 A long time ago, in the first post, I wrote about the [TLScrollView](http://www.fabiocozzolino.eu/a-little-and-simple-bindable-horizontal-scroll-view/), a way to create a simple, horizontal and bindable list of items in Xamarin.Forms. The final result is something like the horizontal views on Apple App Store app.
 

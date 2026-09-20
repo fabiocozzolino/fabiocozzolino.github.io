@@ -1,17 +1,11 @@
 ---
 title: ASP.NET Core Mobile Service with Visual Studio for Mac
-date: '2016-12-31T11:49:00.000Z'
-permalink: /asp-net-core-mobile-service-visual-studio-mac/
+pubDatetime: '2016-12-31T11:49:00.000Z'
 tags:
   - Azure
   - Mobile Service
-categories:
-  - Azure
-  - Mobile Service
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4621
+draft: false
+permalink: /asp-net-core-mobile-service-visual-studio-mac/
 ---
 With Visual Studio for Mac, a lot of new project templates are now available to macOS developers. For example, you can now create an ASP.NET Core or a .NET Core console project directly on your Mac. Wow! But, in my opinion, one of the most interesting project template is the **Connected App**. With this template you&#8217;ll be able to create a complete solution with a Mobile app (iOS, Android and Windows or Xamarin.Forms) and a Backend app, an ASP.NET Core mobile project that will be hosted in an Azure Mobile Services app.
 

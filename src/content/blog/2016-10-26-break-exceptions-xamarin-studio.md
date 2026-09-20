@@ -1,16 +1,11 @@
 ---
 title: Break when an exception is thrown in Xamarin Studio
-date: '2016-10-26T22:13:37.000Z'
-permalink: /break-exceptions-xamarin-studio/
+pubDatetime: '2016-10-26T22:13:37.000Z'
 tags:
   - Debug
   - Xamarin Studio
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3812
+draft: false
+permalink: /break-exceptions-xamarin-studio/
 ---
 If you are a typical **Visual Studio** user, you&#8217;ll find easy use the menu Debug > Windows > Exception Settings and set your favorite option to break debug when a specific exeption was thrown:
 

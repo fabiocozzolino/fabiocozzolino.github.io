@@ -1,16 +1,10 @@
 ---
 title: Move focus on next control in Xamarin.Forms
-date: '2016-10-16T12:20:21.000Z'
-permalink: /move-focus-next-control-xamarin-forms/
+pubDatetime: '2016-10-16T12:20:21.000Z'
 tags:
   - iOS
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3681
+draft: false
+permalink: /move-focus-next-control-xamarin-forms/
 ---
 Spending some time with good friends is always a great way to start ideas. So, while talking with one of them, he asked me the best way to handle focus on entries in a Xamarin.Forms Page. I&#8217;ve handled the problem many times in iOS and Android native projects, so I decided to create a new control in [my library on github](https://github.com/fabiocozzolino/TitiusLabs.Xamarin).
 

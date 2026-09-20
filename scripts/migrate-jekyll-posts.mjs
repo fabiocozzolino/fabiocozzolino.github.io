@@ -51,14 +51,11 @@ for (const entry of entries) {
 
   const output = {
     title: String(frontmatter.title || slugFromFile(fileName)),
-    date: new Date(frontmatter.date || fileName.slice(0, 10)).toISOString(),
-    permalink,
+    pubDatetime: new Date(frontmatter.date || fileName.slice(0, 10)).toISOString(),
+    description: frontmatter.description ? String(frontmatter.description) : undefined,
     tags: asArray(frontmatter.tags),
-    categories: asArray(frontmatter.categories),
-    author: String(frontmatter.author || 'fabiocozzolino'),
-    published: frontmatter.published !== false,
-    legacyLayout: frontmatter.layout ? String(frontmatter.layout) : undefined,
-    legacyId: frontmatter.id,
+    draft: frontmatter.published === false,
+    permalink,
   };
 
   Object.keys(output).forEach((key) => output[key] === undefined && delete output[key]);

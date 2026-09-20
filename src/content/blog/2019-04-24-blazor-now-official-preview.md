@@ -1,16 +1,13 @@
 ---
 title: Blazor now in official preview
-date: '2019-04-24T11:05:00.000Z'
-permalink: /blazor-now-official-preview/
+pubDatetime: '2019-04-24T11:05:00.000Z'
 tags:
   - Blazor
   - .NET
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /blazor-now-official-preview/
 ---
 Some days ago, the ASP.NET team announce the official preview of Blazor, the Microsoft framework for building Single Page Application. Note that in the post, they declare that Server-Side Blazor will ship as part of .NET Core 3.0, announced for second half 2019, while Client-side Blazor will ship as part of a future .NET Core release.
 

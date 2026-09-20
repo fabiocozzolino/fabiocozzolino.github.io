@@ -1,13 +1,10 @@
 ---
 title: Post of the year 2023
-date: '2023-12-30T08:00:00.000Z'
-permalink: /post-of-the-year-2023/
+pubDatetime: '2023-12-30T08:00:00.000Z'
 tags:
   - MyLife
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /post-of-the-year-2023/
 ---
 E' stato un anno davvero complicato. Nuove sfide lavorative e la voglia di vivere ogni momento possibile con la mia famiglia, mi hanno lasciato poco tempo da dedicare alle community. E' una questione di priorità, direbbe qualcuno. Nulla di più vero.
 Sono riuscito comunque a ritagliarmi piccoli spazi e partecipare all'Agile O'Day 2023 di Napoli con la sessione "I don't need an Architect, I'm Agile!", poi rivista e ampliata durante uno SmallTalk di UGIdotNET a giugno.

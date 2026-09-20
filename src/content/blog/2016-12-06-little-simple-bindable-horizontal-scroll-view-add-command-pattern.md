@@ -1,15 +1,9 @@
 ---
 title: A little and simple Bindable (Horizontal) Scroll View &#8211; Add Command pattern
-date: '2016-12-06T10:34:49.000Z'
-permalink: /little-simple-bindable-horizontal-scroll-view-add-command-pattern/
+pubDatetime: '2016-12-06T10:34:49.000Z'
 tags: []
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4261
+draft: false
+permalink: /little-simple-bindable-horizontal-scroll-view-add-command-pattern/
 ---
 This is the third post of the [A little and simple Bindable (Horizontal) Scroll View](http://www.fabiocozzolino.eu/a-little-and-simple-bindable-horizontal-scroll-view/) saga. In the first post we saw how to implement a horizontal view with data binding capability. Then, [in the second post](http://www.fabiocozzolino.eu/little-simple-bindable-horizontal-scroll-view-handling-item-tap-gesture/), we have seen how to add an event to handle the tap gesture on list items.
 

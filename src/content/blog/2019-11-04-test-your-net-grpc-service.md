@@ -1,16 +1,13 @@
 ---
 title: Test your .NET gRPC service
-date: '2019-11-04T08:30:00.000Z'
-permalink: /test-your-net-grpc-service/
+pubDatetime: '2019-11-04T08:30:00.000Z'
 tags:
   - gRPC
   - .NET
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /test-your-net-grpc-service/
 ---
 One of the most critical issue in the developer work is the test phase. If you want to test a SOAP service, SoapUI is one of the most well known tools. If you want to test a REST service, you can build your requests by using Fiddler or Postman. But, if you want to test a gRPC service, what you can use?
 

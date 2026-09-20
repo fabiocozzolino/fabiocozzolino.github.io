@@ -1,13 +1,10 @@
 ---
 title: Blog Resurrection and priorities
-date: '2021-12-21T21:30:00.000Z'
-permalink: /blog-resurrection-priorities/
+pubDatetime: '2021-12-21T21:30:00.000Z'
 tags:
   - Personal
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /blog-resurrection-priorities/
 ---
 It's been a really long time from my [last post](https://www.fabiocozzolino.eu/filesystem-subscriptions-rebus-extension/). Many things are changed in my personal life: my son was born on march (WOW!).
 

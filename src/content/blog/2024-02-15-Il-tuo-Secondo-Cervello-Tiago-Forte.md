@@ -1,14 +1,11 @@
 ---
 title: Il tuo Secondo Cervello - Tiago Forte
-date: '2024-02-15T08:00:00.000Z'
-permalink: /Il-tuo-Secondo-Cervello-Tiago-Forte/
+pubDatetime: '2024-02-15T08:00:00.000Z'
 tags:
   - 12Books12Months
   - books
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /Il-tuo-Secondo-Cervello-Tiago-Forte/
 ---
 <p align="center">
   <img src="/assets/img/headline/secondo-cervello.jpeg" alt="Il tuo Secondo Cervello" width="250">

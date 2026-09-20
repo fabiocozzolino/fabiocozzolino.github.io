@@ -1,15 +1,12 @@
 ---
 title: Server streaming with .NET Core gRPC service
-date: '2019-12-15T08:30:00.000Z'
-permalink: /server-streaming-with-net-core-grpc/
+pubDatetime: '2019-12-15T08:30:00.000Z'
 tags:
   - gRPC
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /server-streaming-with-net-core-grpc/
 ---
 In [the first post of this .NET Core gRPC services](/request-reply-with-grpc-net), we have seen how to build a simple request-reply service by using .NET Core 3 and the brand new [grpc-dotnet](https://github.com/grpc/grpc-dotnet) library entirely written in C#.
 

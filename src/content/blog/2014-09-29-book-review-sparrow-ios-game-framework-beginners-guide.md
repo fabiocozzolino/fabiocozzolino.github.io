@@ -1,14 +1,9 @@
 ---
 title: '[Book Review] Sparrow iOS Game Framework Beginner’s Guide'
-date: '2014-09-29T21:24:45.000Z'
-permalink: /book-review-sparrow-ios-game-framework-beginners-guide/
+pubDatetime: '2014-09-29T21:24:45.000Z'
 tags: []
-categories:
-  - Book Review
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 501
+draft: false
+permalink: /book-review-sparrow-ios-game-framework-beginners-guide/
 ---
 [<img class="alignleft" src="https://i2.wp.com/dgdsbygo8mp3h.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/1509OS_cov.jpg?resize=201%2C249&#038;ssl=1" alt="" data-recalc-dims="1" />](https://www.packtpub.com/game-development/sparrow-ios-game-framework-beginner%E2%80%99s-guide)
 

@@ -1,17 +1,14 @@
 ---
 title: HTTP/2 over TLS is not supported on macOS due to missing ALPN support
-date: '2019-12-03T08:30:00.000Z'
-permalink: /HTTP2-over-TLS-is-not-supported-on-macOS/
+pubDatetime: '2019-12-03T08:30:00.000Z'
 tags:
   - gRPC
   - .NET Core
   - ASP.NET Core
   - Tls
   - Security
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /HTTP2-over-TLS-is-not-supported-on-macOS/
 ---
 If you are working with .NET Core on MacOS, you'll probably get the following exception:
 ```

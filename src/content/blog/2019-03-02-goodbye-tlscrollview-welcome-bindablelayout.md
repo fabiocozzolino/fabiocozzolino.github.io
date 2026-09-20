@@ -1,7 +1,6 @@
 ---
 title: Goodbye TLScrollView. Welcome BindableLayout!
-date: '2019-03-02T11:05:00.000Z'
-permalink: /goodbye-tlscrollview-welcome-bindablelayout/
+pubDatetime: '2019-03-02T11:05:00.000Z'
 tags:
   - Xamarin
   - Xamarin.Forms
@@ -9,10 +8,8 @@ tags:
   - .NET Standard
   - .NET Core
   - C#
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /goodbye-tlscrollview-welcome-bindablelayout/
 ---
 Three years ago I wrote a [blog post](/a-little-and-simple-bindable-horizontal-scroll-view/) about my Xamarin.Forms component [TLScrollView](https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms/Controls/TLScrollView.cs), a simple horizontal scrollview with bindable feature. The post was one of the most viewed and commented, and I'm really happy about that, but now, with the latest version of Xamarin.Forms, you can use the new `BindableLayout` feature.
 

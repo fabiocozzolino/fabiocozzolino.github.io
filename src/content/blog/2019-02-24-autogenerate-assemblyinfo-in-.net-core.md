@@ -1,15 +1,12 @@
 ---
 title: Auto generate AssemblyInfo.cs in .NET Core
-date: '2019-02-24T10:05:00.000Z'
-permalink: /autogenerate-assemblyinfo-in-.net-core/
+pubDatetime: '2019-02-24T10:05:00.000Z'
 tags:
   - .NET
   - .NET Standard
   - .NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /autogenerate-assemblyinfo-in-.net-core/
 ---
 As you can see in [my last post](/update-portable-class-library-project-to-.net-standard/), I'm moving my [TitiusLabs.Core](https://github.com/fabiocozzolino/TitiusLabs.Xamarin) PCL to .NET Standard. After project migration, you can choose to maintain AssemblyInfo - and in [my previous post](/update-portable-class-library-project-to-.net-standard/) you can see how to do it - or move to an auto generation model, as we'll see in this post.
 

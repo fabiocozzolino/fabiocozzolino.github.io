@@ -1,15 +1,12 @@
 ---
 title: How to debug Xamarin and Mono class library with Visual Studio for Mac
-date: '2018-01-12T08:58:11.000Z'
-permalink: /how-to-debug-xamarin-and-mono-class-library-visual-studio-for-mac/
+pubDatetime: '2018-01-12T08:58:11.000Z'
 tags:
   - Xamarin
   - Xamarin.Forms
   - Visual Studio for Mac
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /how-to-debug-xamarin-and-mono-class-library-visual-studio-for-mac/
 ---
 Enabling the debugging of Xamarin or Mono class library in Visual Studio for Mac is really very simple and is well described in [this page](https://docs.microsoft.com/it-it/visualstudio/mac/debugging#debugging-monos-class-libraries).
 The only step you need to do is uncheck the *Debug project code only; do not step into framework code.* in *Visual Studio for Mac* > *Preferences* > *Debugger*:

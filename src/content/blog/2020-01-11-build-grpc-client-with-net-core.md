@@ -1,14 +1,11 @@
 ---
 title: Build gRPC Client with .NET Core
-date: '2020-01-11T08:30:00.000Z'
-permalink: /build-grpc-client-with-net-core/
+pubDatetime: '2020-01-11T08:30:00.000Z'
 tags:
   - gRPC
   - .NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /build-grpc-client-with-net-core/
 ---
 In the previous posts on the series about gRPC, we have seen [how to build a simple gRPC request/reply service](/request-reply-with-grpc-net) and [a gRPC server streaming service](/server-streaming-with-net-core-grpc/) by using .NET Core and the new [grpc-dotnet](https://github.com/grpc/grpc-dotnet), the managed library entirely written in C#. Now it's the time to create and build a .NET gRPC client. And it's really easy to do.
 

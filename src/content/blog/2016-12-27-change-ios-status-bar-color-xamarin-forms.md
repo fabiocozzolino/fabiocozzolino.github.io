@@ -1,18 +1,12 @@
 ---
 title: Change the iOS Status Bar color in Xamarin.Forms
-date: '2016-12-27T20:19:02.000Z'
-permalink: /change-ios-status-bar-color-xamarin-forms/
+pubDatetime: '2016-12-27T20:19:02.000Z'
 tags:
   - iOS
   - Xamarin
   - Xamarin.Forms
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4471
+draft: false
+permalink: /change-ios-status-bar-color-xamarin-forms/
 ---
 Xamarin.Forms is a great way to abstract the local implementation. But, you know, sometimes you need to perform some small adjustments based on the underlying OS. Is this the case of the iOS Status Bar style.
 

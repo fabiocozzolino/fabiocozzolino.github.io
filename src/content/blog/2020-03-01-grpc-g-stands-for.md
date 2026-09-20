@@ -1,13 +1,10 @@
 ---
 title: In gRPC, g stands for?
-date: '2020-03-01T08:30:00.000Z'
-permalink: /grpc-g-stands-for/
+pubDatetime: '2020-03-01T08:30:00.000Z'
 tags:
   - gRPC
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /grpc-g-stands-for/
 ---
 If your answer is Google, you are not wrong. But actually, the gRPC team change the meaning of 'g' every release. In short words, 'g' stands for:
 

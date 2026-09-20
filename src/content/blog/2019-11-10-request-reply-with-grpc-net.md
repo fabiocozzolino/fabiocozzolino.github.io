@@ -1,16 +1,13 @@
 ---
 title: Implementing request-reply service in gRPC for .NET
-date: '2019-11-10T08:30:00.000Z'
-permalink: /request-reply-with-grpc-net/
+pubDatetime: '2019-11-10T08:30:00.000Z'
 tags:
   - gRPC
   - .NET
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /request-reply-with-grpc-net/
 ---
 With this post it's time to get into the first service build with gRPC. First of all, we'll use the `dotnet` command to create our solution:
 <p align="center">

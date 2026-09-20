@@ -1,17 +1,14 @@
 ---
 title: Distribute an event in CQRS with .NET on AWS
-date: '2024-02-27T08:00:00.000Z'
-permalink: /Distribute-an-event-in-CQRS-with-NET-on-AWS/
+pubDatetime: '2024-02-27T08:00:00.000Z'
 tags:
   - Serverless
   - AWS
   - Lambda
   - Aurora
   - CQRS
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /Distribute-an-event-in-CQRS-with-NET-on-AWS/
 ---
 In the last [post](https://www.fabiocozzolino.eu/CQRS-with-NET-and-AWS/) we talked about CQRS and how it is possible to implement it in AWS by using .NET and taking advantage from using all the power of the Cloud Native approach.
 

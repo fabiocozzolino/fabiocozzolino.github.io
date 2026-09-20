@@ -1,15 +1,12 @@
 ---
 title: Develop a Blazor project with Visual Studio Code on Mac
-date: '2018-12-02T08:58:11.000Z'
-permalink: /develop-blazor-project-visual-studio-code-mac/
+pubDatetime: '2018-12-02T08:58:11.000Z'
 tags:
   - ASP.NET
   - Blazor
   - Visual Studio Code for Mac
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /develop-blazor-project-visual-studio-code-mac/
 ---
 Blazor is a new, experimental, framework for develop Single Page Application by using the same framework, library and language: C#. It is really powerful and you can use it on every OS and on every browser that supports WebAssembly.
 In this post we will see how you can create a project by using MacOS and Visual Studio Code

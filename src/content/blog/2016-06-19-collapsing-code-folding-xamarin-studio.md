@@ -1,15 +1,10 @@
 ---
 title: Collapsing Code (Folding) in Xamarin Studio
-date: '2016-06-19T12:03:50.000Z'
-permalink: /collapsing-code-folding-xamarin-studio/
+pubDatetime: '2016-06-19T12:03:50.000Z'
 tags:
   - Xamarin Studio
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3541
+draft: false
+permalink: /collapsing-code-folding-xamarin-studio/
 ---
 In my opinion, this is one of the most useful and hidden feature. In Xamarin Studio you are able to fold or unfold your code by simply enabling this feature in Preferences:
 

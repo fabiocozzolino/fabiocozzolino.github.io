@@ -1,13 +1,10 @@
 ---
 title: Conversation with ChatGPT
-date: '2022-12-10T08:00:00.000Z'
-permalink: /conversation-with-chatgpt/
+pubDatetime: '2022-12-10T08:00:00.000Z'
 tags:
   - Architectures
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /conversation-with-chatgpt/
 ---
 <p align="center">
   <img src="/assets/img/headline/chatgpt.png" alt="Conversation with ChatGPT">

@@ -1,16 +1,13 @@
 ---
 title: The Unwritten Rules of Effective Leadership
-date: '2025-05-25T14:27:00.000Z'
-permalink: /Unwritten-Rules-Effective-Leadership/
+pubDatetime: '2025-05-25T14:27:00.000Z'
 tags:
   - Leadership
   - Management
   - Personal Development
   - Career
-categories: []
-author: fabiocozzolino
-published: false
-legacyLayout: post
+draft: true
+permalink: /Unwritten-Rules-Effective-Leadership/
 ---
 # Introduction
 

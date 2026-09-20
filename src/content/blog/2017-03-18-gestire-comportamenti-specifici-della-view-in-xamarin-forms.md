@@ -1,17 +1,11 @@
 ---
 title: Gestire comportamenti specifici della View in Xamarin.Forms
-date: '2017-03-18T23:28:21.000Z'
-permalink: /gestire-comportamenti-specifici-della-view-in-xamarin-forms/
+pubDatetime: '2017-03-18T23:28:21.000Z'
 tags:
   - Xamarin
   - Xamarin.Forms
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 5201
+draft: false
+permalink: /gestire-comportamenti-specifici-della-view-in-xamarin-forms/
 ---
 La chiara e netta separazione tra la UI e l&#8217;application logic è il concetto che sta alla base del pattern MVVM. Molte volte, però, non è semplice capire distinguere le responsabilit , almeno in termini di rappresentazione della UI. Se devo cambiare un colore in base al contenuto, è il ViewModel che lo decide? Dove indico il colore?
 

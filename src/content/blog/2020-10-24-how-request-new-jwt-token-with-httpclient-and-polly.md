@@ -1,15 +1,12 @@
 ---
 title: How to automatically request a new JWT token with HttpClient and Polly
-date: '2020-10-03T08:30:00.000Z'
-permalink: /how-request-new-jwt-token-with-httpclient-and-polly/
+pubDatetime: '2020-10-03T08:30:00.000Z'
 tags:
   - .NET
   - Architecture
   - Security
-categories: []
-author: fabiocozzolino
-published: false
-legacyLayout: post
+draft: true
+permalink: /how-request-new-jwt-token-with-httpclient-and-polly/
 ---
 JWT token is slightly becoming the new standard for security. One of the most used scenario is with JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants, defined in [RFC 7523](https://tools.ietf.org/html/rfc7523). In this post, we'll see how a client can make HTTP requests and obtain a new JWT token every times it is needed. To achieve this result, we'll use [Polly](https://github.com/App-vNext/Polly).
 

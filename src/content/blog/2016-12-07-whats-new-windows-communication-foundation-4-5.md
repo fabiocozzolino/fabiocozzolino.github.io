@@ -1,16 +1,11 @@
 ---
 title: What&#8217;s new in Windows Communication Foundation 4.5
-date: '2016-12-07T09:14:48.000Z'
-permalink: /whats-new-windows-communication-foundation-4-5/
+pubDatetime: '2016-12-07T09:14:48.000Z'
 tags:
   - Integration
   - WCF
-categories:
-  - Integration
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4341
+draft: false
+permalink: /whats-new-windows-communication-foundation-4-5/
 ---
 Windows Communication Foundation (WCF), the Microsoft framework for message exchange between systems, has come a long way since when it was called Indigo, about ten years ago.
 

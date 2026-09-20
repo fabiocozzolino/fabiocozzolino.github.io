@@ -1,8 +1,5 @@
 ---
-import '@fontsource-variable/instrument-sans/wght.css';
-import '@fontsource-variable/newsreader/wght.css';
 import '../styles/global.css';
-import '../styles/profile-sections.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { profile } from '../data/site';
@@ -13,8 +10,9 @@ interface Props {
   type?: 'website' | 'article';
 }
 
-const { title = `${profile.name} | Blog`, description = profile.bio, type = 'website' } = Astro.props;
+const { title = `${profile.name} | ${profile.title}`, description = profile.bio, type = 'website', image = '/assets/img/fabio.jpeg' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
 ---
 <!doctype html>
 <html lang="en">
@@ -26,10 +24,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/assets/favicon.ico" />
+    <meta name="author" content={profile.name} />
     <meta property="og:type" content={type} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={`${profile.name} - ${profile.title}`} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
   </head>
   <body id="top">
     <a class="skip-link" href="#main-content">Skip to content</a>

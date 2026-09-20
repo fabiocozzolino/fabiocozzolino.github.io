@@ -1,16 +1,13 @@
 ---
 title: Cost usage of Blazor on AWS Elastic Beanstalk
-date: '2022-03-07T08:00:00.000Z'
-permalink: /blazor-aws-elastic-beanstalk-cost-usage/
+pubDatetime: '2022-03-07T08:00:00.000Z'
 tags:
   - Blazor
   - WebAssembly
   - AWS
   - Elastic Beanstalk
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /blazor-aws-elastic-beanstalk-cost-usage/
 ---
 In the [latest post](/deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/) we explore a possibile way to deploy a Blazor WebAssembly. Now, I would like to check how much will cost the solution and look at the AWS services.
 

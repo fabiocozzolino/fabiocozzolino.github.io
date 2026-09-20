@@ -1,14 +1,11 @@
 ---
 title: How to enable Face ID on Xamarin.iOS
-date: '2019-01-15T21:58:11.000Z'
-permalink: /enable-face-id-on-xamarin-ios/
+pubDatetime: '2019-01-15T21:58:11.000Z'
 tags:
   - Xamarin
   - iOS
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /enable-face-id-on-xamarin-ios/
 ---
 With iPhone X, Apple release a new biometric authentication way: Face ID. Like others things, you need to obtain access to that feature. To achieve this, you must add the `NSFaceIDUsageDescription` key to the info.plist file:
 
