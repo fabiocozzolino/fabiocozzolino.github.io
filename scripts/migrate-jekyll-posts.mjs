@@ -24,33 +24,34 @@ const fallbackPermalink = (fileName) => `/${slugFromFile(fileName)}/`;
 const serialize = (data) => yaml.dump(data, { lineWidth: -1, noRefs: true, sortKeys: false }).trim();
 
 await fs.mkdir(targetDir, { recursive: true });
-const entries = (await fs.readdir(sourceDir, { withFileTypes: true }))
-  .filter((entry) => entry.isFile() && /\.(md|markdown)$/i.test(entry.name))
-  .sort((a, b) => a.name.localeCompare(b.name));
+const entries = (await fs.readdir(sourceDir, { recursive: true }))
+  .filter((entry) => /\.(md|markdown)$/i.test(entry))
+  .sort((a, b) => a.localeCompare(b));
 
 let migrated = 0;
 const seenPermalinks = new Map();
 
 for (const entry of entries) {
-  const sourcePath = path.join(sourceDir, entry.name);
+  const fileName = path.basename(entry);
+  const sourcePath = path.join(sourceDir, entry);
   const source = await fs.readFile(sourcePath, 'utf8');
   const parsed = matter(source);
   const frontmatter = parsed.data;
-  let permalink = normalizePermalink(frontmatter.permalink, entry.name);
+  let permalink = normalizePermalink(frontmatter.permalink, fileName);
 
   if (seenPermalinks.has(permalink)) {
     const originalPermalink = permalink;
-    permalink = fallbackPermalink(entry.name);
-    console.warn(`Duplicate permalink ${originalPermalink}: ${seenPermalinks.get(originalPermalink)} and ${entry.name}. Using ${permalink} for the latter.`);
+    permalink = fallbackPermalink(fileName);
+    console.warn(`Duplicate permalink ${originalPermalink}: ${seenPermalinks.get(originalPermalink)} and ${entry}. Using ${permalink} for the latter.`);
     if (seenPermalinks.has(permalink)) {
-      throw new Error(`Fallback permalink ${permalink} is also duplicated by ${seenPermalinks.get(permalink)} and ${entry.name}`);
+      throw new Error(`Fallback permalink ${permalink} is also duplicated by ${seenPermalinks.get(permalink)} and ${entry}`);
     }
   }
-  seenPermalinks.set(permalink, entry.name);
+  seenPermalinks.set(permalink, entry);
 
   const output = {
-    title: String(frontmatter.title || slugFromFile(entry.name)),
-    date: new Date(frontmatter.date || entry.name.slice(0, 10)).toISOString(),
+    title: String(frontmatter.title || slugFromFile(fileName)),
+    date: new Date(frontmatter.date || fileName.slice(0, 10)).toISOString(),
     permalink,
     tags: asArray(frontmatter.tags),
     categories: asArray(frontmatter.categories),
@@ -61,7 +62,8 @@ for (const entry of entries) {
   };
 
   Object.keys(output).forEach((key) => output[key] === undefined && delete output[key]);
-  await fs.writeFile(path.join(targetDir, entry.name), `---\n${serialize(output)}\n---\n${parsed.content.trimStart()}`, 'utf8');
+  const outputName = path.basename(entry);
+  await fs.writeFile(path.join(targetDir, outputName), `---\n${serialize(output)}\n---\n${parsed.content.trimStart()}`, 'utf8');
   migrated += 1;
 }
 
