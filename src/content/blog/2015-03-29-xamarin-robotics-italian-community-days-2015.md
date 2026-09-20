@@ -1,20 +1,9 @@
 ---
 title: Xamarin Robotics @ Italian Community Days 2015
-date: '2015-03-29T21:22:42.000Z'
-permalink: /xamarin-robotics-italian-community-days-2015/
+pubDatetime: '2015-03-29T21:22:42.000Z'
 tags: []
-categories:
-  - .NET Microframework
-  - Community
-  - Events
-  - Netduino
-  - Robotics
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 631
+draft: false
+permalink: /xamarin-robotics-italian-community-days-2015/
 ---
 The Italian Community Days is, since 2006, the most important event organized by all the .NET italian communities. 3 Days of sessions, labs, workshop, 5 parallels tracks, a lot of speaker, a lot of people, a great event!
 

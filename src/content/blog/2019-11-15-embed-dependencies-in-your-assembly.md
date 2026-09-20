@@ -1,14 +1,11 @@
 ---
 title: Embed dependencies in your Assembly
-date: '2019-11-15T08:30:00.000Z'
-permalink: /embed-dependencies-in-your-assembly/
+pubDatetime: '2019-11-15T08:30:00.000Z'
 tags:
   - .NET
   - .NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /embed-dependencies-in-your-assembly/
 ---
 Sometimes, when your assembly has many dependencies, you may have the need to simplify deployment. One useful approach is to embed dependent assembly into the main one. To proceed, you need to add the assembly as embedded resource into your project:
 

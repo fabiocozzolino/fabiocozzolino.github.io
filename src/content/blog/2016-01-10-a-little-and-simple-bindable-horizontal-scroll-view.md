@@ -1,14 +1,9 @@
 ---
 title: A little and simple Bindable (Horizontal) Scroll View
-date: '2016-01-10T17:01:13.000Z'
-permalink: /a-little-and-simple-bindable-horizontal-scroll-view/
+pubDatetime: '2016-01-10T17:01:13.000Z'
 tags: []
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 2031
+draft: false
+permalink: /a-little-and-simple-bindable-horizontal-scroll-view/
 ---
 In one project I was working on, a page needs to show a short horizontal and scrollable list of items (something like the Apple App Store app). Xamarin.Forms offers the ability to use a ScrollView control to show a list of items horizontally but, in my case, the items I must to show comes from a dinamically populated list.  In that case I&#8217;ve extended the ScrollView control and added the ItemsSource and ItemTemplate property.
 

@@ -1,14 +1,11 @@
 ---
 title: A simple approach to navigation with Model-View-ViewModel in Xamarin.Forms
-date: '2018-01-06T16:58:11.000Z'
-permalink: /simple-approach-to-navigation-with-Model-View-ViewModel-in-Xamarin-Forms/
+pubDatetime: '2018-01-06T16:58:11.000Z'
 tags:
   - Xamarin
   - Xamarin.Forms
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /simple-approach-to-navigation-with-Model-View-ViewModel-in-Xamarin-Forms/
 ---
 Model-View-ViewModel is a widely used architectural pattern that helps you to separate UI from presentation logic responsibility. In your ViewModel you can provide data to the View through binding and handle the action by using commands, but what about the navigation? Who is responsible for showing another view?<br/><br/>
 The following schema show how the View, the ViewModel and the Model interact in the MVVM architecture:

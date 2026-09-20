@@ -1,17 +1,14 @@
 ---
 title: CQRS with .NET and AWS
-date: '2024-02-20T08:00:00.000Z'
-permalink: /CQRS-with-NET-and-AWS/
+pubDatetime: '2024-02-20T08:00:00.000Z'
 tags:
   - Serverless
   - AWS
   - Lambda
   - Aurora
   - CQRS
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /CQRS-with-NET-and-AWS/
 ---
 One of the most talked about and appreciated patterns in recent years is undoubtedly CQRS: Command-Query Responsibility Segregation. Its potential is offset by implementation complexity, which is too often underestimated in the design phase. Moreover, we too often approach the pattern without a real need, lured by the promise of potential scalability but underestimating its implementation and maintenance costs.
 

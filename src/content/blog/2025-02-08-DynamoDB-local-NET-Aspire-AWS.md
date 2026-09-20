@@ -1,16 +1,13 @@
 ---
 title: Using DynamoDB local with .NET Aspire and AWS
-date: '2025-02-08T08:00:00.000Z'
-permalink: /DynamoDB-local-NET-Aspire-AWS/
+pubDatetime: '2025-02-08T08:00:00.000Z'
 tags:
   - AWS
   - CDK
   - .NET Aspire
   - DynamoDB
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /DynamoDB-local-NET-Aspire-AWS/
 ---
 # Introduction
 Following the first post about [.NET Aspire and AWS](/Modern-development-NET-Aspire-AWS/), I want to explore now the possibility of using AWS resources with .NET Aspire to enable a local development environment that is quite similar to the one available in the cloud. Locally replicating a cloud environment is currently a big challenge for developers. The issue becomes very high if you want to use serverless solutions, like Lambda or DynamoDB. We will see what the current possibilities are with .NET Aspire.

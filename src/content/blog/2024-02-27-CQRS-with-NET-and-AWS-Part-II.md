@@ -1,17 +1,14 @@
 ---
 title: CQRS with .NET and AWS - Part II
-date: '2024-02-27T08:00:00.000Z'
-permalink: /CQRS-with-NET-and-AWS-Part-II/
+pubDatetime: '2024-02-27T08:00:00.000Z'
 tags:
   - Serverless
   - AWS
   - Lambda
   - Aurora
   - CQRS
-categories: []
-author: fabiocozzolino
-published: false
-legacyLayout: post
+draft: true
+permalink: /CQRS-with-NET-and-AWS-Part-II/
 ---
 In the.
 

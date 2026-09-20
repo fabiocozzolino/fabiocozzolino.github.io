@@ -1,15 +1,12 @@
 ---
 title: How to evolve your .NET gRPC service
-date: '2020-03-09T08:30:00.000Z'
-permalink: /how-to-evolve-your-net-grpc-service/
+pubDatetime: '2020-03-09T08:30:00.000Z'
 tags:
   - gRPC
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /how-to-evolve-your-net-grpc-service/
 ---
 Evolving is a necessary step to survive and the software architecture is not an exception. Also designing a gRPC service means that something may change in the future. So, what happen if we change the ProtoBuf definition? 
 Evolving a contract definition means that we can add a new field, for example, or remove an existing one. Or we could introduce a new service and deprecate an existing one. And obviusly we'd like that the client still continue to work.

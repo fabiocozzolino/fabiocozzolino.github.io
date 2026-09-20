@@ -1,16 +1,11 @@
 ---
 title: Keep It Simple!
-date: '2017-01-09T21:32:32.000Z'
-permalink: /keep-it-simple/
+pubDatetime: '2017-01-09T21:32:32.000Z'
 tags:
   - Architecture
   - Methods
-categories:
-  - Architecture
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4831
+draft: false
+permalink: /keep-it-simple/
 ---
 **Antoine de Saint-Exupéry** wrote in his book **The Little Prince** the following phrase:
 

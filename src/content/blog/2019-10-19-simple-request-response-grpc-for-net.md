@@ -1,16 +1,13 @@
 ---
 title: A simple request-response in gRPC for .NET
-date: '2019-10-19T08:30:00.000Z'
-permalink: /simple-request-response-grpc-for-net/
+pubDatetime: '2019-10-19T08:30:00.000Z'
 tags:
   - gRPC
   - .NET
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: false
-legacyLayout: post
+draft: true
+permalink: /simple-request-response-grpc-for-net/
 ---
 In [this post](/speed-up-your-net-microservice-with-grpc/) we introduced gRPC and their .NET implementations. In some cases, you'll need to use a gRPC client from a legacy Win32 process but, since the NuGet package of gRPC C# is based on the x64 C++ native library, it will not works well.
 

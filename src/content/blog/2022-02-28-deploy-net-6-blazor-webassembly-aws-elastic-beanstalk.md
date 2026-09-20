@@ -1,7 +1,6 @@
 ---
 title: Deploy .NET 6 Blazor WebAssembly on AWS Elastic Beanstalk
-date: '2022-02-28T08:00:00.000Z'
-permalink: /deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/
+pubDatetime: '2022-02-28T08:00:00.000Z'
 tags:
   - Blazor
   - WebAssembly
@@ -10,10 +9,8 @@ tags:
   - .NET 6
   - DevOps
   - GitHub
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /deploy-net-6-blazor-webassembly-aws-elastic-beanstalk/
 ---
 This post is the first in a new series looking at .NET on AWS. Why AWS? The answer is ... why not! Perhaps not everyone knows that .NET is a first class citizen on AWS. Right after the Java SDK, .NET SDK was one of the first SDKs released in early 2010.
 

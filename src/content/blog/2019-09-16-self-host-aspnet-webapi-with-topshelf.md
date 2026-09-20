@@ -1,16 +1,13 @@
 ---
 title: Blazor now in official preview
-date: '2019-04-24T11:05:00.000Z'
-permalink: /self-host-aspnet-webapi-with-topshelf/
+pubDatetime: '2019-04-24T11:05:00.000Z'
 tags:
   - Blazor
   - .NET
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: false
-legacyLayout: post
+draft: true
+permalink: /self-host-aspnet-webapi-with-topshelf/
 ---
 install topshelf
 

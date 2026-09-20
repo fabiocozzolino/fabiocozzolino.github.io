@@ -1,15 +1,12 @@
 ---
 title: Securing your server-to-server microservice comunication
-date: '2020-10-03T08:30:00.000Z'
-permalink: /securing-your-server-to-server-microservice-comunication/
+pubDatetime: '2020-10-03T08:30:00.000Z'
 tags:
   - .NET
   - Architecture
   - Security
-categories: []
-author: fabiocozzolino
-published: false
-legacyLayout: post
+draft: true
+permalink: /securing-your-server-to-server-microservice-comunication/
 ---
 As you know, security is a first-class citizen. You must think about it in the first phase of your architecture design. 
 

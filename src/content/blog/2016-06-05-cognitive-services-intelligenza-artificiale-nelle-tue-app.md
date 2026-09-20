@@ -1,14 +1,9 @@
 ---
 title: 'Cognitive Services: Intelligenza Artificiale nelle tue App'
-date: '2016-06-05T16:23:23.000Z'
-permalink: /cognitive-services-intelligenza-artificiale-nelle-tue-app/
+pubDatetime: '2016-06-05T16:23:23.000Z'
 tags: []
-categories:
-  - Uncategorized
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3101
+draft: false
+permalink: /cognitive-services-intelligenza-artificiale-nelle-tue-app/
 ---
 Durante la BUILD 2016 di Microsoft tenuta a San Francisco lo scorso aprile, sono state annunciate diverse novit  in grado di portare all&#8217;interno delle nostre applicazioni evoluzioni importanti. Una di queste, probabilmente la più rilevante, è senza dubbio l&#8217;Intelligenza Artificiale.
 

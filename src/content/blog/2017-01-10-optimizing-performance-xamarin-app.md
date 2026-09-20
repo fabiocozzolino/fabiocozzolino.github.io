@@ -1,18 +1,13 @@
 ---
 title: Optimizing performance in your Xamarin app
-date: '2017-01-10T19:33:04.000Z'
-permalink: /optimizing-performance-xamarin-app/
+pubDatetime: '2017-01-10T19:33:04.000Z'
 tags:
   - Performance
   - Xamarin
   - Xamarin Platform
   - Xamarin.Forms
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4921
+draft: false
+permalink: /optimizing-performance-xamarin-app/
 ---
 Performance are one of the key features in the app development. If your app is too slow, the users will close it immediately. In this post, you can find some interesting videos from Channel9 about performance optimization of apps builded with Xamarin.
 

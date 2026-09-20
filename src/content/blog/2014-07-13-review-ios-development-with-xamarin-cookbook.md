@@ -1,14 +1,9 @@
 ---
 title: '[Book Review] iOS Development with Xamarin Cookbook'
-date: '2014-07-13T22:21:41.000Z'
-permalink: /review-ios-development-with-xamarin-cookbook/
+pubDatetime: '2014-07-13T22:21:41.000Z'
 tags: []
-categories:
-  - Book Review
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 101
+draft: false
+permalink: /review-ios-development-with-xamarin-cookbook/
 ---
 [<img class="alignleft" src="https://i1.wp.com/my.safaribooksonline.com/static/201407-7807-my/images/9781849698924/9781849698924_s.jpg?resize=145%2C179" alt="" data-recalc-dims="1" />](http://my.safaribooksonline.com/book/programming/mobile/9781849698924)In this brand new blog, I would like to start with a new series of books review. If you are looking for a fast and easy way to learn and apply immediately what you are learning, then <a href="http://www.packtpub.com/ios-development-with-xamarin-cookbook/book" target="_blank">iOS Development with Xamarin Cookbook</a>  is the perfect book for you.
 

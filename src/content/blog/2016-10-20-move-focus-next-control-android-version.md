@@ -1,17 +1,10 @@
 ---
 title: 'Move focus on the next control: Android version'
-date: '2016-10-20T23:48:08.000Z'
-permalink: /move-focus-next-control-android-version/
+pubDatetime: '2016-10-20T23:48:08.000Z'
 tags:
   - Android
-categories:
-  - Forms
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3781
+draft: false
+permalink: /move-focus-next-control-android-version/
 ---
 Some days ago [I have published](http://www.fabiocozzolino.eu/move-focus-next-control-xamarin-forms/) a sample Xamarin.Forms control to simply move focus on others controls of the page. I&#8217;ve presented just the iOS version but now it&#8217;s the time to see also the Android implementation.
 

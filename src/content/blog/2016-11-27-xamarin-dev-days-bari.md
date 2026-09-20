@@ -1,18 +1,10 @@
 ---
 title: Xamarin Dev Days @ Bari
-date: '2016-11-27T21:32:45.000Z'
-permalink: /xamarin-dev-days-bari/
+pubDatetime: '2016-11-27T21:32:45.000Z'
 tags:
   - Azure
-categories:
-  - Community
-  - Eventi
-  - Events
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 4051
+draft: false
+permalink: /xamarin-dev-days-bari/
 ---
 Last Friday in Bari, DotNetSide has hosted one stop of the [Xamarin Dev Days](https://ti.to/xamarin/dev-days-bari) tour in Italy. It was really an amazing day spent with very passionate people talking about Xamarin and how is funny to develop with their tools.
 

@@ -1,14 +1,9 @@
 ---
 title: Welcome Xamarin Studio 6.0
-date: '2016-06-09T15:54:03.000Z'
-permalink: /welcome-xamarin-studio-6-0/
+pubDatetime: '2016-06-09T15:54:03.000Z'
 tags: []
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3321
+draft: false
+permalink: /welcome-xamarin-studio-6-0/
 ---
 Yesterday Miguel, during its [talk at dotNetConf](https://channel9.msdn.com/Events/dotnetConf/2016/NET-Conf-Day-2-Keynote-Miguel-de-Icaza), has announced the release of Xamarin Studio 6.0. With this version you got a lot of benefits &#8220;_including enhanced code completion, full C# 6.0 support, and a new formatting engine_&#8221; thanks to the new type system, now powered by Roslyn, the Microsoft’s open source .NET compiler platform.
 

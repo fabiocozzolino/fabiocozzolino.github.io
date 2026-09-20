@@ -1,17 +1,14 @@
 ---
 title: Use Azure Functions from Microsoft Blazor app
-date: '2019-02-07T09:45:11.000Z'
-permalink: /use-azure-functions-from-microsoft-blazor-app/
+pubDatetime: '2019-02-07T09:45:11.000Z'
 tags:
   - ASP.NET
   - .NET
   - Azure
   - Azure Functions
   - Blazor
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /use-azure-functions-from-microsoft-blazor-app/
 ---
 Azure Functions is a great way to build serverless applications in really few minutes. You can create a new API and host in Azure without worrying about server infrastructure. That sounds really good!
 

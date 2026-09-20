@@ -1,15 +1,9 @@
 ---
 title: 'What I like about Xamarin.Forms 2.0: Precompiled Xaml'
-date: '2015-11-25T14:52:57.000Z'
-permalink: /what-i-like-about-xamarin-forms-2-0/
+pubDatetime: '2015-11-25T14:52:57.000Z'
 tags: []
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 1231
+draft: false
+permalink: /what-i-like-about-xamarin-forms-2-0/
 ---
 This is the first post about the new features included in Xamarin.Forms 2.0, released with Xamarin 4 a week ago.
 

@@ -1,16 +1,13 @@
 ---
 title: Using C# 8 on Visual Studio 2019 for Mac Preview
-date: '2019-02-28T21:05:00.000Z'
-permalink: /using-csharp-8-on-Visual-Studio-2019-for-Mac-Preview/
+pubDatetime: '2019-02-28T21:05:00.000Z'
 tags:
   - .NET
   - .NET Standard
   - .NET Core
   - C#
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /using-csharp-8-on-Visual-Studio-2019-for-Mac-Preview/
 ---
 With Visual Studio 2019 Preview you can start to play with C# 8 and its great new features. While on Windows you only needs to install Visual Studio 2019 and .NET Core 3.0, on Mac you needs some additionally trick to make it works. In this post we'll see how you can use C# 8 Preview with Visual Studio 2019 for Mac Preview.
 

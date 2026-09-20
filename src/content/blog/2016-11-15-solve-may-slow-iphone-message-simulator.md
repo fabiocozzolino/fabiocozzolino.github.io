@@ -1,15 +1,10 @@
 ---
 title: Solve the &#8220;May Slow Down Your iPhone&#8221; message on simulator
-date: '2016-11-15T17:34:22.000Z'
-permalink: /solve-may-slow-iphone-message-simulator/
+pubDatetime: '2016-11-15T17:34:22.000Z'
 tags:
   - Xamarin Studio
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 3961
+draft: false
+permalink: /solve-may-slow-iphone-message-simulator/
 ---
 With Xcode 8.1 and the iOS 10.1 simulator you may encounter the following message:
 

@@ -1,18 +1,13 @@
 ---
 title: Xamarin Dev Days @ Potenza
-date: '2017-04-10T21:06:29.000Z'
-permalink: /xamarin-dev-days-potenza/
+pubDatetime: '2017-04-10T21:06:29.000Z'
 tags:
   - Xamarin
   - Xamarin Platform
   - Xamarin Studio
   - Xamarin.Forms
-categories:
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 5501
+draft: false
+permalink: /xamarin-dev-days-potenza/
 ---
 Last friday, thanks to [JetBit](http://www.jetbit.it/)&nbsp;and to my friend Massimo Bilancia, DotNetSide has organized&nbsp;the first Xamarin Dev Days in Potenza, Basilicata, Italy. What a great day! Meet people, make networking, share development experience in a wonderful location is always the best way to spend a day.
 

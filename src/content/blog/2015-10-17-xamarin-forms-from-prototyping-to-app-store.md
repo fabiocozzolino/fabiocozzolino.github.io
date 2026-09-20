@@ -1,15 +1,9 @@
 ---
 title: 'Xamarin.Forms: from prototype to app store'
-date: '2015-10-17T17:05:33.000Z'
-permalink: /xamarin-forms-from-prototyping-to-app-store/
+pubDatetime: '2015-10-17T17:05:33.000Z'
 tags: []
-categories:
-  - Xamarin
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 1011
+draft: false
+permalink: /xamarin-forms-from-prototyping-to-app-store/
 ---
 In my talks, speaking about Xamarin.Forms, the most common question is: &#8220;Wonderful technology! But &#8230; when Xamarin.Forms is the preferred choice? Why (and when) I should use it instead of native apps?&#8221;
 

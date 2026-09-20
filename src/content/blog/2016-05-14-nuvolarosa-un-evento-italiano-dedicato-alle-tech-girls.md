@@ -1,14 +1,9 @@
 ---
 title: 'NuvolaRosa: un evento italiano dedicato alle tech-girls!'
-date: '2016-05-14T10:02:04.000Z'
-permalink: /nuvolarosa-un-evento-italiano-dedicato-alle-tech-girls/
+pubDatetime: '2016-05-14T10:02:04.000Z'
 tags: []
-categories:
-  - Uncategorized
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 2871
+draft: false
+permalink: /nuvolarosa-un-evento-italiano-dedicato-alle-tech-girls/
 ---
 Lunedì 9 maggio ho avuto il grandissimo onore di partecipare come speaker ad un evento di portata nazionale come [#NuvolaRosa](http://www.nuvolarosa.eu/agenda-bari), un evento organizzato con l&#8217;obiettivo di coinvolgere le ragazze in quelle che sono le evoluzioni, o rivoluzioni, in atto nel mondo del lavoro, soprattutto in ambito tecnologico.
 

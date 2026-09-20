@@ -1,43 +1,37 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { profile, publications, speakingEngagements } from '../data/site';
+import { profile } from '../data/site';
 
-const posts = (await getCollection('blog', ({ data }) => data.published))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDatetime.valueOf() - a.data.pubDatetime.valueOf());
 ---
 <BaseLayout title={`${profile.name} | Blog`} description={profile.bio}>
-  <section class="hero shell">
-    <div class="eyebrow"><i></i> Engineering notes · {profile.location}</div>
-    <h1>Engineering decisions<br /><em>with context.</em></h1>
+  <section class="hero shell" aria-labelledby="hero-title">
+    <p class="eyebrow">{profile.title} · {profile.location}</p>
+    <h1 id="hero-title">Engineering leadership<br /><em>with context.</em></h1>
     <p class="hero-summary">{profile.bio}</p>
-    <div class="hero-actions"><a class="button" href="#writing">Read the latest <span>↓</span></a><a class="button button-light" href="/speaking/">Speaking <span>↗</span></a></div>
+    <nav class="social-row" aria-label="Social links"><a href={profile.linkedin}>LinkedIn</a><a href={profile.github}>GitHub</a><a href={profile.linkedin}>Contact</a><a href="/rss.xml">RSS</a></nav>
   </section>
 
   <section class="proof-strip" aria-label="Professional experience">
-    <div class="shell proof-grid"><div><strong>20+</strong><span>years in software</span></div><div><strong>3</strong><span>technical books</span></div><div><strong>9+</strong><span>public speaking engagements</span></div><div><strong>75</strong><span>published articles</span></div></div>
-  </section>
-
-  <section class="section shell" id="writing" aria-labelledby="writing-title">
-    <div class="section-intro"><div><span class="section-kicker">01 / Field notes</span><h2 id="writing-title">Recent <em>writing.</em></h2></div><p>{posts.length} articles spanning a decade of software development.</p></div>
-    <div class="post-list">
-      {posts.map((post, index) => (
-        <article class="post-row">
-          <span class="post-index">{String(index + 1).padStart(2, '0')}</span>
-          <div class="post-copy"><div class="post-meta"><time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</time>{post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}</div><h3><a href={post.data.permalink}>{post.data.title}</a></h3></div>
-          <a class="post-arrow" href={post.data.permalink} aria-label={`Read ${post.data.title}`}>↗</a>
-        </article>
-      ))}
+    <div class="shell proof-grid">
+      <div><strong>20+</strong><span>years in software</span></div>
+      <div><strong>3</strong><span>technical books</span></div>
+      <div><strong>9+</strong><span>public speaking engagements</span></div>
+      <div><strong>75</strong><span>published articles</span></div>
     </div>
   </section>
 
-  <section class="section split-section shell" aria-labelledby="speaking-title">
-    <div class="section-intro"><div><span class="section-kicker">02 / Speaking</span><h2 id="speaking-title">Sharing the<br /><em>hard-won lessons.</em></h2></div><p>Talks and meetups about architecture, cloud platforms, distributed systems, and practical engineering.</p></div>
-    <div class="feature-list">{speakingEngagements.slice(0, 3).map((talk) => <a class="feature-row" href={talk.href} target="_blank" rel="noreferrer"><span>{talk.year}</span><div><strong>{talk.title}</strong><small>{talk.event} · {talk.role}</small></div><b aria-hidden="true">↗</b></a>)}</div>
-    <a class="text-link" href="/speaking/">View all speaking engagements ↗</a>
-  </section>
-
-  <section class="section publications-section" aria-labelledby="publications-title">
-    <div class="shell"><div class="section-intro"><div><span class="section-kicker">03 / Publications</span><h2 id="publications-title">Writing beyond<br /><em>the blog.</em></h2></div><p>Books and long-form technical work shaped by years of building connected systems.</p></div><div class="publication-grid">{publications.map((book) => <a class="publication-card" href={book.href} target="_blank" rel="noreferrer"><span class="publication-label">{book.publisher}</span><h3>{book.title}</h3><p>{book.description}</p><b aria-hidden="true">Read publication ↗</b></a>)}</div><a class="text-link" href="/publications/">See all publications ↗</a></div>
+  <section class="section shell" id="blog" aria-labelledby="writing-title">
+    <div class="section-intro"><div><span class="section-kicker">Writing</span><h2 id="writing-title">Recent posts</h2></div><p>{posts.length} essays on technology, culture, and the work of building software.</p></div>
+    <div class="post-list" role="list">
+      {posts.map((post, index) => (
+        <article class="post-row" role="listitem">
+          <span class="post-index">{String(index + 1).padStart(2, '0')}</span>
+          <div class="post-copy"><div class="post-meta"><time datetime={post.data.pubDatetime.toISOString()}>{post.data.pubDatetime.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</time>{post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}</div><h3><a href={post.data.permalink || `/${post.id}/`}>{post.data.title}</a></h3></div>
+        </article>
+      ))}
+    </div>
   </section>
 </BaseLayout>

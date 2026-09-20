@@ -1,16 +1,13 @@
 ---
 title: Speed up your .NET microservice with gRPC
-date: '2019-09-28T11:05:00.000Z'
-permalink: /speed-up-your-net-microservice-with-grpc/
+pubDatetime: '2019-09-28T11:05:00.000Z'
 tags:
   - gRPC
   - .NET
   - .NET Core
   - ASP.NET Core
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /speed-up-your-net-microservice-with-grpc/
 ---
 For those who still don't know, gRPC is a RPC (Remote Procedure Call) framework with high performance in mind. Born in Google and used for years, it has been recently released to the open source world and now is supported in about 10 specific languages: from C# to Java, C++ or Go.
 

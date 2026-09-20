@@ -1,14 +1,9 @@
 ---
 title: Why developers call it &#8220;bug&#8221;!
-date: '2016-01-09T10:43:18.000Z'
-permalink: /why-we-call-it-bug/
+pubDatetime: '2016-01-09T10:43:18.000Z'
 tags: []
-categories:
-  - Uncategorized
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 2051
+draft: false
+permalink: /why-we-call-it-bug/
 ---
 Why software error or anomaly is called &#8220;bug&#8221;?
 

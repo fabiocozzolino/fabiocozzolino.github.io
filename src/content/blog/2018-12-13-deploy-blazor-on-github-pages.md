@@ -1,16 +1,13 @@
 ---
 title: Deploy a Blazor app on GitHub Pages
-date: '2018-12-13T08:58:11.000Z'
-permalink: /deploy-blazor-on-github-pages/
+pubDatetime: '2018-12-13T08:58:11.000Z'
 tags:
   - ASP.NET
   - Blazor
   - Visual Studio Code for Mac
   - GitHub
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /deploy-blazor-on-github-pages/
 ---
 In my [previous post](http://www.fabiocozzolino.eu/develop-blazor-project-visual-studio-code-mac/), I've introduced Blazor and how you can create a new project by using Visual Studio Code on MacOS. Now we'll see how to publish our Blazor app to GitHub Pages. This is possible since Blazor is a frontend framework and you can deploy it on any static web server host, just like GitHub Pages. 
 

@@ -1,15 +1,12 @@
 ---
 title: 12 Books in 12 Months 2024 Review
-date: '2025-01-10T08:00:00.000Z'
-permalink: /12-books-in-12-months-2024-Review/
+pubDatetime: '2025-01-10T08:00:00.000Z'
 tags:
   - 12Books12Months
   - '2024'
   - books
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /12-books-in-12-months-2024-Review/
 ---
 <p align="center">
   <img src="/assets/img/headline/ancient-bookshelf.jpeg" alt="Books">

@@ -1,15 +1,12 @@
 ---
 title: Modern development with .NET Aspire and AWS
-date: '2024-11-20T08:00:00.000Z'
-permalink: /Modern-development-NET-Aspire-AWS/
+pubDatetime: '2024-11-20T08:00:00.000Z'
 tags:
   - AWS
   - CDK
   - .NET Aspire
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /Modern-development-NET-Aspire-AWS/
 ---
 # Introduction
 Modern distributed applications rely on a complex ecosystem of services to function effectively. From Redis for caching to OpenTelemetry for monitoring, and database options like PostgreSQL or MongoDB, managing these components presents significant challenges, especially when deploying to cloud platforms like AWS or Azure. To face

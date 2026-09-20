@@ -1,16 +1,10 @@
 ---
 title: My ViewModel base class implementation for Xamarin.Forms
-date: '2016-06-12T12:50:04.000Z'
-permalink: /my-viewmodel-base-class-implementation/
+pubDatetime: '2016-06-12T12:50:04.000Z'
 tags:
   - MVVM
-categories:
-  - Snippets
-  - Xamarin.Forms
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 2221
+draft: false
+permalink: /my-viewmodel-base-class-implementation/
 ---
 The MVVM is one of the most used architectural pattern to easily separate the UI development from the business logic. When you choose that pattern, you know that the ViewModel class implements many things: property change notifications, commands to execute code based on user interaction, data loading, etc&#8230;, and, every time, you need to write the same code to complete those actions.
 

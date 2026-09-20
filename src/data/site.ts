@@ -1,16 +1,16 @@
 export const profile = {
   name: 'Fabio Cozzolino',
-  shortName: 'Fabio',
-  initials: 'FC',
-  role: 'Software engineering and architecture',
+  title: 'VP of Engineering',
   location: 'Italy',
-  bio: 'I work at the intersection of practical technology, software architecture, and the socio-technical systems that shape how teams build.',
+  bio: 'I build the conditions for strong engineering teams to scale: clear technical strategy, durable culture, and alignment between people, systems, and business outcomes.',
+  email: '',
+  linkedin: 'https://www.linkedin.com/in/cozzolinofabio/',
+  github: 'https://github.com/fabiocozzolino',
 };
 
 export const socialLinks = [
-  { label: 'GitHub', href: 'https://github.com/fabiocozzolino' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/cozzolinofabio/' },
-  { label: 'Twitter', href: 'https://twitter.com/fabiocozzolino' },
+  { label: 'LinkedIn', href: profile.linkedin },
+  { label: 'GitHub', href: profile.github },
 ];
 
 export const speakingEngagements = [

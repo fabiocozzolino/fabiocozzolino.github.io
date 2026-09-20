@@ -1,15 +1,9 @@
 ---
 title: Animation in Xamarin.Forms
-date: '2016-01-31T15:58:11.000Z'
-permalink: /animation-in-xamarin-forms/
+pubDatetime: '2016-01-31T15:58:11.000Z'
 tags: []
-categories:
-  - Forms
-  - Xamarin
-author: fabiocozzolino
-published: true
-legacyLayout: post
-legacyId: 2161
+draft: false
+permalink: /animation-in-xamarin-forms/
 ---
 Xamarin.Forms provides the ability to create easy and wonderful views animations with few lines of code. For example, if you need to rotate a View, you can simple set the Rotation property, like this:
 

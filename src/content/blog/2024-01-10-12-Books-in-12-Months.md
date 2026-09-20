@@ -1,14 +1,11 @@
 ---
 title: 12 Books in 12 Months
-date: '2024-01-10T08:00:00.000Z'
-permalink: /12-books-in-12-months/
+pubDatetime: '2024-01-10T08:00:00.000Z'
 tags:
   - 12Books12Months
   - books
-categories: []
-author: fabiocozzolino
-published: true
-legacyLayout: post
+draft: false
+permalink: /12-books-in-12-months/
 ---
 <p align="center">
   <img src="/assets/img/headline/ancient-bookshelf.jpeg" alt="Books">
