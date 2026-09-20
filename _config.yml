@@ -2,7 +2,7 @@
 baseurl: ""
 url: "https://www.fabiocozzolino.eu"
 title: "Fabio Cozzolino {blog}"
-description: "A lap around .NET, Xamarin, Integration, WCF, Azure..."
+description: "A lap around practical tech, software architecture, and how socio-technical systems shape it."
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -11,7 +11,7 @@ theme_settings:
   avatar: assets/img/fabio.jpeg
   favicon: assets/favicon.ico
   gravatar: # Email MD5 hash
-  description: "A LAP AROUND MICROSOFT .NET, XAMARIN, INTEGRATION, WCF, AZURE…" # used by search engines
+  description: "A LAP AROUND PRACTICAL TECH, SOFTWARE ARCHITECTURE, AND HOW SOCIO-TECHNICAL SYSTEMS SHAPE IT." # used by search engines
 
   # Header and footer text
   header_text: > #two or three lines to describe your site

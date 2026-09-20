@@ -1,0 +1,11 @@
+---
+import { profile, socialLinks } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="shell footer-main">
+    <div><a class="footer-brand" href="/">{profile.name}</a><p>Notes from the engineering desk.</p></div>
+    <div class="footer-links">{socialLinks.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</div>
+  </div>
+  <div class="shell footer-bottom"><span>© {year} {profile.name}</span><a href="#top">Back to top ↑</a></div>
+</footer>

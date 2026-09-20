@@ -1,0 +1,52 @@
+---
+title: 'Move focus on the next control: Android version'
+date: '2016-10-20T23:48:08.000Z'
+permalink: /move-focus-next-control-android-version/
+tags:
+  - Android
+categories:
+  - Forms
+  - Xamarin
+  - Xamarin.Forms
+author: fabiocozzolino
+published: true
+legacyLayout: post
+legacyId: 3781
+---
+Some days ago [I have published](http://www.fabiocozzolino.eu/move-focus-next-control-xamarin-forms/) a sample Xamarin.Forms control to simply move focus on others controls of the page. I&#8217;ve presented just the iOS version but now it&#8217;s the time to see also the Android implementation.
+
+## TLEntryRenderer in Android
+
+The control is so simple that in just few lines of codes we&#8217;ll be able to realize the Android version. Here the renderer code:
+
+~~~ csharp
+[assembly: ExportRenderer(typeof(TLEntry), typeof(TLEntryRenderer))]
+namespace TitiusLabs.Forms.Droid.Controls
+{
+	public class TLEntryRenderer : EntryRenderer
+	{
+		protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+		{
+			base.OnElementChanged(e);
+
+			var element = e.NewElement as TLEntry;
+			if (element.ReturnButton == ReturnButtonType.Next)
+			{
+				Control.ImeOptions = Android.Views.InputMethods.ImeAction.Next;
+				Control.EditorAction += (sender, args) =>
+				{
+					element.OnNext();
+				};
+			}
+		}
+	}
+}
+~~~
+
+the code is available, as always, on [github](https://github.com/fabiocozzolino/TitiusLabs.Xamarin/blob/master/TitiusLabs.Forms.Droid/Controls/TLEntryRenderer.cs).
+
+This is the final result:
+
+[<img class="alignnone size-full wp-image-3791" src="https://i2.wp.com/www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif?resize=512%2C844" alt="movefocus_xamarinforms_android" data-recalc-dims="1" />](https://i2.wp.com/www.fabiocozzolino.eu/wp-content/uploads/2016/10/MoveFocus_XamarinForms_Android.gif)
+
+Nice and simple!

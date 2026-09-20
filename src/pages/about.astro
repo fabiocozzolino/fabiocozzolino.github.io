@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, socialLinks } from '../data/site';
+---
+<BaseLayout title={`About | ${profile.name}`} description={profile.bio}>
+  <section class="article shell">
+    <header class="article-header"><a class="back-link" href="/">← Home</a><h1>About<br /><em>the author.</em></h1></header>
+    <div class="article-body"><p>Hi, I’m {profile.name}. This is my long-running notebook about software, systems, architecture, and the people who make technical work meaningful.</p><p>My writing moves between practical .NET and cloud engineering, mobile development, integration, leadership, books, and the occasional side project.</p><p>{socialLinks.map((link) => <a href={link.href} target="_blank" rel="noreferrer">{link.label} ↗</a>)}</p></div>
+  </section>
+</BaseLayout>

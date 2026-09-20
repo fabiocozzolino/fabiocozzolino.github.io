@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.published);
+  return posts.map((post) => ({
+    params: { slug: post.data.permalink.replace(/^\/+|\/+$/g, '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, date, tags, permalink } = post.data;
+---
+<BaseLayout title={`${title} | Fabio Cozzolino`} description={`Read ${title}`} type="article">
+  <article class="article shell">
+    <header class="article-header"><a class="back-link" href="/">← All writing</a><div class="post-meta"><time datetime={date.toISOString()}>{date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</time>{tags.map((tag) => <span>{tag}</span>)}</div><h1>{title}</h1><p class="article-path">{permalink}</p></header>
+    <div class="article-body"><Content /></div>
+  </article>
+</BaseLayout>
