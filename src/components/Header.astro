@@ -22,7 +22,7 @@ import { profile } from '../data/site';
     const input = document.querySelector<HTMLInputElement>('[data-search-input]');
     const results = document.querySelector<HTMLElement>('[data-search-results]');
     const setTheme = (theme: 'light' | 'dark') => { root.dataset.theme = theme; localStorage.setItem('theme', theme); if (themeToggle) themeToggle.textContent = theme === 'dark' ? 'Light' : 'Dark'; };
-    setTheme(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
+    setTheme(localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
     themeToggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
     document.querySelector('[data-search-open]')?.addEventListener('click', async () => {
       if (!panel || !input) return;

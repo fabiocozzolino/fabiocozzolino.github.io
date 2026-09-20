@@ -17,6 +17,7 @@ const imageUrl = new URL(image, Astro.site);
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>document.documentElement.dataset.theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
@@ -43,5 +44,52 @@ const imageUrl = new URL(image, Astro.site);
     <Header />
     <main id="main-content"><slot /></main>
     <Footer />
+    <dialog class="image-lightbox" data-image-lightbox aria-label="Image preview">
+      <button type="button" class="image-lightbox-close" data-image-lightbox-close aria-label="Close image preview">Close</button>
+      <img data-image-lightbox-content alt="" />
+    </dialog>
+    <script>
+      const setupImageLightbox = () => {
+        const lightbox = document.querySelector<HTMLDialogElement>('[data-image-lightbox]');
+        const preview = document.querySelector<HTMLImageElement>('[data-image-lightbox-content]');
+        if (!lightbox || !preview || lightbox.dataset.ready) return;
+        lightbox.dataset.ready = 'true';
+
+        const close = () => {
+          lightbox.close();
+          preview.removeAttribute('src');
+          preview.alt = '';
+        };
+
+        document.querySelectorAll<HTMLImageElement>('.article-body img').forEach((image) => {
+          image.setAttribute('tabindex', '0');
+          image.setAttribute('role', 'button');
+          image.setAttribute('aria-label', `Open full-size image: ${image.alt || 'image'}`);
+          const open = () => {
+            const largestSrc = image.srcset?.split(',').at(-1)?.trim().split(/\s+/)[0];
+            preview.src = image.dataset.fullSrc || largestSrc || image.src;
+            preview.alt = image.alt || 'Full-size article image';
+            lightbox.showModal();
+          };
+          image.addEventListener('click', open);
+          image.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              open();
+            }
+          });
+        });
+
+        document.querySelector('[data-image-lightbox-close]')?.addEventListener('click', close);
+        lightbox.addEventListener('click', (event) => {
+          if (event.target === lightbox) close();
+        });
+        lightbox.addEventListener('close', () => {
+          preview.removeAttribute('src');
+        });
+      };
+      setupImageLightbox();
+      document.addEventListener('astro:page-load', setupImageLightbox);
+    </script>
   </body>
 </html>

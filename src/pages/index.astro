@@ -14,15 +14,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
     <nav class="social-row" aria-label="Social links"><a href={profile.linkedin}>LinkedIn</a><a href={profile.github}>GitHub</a><a href={profile.linkedin}>Contact</a><a href="/rss.xml">RSS</a></nav>
   </section>
 
-  <section class="proof-strip" aria-label="Professional experience">
-    <div class="shell proof-grid">
-      <div><strong>20+</strong><span>years in software</span></div>
-      <div><strong>3</strong><span>technical books</span></div>
-      <div><strong>9+</strong><span>public speaking engagements</span></div>
-      <div><strong>75</strong><span>published articles</span></div>
-    </div>
-  </section>
-
   <section class="section shell" id="blog" aria-labelledby="writing-title">
     <div class="section-intro"><div><span class="section-kicker">Writing</span><h2 id="writing-title">Recent posts</h2></div><p>{posts.length} essays on technology, culture, and the work of building software.</p></div>
     <div class="post-list" role="list">
