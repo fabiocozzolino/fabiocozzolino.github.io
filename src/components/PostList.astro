@@ -1,0 +1,8 @@
+---
+interface Post { title: string; year: string; href: string }
+const { heading, posts } = Astro.props as { heading: string; posts: Post[] };
+---
+<div class="card span-4">
+  <p class="label">{heading}</p>
+  <ul class="posts">{posts.map(p => <li><a href={p.href}>{p.title}</a><small>{p.year}</small></li>)}</ul>
+</div>
