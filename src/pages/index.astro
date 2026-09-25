@@ -1,28 +1,74 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { profile } from '../data/site';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Card from "../components/Card.astro";
+import PostList from "../components/PostList.astro";
+import { getCollection } from "astro:content";
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDatetime.valueOf() - a.data.pubDatetime.valueOf());
+const linkFor = (post) => post.data.permalink || `/${post.id}/`;
+const excerptFor = (post) => post.data.description || "A practical note from the engineering desk.";
+const features = posts.slice(0, 2).map((post, index) => ({
+  kicker: `Feature · ${post.data.tags[0] || "Engineering"}`,
+  title: post.data.title,
+  excerpt: excerptFor(post),
+  href: linkFor(post),
+  index,
+}));
+const featuredIds = new Set(features.map((feature) => feature.href));
+const availablePosts = posts.filter((post) => !featuredIds.has(linkFor(post)));
+const latestPostByTag = new Map<string, (typeof posts)[number]>();
+availablePosts.forEach((post) => post.data.tags.forEach((tag) => {
+  const current = latestPostByTag.get(tag);
+  if (!current || post.data.pubDatetime > current.data.pubDatetime) latestPostByTag.set(tag, post);
+}));
+const tagPostCounts = new Map<string, number>();
+availablePosts.forEach((post) => post.data.tags.forEach((tag) => tagPostCounts.set(tag, (tagPostCounts.get(tag) || 0) + 1)));
+const orderedTags = [...latestPostByTag.entries()]
+  .sort((a, b) => b[1].data.pubDatetime.valueOf() - a[1].data.pubDatetime.valueOf())
+  .map(([tag]) => tag);
+const preferredTags = orderedTags.filter((tag) => (tagPostCounts.get(tag) || 0) >= 3);
+const tagCandidates = [...preferredTags, ...orderedTags.filter((tag) => !preferredTags.includes(tag))];
+const assignedIds = new Set(featuredIds);
+const sections = [];
+for (const heading of tagCandidates) {
+  if (sections.length >= 3) break;
+  const sectionPosts = availablePosts
+    .filter((post) => !assignedIds.has(linkFor(post)) && post.data.tags.includes(heading))
+    .slice(0, 3);
+  if (sectionPosts.length === 0) continue;
+  sectionPosts.forEach((post) => assignedIds.add(linkFor(post)));
+  sections.push({
+    heading,
+    posts: sectionPosts.map((post) => ({ title: post.data.title, year: String(post.data.pubDatetime.getFullYear()), href: linkFor(post) })),
+  });
+}
 ---
-<BaseLayout title={`${profile.name} | Blog`} description={profile.bio}>
-  <section class="hero shell" aria-labelledby="hero-title">
-    <p class="eyebrow">{profile.title} · {profile.location}</p>
-    <h1 id="hero-title">Engineering leadership<br /><em>with context.</em></h1>
-    <p class="hero-summary">{profile.bio}</p>
-    <nav class="social-row" aria-label="Social links"><a href={profile.linkedin}>LinkedIn</a><a href={profile.github}>GitHub</a><a href={profile.linkedin}>Contact</a><a href="/rss.xml">RSS</a></nav>
+<BaseLayout>
+  <section class="grid rise">
+    <Card class="span-12 hero-text">
+      <div>
+        <p class="kicker">VP of Engineering · Italy</p>
+        <h1>Engineering leadership with context.</h1>
+        <p class="lede">I build the conditions for strong engineering teams to scale: clear technical strategy, durable culture, and alignment between people, systems, and business outcomes.</p>
+      </div>
+      <div class="meta"><b>{posts.length} essays</b> · AWS · .NET · gRPC · Serverless · CQRS · Engineering culture</div>
+    </Card>
   </section>
-
-  <section class="section shell" id="blog" aria-labelledby="writing-title">
-    <div class="section-intro"><div><span class="section-kicker">Writing</span><h2 id="writing-title">Recent posts</h2></div><p>{posts.length} essays on technology, culture, and the work of building software.</p></div>
-    <div class="post-list" role="list">
-      {posts.map((post, index) => (
-        <article class="post-row" role="listitem">
-          <span class="post-index">{String(index + 1).padStart(2, '0')}</span>
-          <div class="post-copy"><div class="post-meta"><time datetime={post.data.pubDatetime.toISOString()}>{post.data.pubDatetime.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</time>{post.data.tags.slice(0, 2).map((tag) => <span>{tag}</span>)}</div><h3><a href={post.data.permalink || `/${post.id}/`}>{post.data.title}</a></h3></div>
-        </article>
+  <section id="writing" class="grid rise" style="animation-delay:90ms">
+    <Card class="span-7">
+      <p class="kicker">Lead story · {features[0]?.kicker || "Engineering"}</p>
+      <h2>{features[0]?.title || "Engineering leadership with context."}</h2>
+      <p class="lede">{features[0]?.excerpt || "Notes on the work of building software, teams, and systems that last."}</p>
+      <a class="more" href={features[0]?.href || "/#writing"}>Read the essay <span>→</span></a>
+    </Card>
+    <div class="span-5 stack">
+      {features.slice(1).map(f => (
+        <Card><p class="kicker">{f.kicker}</p><h3><a href={f.href}>{f.title}</a></h3><p class="lede" style="font-size:14px;margin:.5rem 0 0">{f.excerpt}</p></Card>
       ))}
     </div>
+  </section>
+  <section class="grid rise" style="animation-delay:150ms">
+    {sections.map(s => <PostList heading={s.heading} posts={s.posts} />)}
   </section>
 </BaseLayout>

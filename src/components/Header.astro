@@ -1,38 +1,7 @@
----
-import { profile } from '../data/site';
----
-<header class="site-header">
-  <div class="shell header-inner">
-    <a class="brand" href="/" aria-label={`${profile.name} home`}><strong>{profile.name}</strong><span>{profile.title}</span></a>
-    <nav aria-label="Primary navigation">
-      <a href="/#blog">Blog</a><a href="/about/">About</a>
-      <button type="button" class="theme-toggle" data-theme-toggle aria-label="Switch to dark mode">Dark</button>
-      <button type="button" class="search-trigger" data-search-open aria-label="Open search">Cerca</button>
-    </nav>
-  </div>
-</header>
-<div class="search-panel" data-search-panel hidden>
-  <div class="shell search-inner"><label for="site-search">Search articles</label><input id="site-search" type="search" placeholder="Search by title or tag" autocomplete="off" data-search-input /><div class="search-results" data-search-results aria-live="polite"></div><button type="button" class="search-close" data-search-close>Close</button></div>
-</div>
-<script>
-  const initHeader = () => {
-    const root = document.documentElement;
-    const themeToggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
-    const panel = document.querySelector<HTMLElement>('[data-search-panel]');
-    const input = document.querySelector<HTMLInputElement>('[data-search-input]');
-    const results = document.querySelector<HTMLElement>('[data-search-results]');
-    const setTheme = (theme: 'light' | 'dark') => { root.dataset.theme = theme; localStorage.setItem('theme', theme); if (themeToggle) themeToggle.textContent = theme === 'dark' ? 'Light' : 'Dark'; };
-    setTheme(localStorage.getItem('theme') === 'light' ? 'light' : 'dark');
-    themeToggle?.addEventListener('click', () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark'));
-    document.querySelector('[data-search-open]')?.addEventListener('click', async () => {
-      if (!panel || !input) return;
-      panel.hidden = false; input.focus();
-      const posts = await (await fetch('/search-index.json')).json() as Array<{ title: string; url: string; tags: string[] }>;
-      input.oninput = () => { const query = input.value.toLowerCase().trim(); const matches = posts.filter((post) => `${post.title} ${post.tags.join(' ')}`.toLowerCase().includes(query)).slice(0, 8); if (results) results.innerHTML = matches.map((post) => `<a href="${post.url}">${post.title}<small>${post.tags.join(' · ')}</small></a>`).join('') || '<p>No matching articles.</p>'; };
-      input.oninput(new Event('input'));
-    });
-    document.querySelector('[data-search-close]')?.addEventListener('click', () => { if (panel) panel.hidden = true; });
-  };
-  initHeader();
-  document.addEventListener('astro:page-load', initHeader);
-</script>
+<header class="masthead"><div class="wrap">
+  <a href="/" class="brand">Fabio Cozzolino</a>
+  <nav class="nav">
+    <a href="/#writing">Writing</a><a href="/about/">About</a>
+    <a href="https://www.linkedin.com/in/cozzolinofabio/" target="_blank" rel="noreferrer">LinkedIn</a>
+  </nav>
+</div></header>
